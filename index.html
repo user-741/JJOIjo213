@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Memorization Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .mode-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: #e2e8f0;
+            color: #475569;
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+        }
+
+        .difficulty-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .difficulty-btn {
+            padding: 8px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: white;
+            color: #64748b;
+        }
+
+        .difficulty-btn.active {
+            border-color: #f59e0b;
+            background: #f59e0b;
+            color: white;
+        }
+
+        .card-container {
+            padding: 40px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flashcard {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .question {
+            font-size: 1.3em;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: #1e293b;
+        }
+
+        .answer {
+            font-size: 1.1em;
+            color: #059669;
+            font-weight: 600;
+            background: #ecfdf5;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #059669;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e2e8f0;
+            margin: 20px 30px 0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .action-buttons {
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: #f8fafc;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-option {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            border-color: #4f46e5;
+            transform: translateX(5px);
+        }
+
+        .quiz-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .completion-screen {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .completion-screen h2 {
+            font-size: 2.5em;
+            color: #059669;
+            margin-bottom: 20px;
+        }
+
+        .completion-stats {
+            background: #f0fdf4;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #bbf7d0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .pulsing {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Test Memory Master</h1>
+            <p>Master your test questions with interactive study modes</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number" id="currentCard">1</span>
+                    <span class="stat-label">Current</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="totalCards">32</span>
+                    <span class="stat-label">Total</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="correctCount">0</span>
+                    <span class="stat-label">Correct</span>
+                </div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="flashcard">📚 Flashcards</button>
+                <button class="mode-btn" data-mode="quiz">🎯 Quiz Mode</button>
+                <button class="mode-btn" data-mode="review">🔍 Review Missed</button>
+            </div>
+            <div class="difficulty-controls">
+                <button class="difficulty-btn active" data-filter="all">All Questions</button>
+                <button class="difficulty-btn" data-filter="hard">Hard Only</button>
+                <button class="difficulty-btn" data-filter="new">New Questions</button>
+            </div>
+        </div>
+
+        <div class="card-container" id="cardContainer">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+
+        <div class="action-buttons" id="actionButtons">
+            <!-- Buttons will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                q: "What principle governs both parallel and distributed processing models?",
+                a: "divide-and-conquer",
+                difficulty: "easy"
+            },
+            {
+                q: "Why must applications using eventually consistent systems plan for divergent reads?",
+                a: "stale data is returned",
+                difficulty: "medium"
+            },
+            {
+                q: "What unsupervised method groups similar data points?",
+                a: "Clustering",
+                difficulty: "easy"
+            },
+            {
+                q: "What problems do clusters address that is inevitable in a network connected environment?",
+                a: "Communication failures",
+                difficulty: "medium"
+            },
+            {
+                q: "Which scenario best illustrates the risk of data fragmentation in a distributed storage system using sharding?",
+                a: "queries require aggregation of data from multiple shards",
+                difficulty: "hard"
+            },
+            {
+                q: "What problem does ETI's IT team face regarding their understanding of base and CAP theorem?",
+                a: "they are unsure of the need and importance",
+                difficulty: "medium"
+            },
+            {
+                q: "Which subtle consequence might arise from peer to peer replication in scenarios involving network latency and high concurrency?",
+                a: "inconsistent reads possible from replication delay",
+                difficulty: "hard"
+            },
+            {
+                q: "What unique advantage does A/B testing offer in practical scenarios?",
+                a: "Simultaneous real world comparison",
+                difficulty: "medium"
+            },
+            {
+                q: "Why might linear regression be a poor fit for modelling real world social behavior patterns?",
+                a: "it assumes constant change",
+                difficulty: "medium"
+            },
+            {
+                q: "How does filtering enhance the user experience in recommendation systems?",
+                a: "by aligning results with preferences",
+                difficulty: "easy"
+            },
+            {
+                q: "Which technique helps in finding user specific content within large item pools?",
+                a: "Filtering",
+                difficulty: "easy"
+            },
+            {
+                q: "What is the purpose of the SWAP command in snowflake?",
+                a: "to promote cleaned data to production",
+                difficulty: "medium"
+            },
+            {
+                q: "Which snowflake feature allows users to search for objects using natural language?",
+                a: "Universal search",
+                difficulty: "easy"
+            },
+            {
+                q: "Which snowflake feature allows cost tracking across multiple objects?",
+                a: "budget",
+                difficulty: "easy"
+            },
+            {
+                q: "Which of the following best describes the use of resource monitors in snowflake?",
+                a: "they track and limit compute credit usage",
+                difficulty: "medium"
+            },
+            {
+                q: "What is a key advantage of using query result cache in snowflake?",
+                a: "reduces compute cost",
+                difficulty: "easy"
+            },
+            {
+                q: "Which SQL function is used to extract fields from a variant column in snowflake?",
+                a: ":<field_name> notation",
+                difficulty: "medium"
+            },
+            {
+                q: "In snowflake what is the effect of setting AUTO_RESUME to FALSE on a warehouse?",
+                a: "it must be resumed manually",
+                difficulty: "medium"
+            },
+            {
+                q: "What happens when a table is cloned using zero copy cloning and then modified in snowflake?",
+                a: "the clone diverges and stores only the changes",
+                difficulty: "hard"
+            },
+            {
+                q: "In snowflake what is the effects of executing UNDROP on a table?",
+                a: "it restores the table to its last known state",
+                difficulty: "medium"
+            },
+            {
+                q: "In snowflake which parameter controls how long a warehouse remains idle before suspending?",
+                a: "AUTO_SUSPEND",
+                difficulty: "medium"
+            },
+            {
+                q: "Which command resumes a suspended warehouse in snowflake?",
+                a: "ALTER WAREHOUSE my_wh RESUME;",
+                difficulty: "medium"
+            },
+            {
+                q: "What feature allows recovery of dropped tables in snowflake?",
+                a: "Time Travel",
+                difficulty: "easy"
+            },
+            {
+                q: "What is the benefit of zero copy cloning in snowflake?",
+                a: "without using additional storage",
+                difficulty: "medium"
+            },
+            {
+                q: "What key operational feature makes MapReduce resilient in large scale batch processing?",
+                a: "Built in fault tolerance",
+                difficulty: "medium"
+            },
+            {
+                q: "Why might batch mode require greater disk (I/O) capacity than real time processing?",
+                a: "requires disk persistence before processing",
+                difficulty: "hard"
+            },
+            {
+                q: "Which phase of MapReduce ensures input key value types match output types for consistency?",
+                a: "Reduce stage",
+                difficulty: "hard"
+            },
+            {
+                q: "Which processing mode directly addresses the volume and variety of big data through offline execution?",
+                a: "Batch mode processing",
+                difficulty: "medium"
+            },
+            {
+                q: "What enables NoSQL document stores to support evolving data structures over time?",
+                a: "Built in schema evolution",
+                difficulty: "medium"
+            },
+            {
+                q: "How do column family NoSQL databases achieve schema flexibility without compromising read performance?",
+                a: "allowing per row column variation",
+                difficulty: "hard"
+            },
+            {
+                q: "What functional distinction allows document stores to be queryable compared to key value stores?",
+                a: "searchable document values",
+                difficulty: "medium"
+            },
+            {
+                q: "Why might write-through strategies negatively affect high frequency transactions?",
+                a: "at the expense of write latency",
+                difficulty: "hard"
+            }
+        ];
+
+        let currentMode = 'flashcard';
+        let currentFilter = 'all';
+        let currentIndex = 0;
+        let showingAnswer = false;
+        let correctAnswers = 0;
+        let missedQuestions = [];
+        let currentQuestions = [];
+        let quizAnswers = [];
+
+        function filterQuestions() {
+            switch(currentFilter) {
+                case 'hard':
+                    return questions.filter(q => q.difficulty === 'hard');
+                case 'new':
+                    return questions.filter(q => !missedQuestions.includes(q));
+                default:
+                    return questions;
+            }
+        }
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function generateWrongAnswers(correctAnswer, allAnswers) {
+            const wrong = allAnswers.filter(a => a !== correctAnswer);
+            const shuffled = shuffleArray(wrong);
+            return shuffled.slice(0, 3);
+        }
+
+        function updateStats() {
+            document.getElementById('currentCard').textContent = currentIndex + 1;
+            document.getElementById('totalCards').textContent = currentQuestions.length;
+            document.getElementById('correctCount').textContent = correctAnswers;
+            
+            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showFlashcard() {
+            if (currentIndex >= currentQuestions.length) {
+                showCompletion();
+                return;
+            }
+
+            const question = currentQuestions[currentIndex];
+            const container = document.getElementById('cardContainer');
+            
+            container.innerHTML = `
+                <div class="flashcard ${showingAnswer ? '' : 'pulsing'}" onclick="flipCard()">
+                    <div class="question">${question.q}</div>
+                    ${showingAnswer ? `<div class="answer">${question.a}</div>` : '<p style="color: #64748b; font-style: italic;">Click to reveal answer</p>'}
+                </div>
+            `;
+
+            const buttons = document.getElementById('actionButtons');
+            if (showingAnswer) {
+                buttons.innerHTML = `
+                    <button class="btn btn-primary" onclick="markCorrect()">✅ Got it right</button>
+                    <button class="btn btn-danger" onclick="markIncorrect()">❌ Got it wrong</button>
+                    <button class="btn btn-secondary" onclick="nextCard()">⏭️ Next</button>
+                `;
+            } else {
+                buttons.innerHTML = `
+                    <button class="btn btn-secondary" onclick="flipCard()">🔄 Show Answer</button>
+                    <button class="btn btn-secondary" onclick="nextCard()">⏭️ Skip</button>
+                `;
+            }
+        }
+
+        function showQuiz() {
+            if (currentIndex >= currentQuestions.length) {
+                showCompletion();
+                return;
+            }
+
+            const question = currentQuestions[currentIndex];
+            const allAnswers = questions.map(q => q.a);
+            const wrongAnswers = generateWrongAnswers(question.a, allAnswers);
+            const options = shuffleArray([question.a, ...wrongAnswers]);
+            
+            const container = document.getElementById('cardContainer');
+            container.innerHTML = `
+                <div class="flashcard">
+                    <div class="question">${question.q}</div>
+                    <div style="margin-top: 30px;">
+                        ${options.map((option, i) => 
+                            `<div class="quiz-option" data-answer="${option}" onclick="selectAnswer(this, '${question.a}')">${String.fromCharCode(65 + i)}) ${option}</div>`
+                        ).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('actionButtons').innerHTML = `
+                <button class="btn btn-secondary" onclick="nextCard()">⏭️ Skip Question</button>
+            `;
+        }
+
+        function showReview() {
+            if (missedQuestions.length === 0) {
+                document.getElementById('cardContainer').innerHTML = `
+                    <div class="completion-screen">
+                        <h2>🎉 No Missed Questions!</h2>
+                        <p>You haven't missed any questions yet. Try other modes first!</p>
+                    </div>
+                `;
+                document.getElementById('actionButtons').innerHTML = '';
+                return;
+            }
+
+            currentQuestions = [...missedQuestions];
+            currentIndex = 0;
+            showingAnswer = false;
+            showFlashcard();
+        }
+
+        function flipCard() {
+            showingAnswer = !showingAnswer;
+            showFlashcard();
+        }
+
+        function selectAnswer(element, correctAnswer) {
+            const options = document.querySelectorAll('.quiz-option');
+            const selectedAnswer = element.dataset.answer;
+            
+            options.forEach(option => {
+                if (option.dataset.answer === correctAnswer) {
+                    option.classList.add('correct');
+                } else if (option === element && selectedAnswer !== correctAnswer) {
+                    option.classList.add('incorrect');
+                }
+                option.style.pointerEvents = 'none';
+            });
+
+            if (selectedAnswer === correctAnswer) {
+                correctAnswers++;
+            } else {
+                const question = currentQuestions[currentIndex];
+                if (!missedQuestions.includes(question)) {
+                    missedQuestions.push(question);
+                }
+            }
+
+            setTimeout(() => {
+                nextCard();
+            }, 2000);
+        }
+
+        function markCorrect() {
+            correctAnswers++;
+            nextCard();
+        }
+
+        function markIncorrect() {
+            const question = currentQuestions[currentIndex];
+            if (!missedQuestions.includes(question)) {
+                missedQuestions.push(question);
+            }
+            nextCard();
+        }
+
+        function nextCard() {
+            currentIndex++;
+            showingAnswer = false;
+            updateStats();
+            
+            if (currentMode === 'flashcard') {
+                showFlashcard();
+            } else if (currentMode === 'quiz') {
+                showQuiz();
+            } else {
+                showReview();
+            }
+        }
+
+        function showCompletion() {
+            const accuracy = Math.round((correctAnswers / currentQuestions.length) * 100);
+            document.getElementById('cardContainer').innerHTML = `
+                <div class="completion-screen">
+                    <h2>🎉 Round Complete!</h2>
+                    <div class="completion-stats">
+                        <p><strong>Accuracy:</strong> ${accuracy}%</p>
+                        <p><strong>Correct:</strong> ${correctAnswers}/${currentQuestions.length}</p>
+                        <p><strong>Missed:</strong> ${missedQuestions.length} questions</p>
+                    </div>
+                    <p>Great progress! ${accuracy >= 80 ? '🌟 Excellent work!' : 'Keep practicing to improve!'}</p>
+                </div>
+            `;
+
+            document.getElementById('actionButtons').innerHTML = `
+                <button class="btn btn-primary" onclick="restartSession()">🔄 Try Again</button>
+                ${missedQuestions.length > 0 ? '<button class="btn btn-secondary" onclick="reviewMissed()">📖 Review Missed</button>' : ''}
+            `;
+        }
+
+        function restartSession() {
+            currentIndex = 0;
+            showingAnswer = false;
+            correctAnswers = 0;
+            currentQuestions = shuffleArray(filterQuestions());
+            updateStats();
+            
+            if (currentMode === 'flashcard') {
+                showFlashcard();
+            } else if (currentMode === 'quiz') {
+                showQuiz();
+            }
+        }
+
+        function reviewMissed() {
+            currentMode = 'review';
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-mode="review"]').classList.add('active');
+            showReview();
+        }
+
+        // Mode switching
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentMode = this.dataset.mode;
+                currentIndex = 0;
+                showingAnswer = false;
+                correctAnswers = 0;
+                
+                if (currentMode === 'review') {
+                    showReview();
+                } else {
+                    currentQuestions = shuffleArray(filterQuestions());
+                    updateStats();
+                    
+                    if (currentMode === 'flashcard') {
+                        showFlashcard();
+                    } else if (currentMode === 'quiz') {
+                        showQuiz();
+                    }
+                }
+            });
+        });
+
+        // Difficulty filtering
+        document.querySelectorAll('.difficulty-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentFilter = this.dataset.filter;
+                restartSession();
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (currentMode === 'flashcard') {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (!showingAnswer) {
+                        flipCard();
+                    } else {
+                        nextCard();
+                    }
+                } else if (e.code === 'ArrowRight' || e.code === 'Enter') {
+                    if (showingAnswer) nextCard();
+                } else if (e.code === 'KeyC') {
+                    if (showingAnswer) markCorrect();
+                } else if (e.code === 'KeyX') {
+                    if (showingAnswer) markIncorrect();
+                }
+            }
+        });
+
+        // Initialize
+        currentQuestions = shuffleArray(filterQuestions());
+        updateStats();
+        showFlashcard();
+    </script>
+</body>
+</html>
