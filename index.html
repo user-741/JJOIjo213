@@ -333,7 +333,7 @@
             },
             {
                 q: "Why must applications using eventually consistent systems plan for divergent reads? (M)",
-                a: '"stale data is returned" - Returns stale data during read operations when replicas have not yet synchronized after a write, leading to temporary inconsistencies.',
+                a: '"stale data is returned"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
                 difficulty: "medium"
@@ -347,126 +347,126 @@
             },
             {
                 q: "What problems do clusters address that is inevitable in a network connected environment? (M)",
-                a: '"Communication failures" - Tolerates communication outages that split the cluster into partitions while still servicing read/write requests.',
+                a: '"Communication failures"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "Which scenario best illustrates the risk of data fragmentation in a distributed storage system using sharding? (M)",
-                a: '"queries require aggregation of data from multiple shards" - Requires fetching and combining data from multiple shards when a single query spans partitioned datasets.',
+                a: '"queries require aggregation of data from multiple shards"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
                 difficulty: "hard"
             },
             {
                 q: "What problem does ETI\'s IT team face regarding their understanding of base and CAP theorem? (M)",
-                a: '"they are unsure of the need and importance" - Struggles to recognize the relevance and significance of BASE and CAP theorems in their current data architecture planning.',
+                a: '"they are unsure of the need and importance"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "Which subtle consequence might arise from peer to peer replication in scenarios involving network latency and high concurrency? (M)",
-                a: '"inconsistent reads possible from replication delay" - Allows inconsistent reads due to delays in propagating updates across peer nodes during concurrent access.',
+                a: '"inconsistent reads possible from replication delay"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
                 difficulty: "hard"
             },
             {
                 q: "What unique advantage does A/B testing offer in practical scenarios? (M)",
-                a: '"Simultaneous real world comparison" - Compares two versions of a model or interface under real user conditions at the same time to measure performance differences.',
+                a: '"Simultaneous real world comparison"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "Why might linear regression be a poor fit for modelling real world social behavior patterns? (M)",
-                a: '"it assumes constant change" - Models relationships with a constant rate of change, which fails to capture complex, non-linear dynamics in social behavior.',
+                a: '"it assumes constant change"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "How does filtering enhance the user experience in recommendation systems? (M)",
-                a: '"by aligning results with preferences" - Filters content based on user behavior or profile to deliver personalized and relevant recommendations.',
+                a: '"by aligning results with preferences"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
                 difficulty: "easy"
             },
             {
                 q: "Which technique helps in finding user specific content within large item pools? (M)",
-                a: '"Filtering" - Identifies and retrieves relevant items from large datasets by applying user-specific criteria or behavioral patterns.',
+                a: '"Filtering"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
                 difficulty: "easy"
             },
             {
                 q: "What is the purpose of the SWAP command in snowflake? (M)",
-                a: '"to promote cleaned data to production" - Swaps a development table with a production table to safely promote validated and cleaned data.',
+                a: '"to promote cleaned data to production"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "Which snowflake feature allows users to search for objects using natural language? (M)",
-                a: '"Universal search" - Enables searching for databases, tables, and other objects using plain language queries.',
+                a: '"Universal search"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "easy"
             },
             {
                 q: "Which snowflake feature allows cost tracking across multiple objects? (M)",
-                a: '"budget" - Tracks spending and compute usage across various account objects to manage financial limits.',
+                a: '"budget"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "easy"
             },
             {
                 q: "Which of the following best describes the use of resource monitors in snowflake? (M)",
-                a: '"they track and limit compute credit usage" - Monitors and controls the consumption of compute credits across warehouses and users.',
+                a: '"they track and limit compute credit usage"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "What is a key advantage of using query result cache in snowflake? (M)",
-                a: '"reduces compute cost" - Reuses previous query results to avoid re-execution and lower compute resource usage.',
+                a: '"reduces compute cost"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "easy"
             },
             {
                 q: "Which SQL function is used to extract fields from a variant column in snowflake? (M)",
-                a: '":<field_name> notation" - Uses colon notation (e.g., `column:field`) to extract specific elements from semi-structured data like JSON.',
+                a: '":<field_name> notation"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "In snowflake what is the effect of setting AUTO_RESUME to FALSE on a warehouse? (M)",
-                a: '"it must be resumed manually" - Prevents automatic restart of the warehouse after suspension, requiring manual intervention to resume.',
+                a: '"it must be resumed manually"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "What happens when a table is cloned using zero copy cloning and then modified in snowflake? (M)",
-                a: '"the clone diverges and stores only the changes" - Stores only differential changes after modification, keeping original data shared until divergence.',
+                a: '"the clone diverges and stores only the changes"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "hard"
             },
             {
                 q: "In snowflake what is the effects of executing UNDROP on a table? (M)",
-                a: '"it restores the table to its last known state" - Recovers a dropped table from Time Travel retention period to its most recent state.',
+                a: '"it restores the table to its last known state"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "In snowflake which parameter controls how long a warehouse remains idle before suspending? (M)",
-                a: '"AUTO_SUSPEND" - Defines the idle time threshold before a warehouse automatically suspends to save resources.',
+                a: '"AUTO_SUSPEND"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
                 difficulty: "medium"
@@ -494,63 +494,63 @@
             },
             {
                 q: "What key operational feature makes MapReduce resilient in large scale batch processing? (M)",
-                a: '"Built in fault tolerance" - Provides redundancy and automatic recovery from node failures during distributed batch processing.',
+                a: '"Built in fault tolerance"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "Why might batch mode require greater disk (I/O) capacity than real time processing? (M)",
-                a: '"requires disk persistence before processing" - Stores large volumes of data on disk prior to processing, increasing I/O demand compared to streaming methods.',
+                a: '"requires disk persistence before processing"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
                 difficulty: "hard"
             },
             {
                 q: "Which phase of MapReduce ensures input key value types match output types for consistency? (M)",
-                a: '"Reduce stage" - Ensures the output signature (key-value types) of the map function matches the input signature of the reduce function.',
+                a: '"Reduce stage"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
                 difficulty: "hard"
             },
             {
                 q: "Which processing mode directly addresses the volume and variety of big data through offline execution? (M)",
-                a: '"Batch mode processing" - Processes large datasets offline in grouped operations to handle high volume and diverse data types.',
+                a: '"Batch mode processing"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "What enables NoSQL document stores to support evolving data structures over time? (M)",
-                a: '"Built in schema evolution" - Supports flexible, self-describing documents that allow fields to change or be added without rigid schema enforcement.',
+                a: '"Built in schema evolution"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "How do column family NoSQL databases achieve schema flexibility without compromising read performance? (M)",
-                a: '"allowing per row column variation" - Permits different rows to have different columns while maintaining efficient column-wise storage and retrieval.',
+                a: '"allowing per row column variation"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
                 difficulty: "hard"
             },
             {
                 q: "What functional distinction allows document stores to be queryable compared to key value stores? (M)",
-                a: '"searchable document values" - Stores values as structured documents (e.g., JSON) that can be queried internally, unlike opaque values in key-value stores.',
+                a: '"searchable document values"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "Which of the following is a characteristic of ETI\'s Chosen distributed file system? (M)",
-                a: '"fast access for large datasets in a streaming fashion" - Optimized for streaming access of large files with minimal random reads, enhancing performance for big data workloads.',
+                a: '"fast access for large datasets in a streaming fashion"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
                 difficulty: "medium"
             },
             {
                 q: "In lab 5 which command is used to create an external table named impressions in hive? (M)",
-                a: '`CREATE EXTERNAL TABLE impressions` - Defines an external Hive table pointing to data stored in Amazon S3 without managing lifecycle internally.',
+                a: '`CREATE EXTERNAL TABLE impressions`',
                 source: "M9 Lab 5",
                 isMultipleChoice: true,
                 difficulty: "medium"
@@ -594,7 +594,15 @@
         }
 
         function generateWrongAnswers(correctAnswer, allAnswers) {
-            const wrong = allAnswers.filter(a => a !== correctAnswer);
+            // Extract just the quoted answer part for comparison
+            const extractQuotedAnswer = (answer) => {
+                const match = answer.match(/^"([^"]+)"/);
+                return match ? match[1] : answer;
+            };
+            
+            const correctQuoted = extractQuotedAnswer(correctAnswer);
+            const allQuoted = allAnswers.map(extractQuotedAnswer);
+            const wrong = allQuoted.filter(a => a !== correctQuoted);
             const shuffled = shuffleArray(wrong);
             return shuffled.slice(0, 3);
         }
@@ -620,7 +628,8 @@
             container.innerHTML = `
                 <div class="flashcard ${showingAnswer ? '' : 'pulsing'}" onclick="flipCard()">
                     <div class="question">${question.q}</div>
-                    ${showingAnswer ? `<div class="answer">${question.a}</div>` : '<p style="color: #64748b; font-style: italic;">Click to reveal answer</p>'}
+                    ${showingAnswer ? `<div class="answer">${question.a}</div>
+                    <div style="margin-top: 15px; font-size: 0.9em; color: #6b7280; font-style: italic;">Source: ${question.source}</div>` : '<p style="color: #64748b; font-style: italic;">Click to reveal answer</p>'}
                 </div>
             `;
 
@@ -648,7 +657,15 @@
             const question = currentQuestions[currentIndex];
             const allAnswers = questions.map(q => q.a);
             const wrongAnswers = generateWrongAnswers(question.a, allAnswers);
-            const options = shuffleArray([question.a, ...wrongAnswers]);
+            
+            // Extract just the quoted answer for display
+            const extractQuotedAnswer = (answer) => {
+                const match = answer.match(/^"([^"]+)"/);
+                return match ? match[1] : answer;
+            };
+            
+            const correctShort = extractQuotedAnswer(question.a);
+            const options = shuffleArray([correctShort, ...wrongAnswers]);
             
             const container = document.getElementById('cardContainer');
             container.innerHTML = `
@@ -656,7 +673,7 @@
                     <div class="question">${question.q}</div>
                     <div style="margin-top: 30px;">
                         ${options.map((option, i) => 
-                            `<div class="quiz-option" data-answer="${option}" onclick="selectAnswer(this, '${question.a}')">${String.fromCharCode(65 + i)}) ${option}</div>`
+                            `<div class="quiz-option" data-answer="${option}" onclick="selectAnswer(this, '${correctShort}')">${String.fromCharCode(65 + i)}) ${option}</div>`
                         ).join('')}
                     </div>
                 </div>
