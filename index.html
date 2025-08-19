@@ -336,6 +336,7 @@
                 a: '"stale data is returned"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
+                mcOptions: ["Limited storage space", "Slow data processing", "stale data is returned", "High costs"],
                 difficulty: "medium"
             },
             {
@@ -350,6 +351,7 @@
                 a: '"Communication failures"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
+                mcOptions: ["Limited storage space", "Slow data processing", "Communication failures", "High costs"],
                 difficulty: "medium"
             },
             {
@@ -357,6 +359,7 @@
                 a: '"queries require aggregation of data from multiple shards"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
+                mcOptions: ["all queries are routed to a single node for simplicity", "Shards are vertically partitioned by columns", "queries require aggregation of data from multiple shards", "Each shard contains the entire dataset"],
                 difficulty: "hard"
             },
             {
@@ -364,6 +367,7 @@
                 a: '"they are unsure of the need and importance"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
+                mcOptions: ["They think its only for small data sets", "They have already implemented them", "they are unsure of the need and importance", "they have extensive knowledge of these concepts"],
                 difficulty: "medium"
             },
             {
@@ -371,6 +375,7 @@
                 a: '"inconsistent reads possible from replication delay"',
                 source: "Lecture 5A",
                 isMultipleChoice: true,
+                mcOptions: ["Data loss is guaranteed during failure", "Writes must be synchronized through a central server", "frequent updates are merged seamlessly", "inconsistent reads possible from replication delay"],
                 difficulty: "hard"
             },
             {
@@ -378,6 +383,7 @@
                 a: '"Simultaneous real world comparison"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
+                mcOptions: ["Simultaneous real world comparison", "clustering customer records", "validating and segmenting sentiment predictions", "filtering data anomalies"],
                 difficulty: "medium"
             },
             {
@@ -385,6 +391,7 @@
                 a: '"it assumes constant change"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
+                mcOptions: ["It handles missing data", "it assumes constant change", "it applies exponential smoothing", "it uses categorical input"],
                 difficulty: "medium"
             },
             {
@@ -392,6 +399,7 @@
                 a: '"by aligning results with preferences"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
+                mcOptions: ["by aligning results with preferences", "by ranking supervised categories", "by clustering demographic variables", "by removing statistical bias"],
                 difficulty: "easy"
             },
             {
@@ -399,6 +407,7 @@
                 a: '"Filtering"',
                 source: "Lecture 8A",
                 isMultipleChoice: true,
+                mcOptions: ["Filtering", "Data mining", "outlier detection", "regression modelling"],
                 difficulty: "easy"
             },
             {
@@ -406,6 +415,7 @@
                 a: '"to promote cleaned data to production"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["To exchange schemas", "to promote cleaned data to production", "to suspend a warehouse", "to clone a table"],
                 difficulty: "medium"
             },
             {
@@ -413,6 +423,7 @@
                 a: '"Universal search"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["Data catalog", "Universal search", "object explorer", "Metadata scanner"],
                 difficulty: "easy"
             },
             {
@@ -420,6 +431,7 @@
                 a: '"budget"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["Resource monitor", "budget", "query profiler", "usage dashboard"],
                 difficulty: "easy"
             },
             {
@@ -427,6 +439,7 @@
                 a: '"they track and limit compute credit usage"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["They monitor query performance", "they track and limit compute credit usage", "they manage user roles and privileges", "they monitor usage only"],
                 difficulty: "medium"
             },
             {
@@ -434,6 +447,7 @@
                 a: '"reduces compute cost"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["Increases storage", "reduces compute cost", "improves data security", "disables time travel"],
                 difficulty: "easy"
             },
             {
@@ -441,6 +455,7 @@
                 a: '":<field_name> notation"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["GET_JSON_FIELD()", ":<field_name> notation", "PARSE_VARIANT()", "COLUMN_EXTRACT()"],
                 difficulty: "medium"
             },
             {
@@ -448,6 +463,7 @@
                 a: '"it must be resumed manually"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["It resumes automatically when required", "it must be resumed manually", "it cannot be resumed", "it disables caching"],
                 difficulty: "medium"
             },
             {
@@ -455,6 +471,7 @@
                 a: '"the clone diverges and stores only the changes"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["The original table is also modified", "the clone diverges and stores only the changes", "both tables share the same data permanently", "the clone becomes read only"],
                 difficulty: "hard"
             },
             {
@@ -462,6 +479,7 @@
                 a: '"it restores the table to its last known state"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["It permanently deletes the table", "it restores the table to its last known state", "it clones the table into a new schema", "it archives the table"],
                 difficulty: "medium"
             },
             {
@@ -469,6 +487,7 @@
                 a: '"AUTO_SUSPEND"',
                 source: "Snowflake Lab 7",
                 isMultipleChoice: true,
+                mcOptions: ["MAX_IDLE_TIME", "AUTO_SUSPEND", "SUSPEND_DELAY", "IDLE_TIMEOUT"],
                 difficulty: "medium"
             },
             {
@@ -497,6 +516,7 @@
                 a: '"Built in fault tolerance"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
+                mcOptions: ["Centralized scheduling algorithm", "Built in fault tolerance", "Immediate response capability", "Its synchronous execution model"],
                 difficulty: "medium"
             },
             {
@@ -504,6 +524,7 @@
                 a: '"requires disk persistence before processing"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
+                mcOptions: ["It avoids in memory operations", "it supports higher concurrency", "it compresses data before processing", "requires disk persistence before processing"],
                 difficulty: "hard"
             },
             {
@@ -511,6 +532,7 @@
                 a: '"Reduce stage"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
+                mcOptions: ["Map stage", "Shuffle and sort", "Reduce stage", "Partition stage"],
                 difficulty: "hard"
             },
             {
@@ -518,6 +540,7 @@
                 a: '"Batch mode processing"',
                 source: "Lecture 6A",
                 isMultipleChoice: true,
+                mcOptions: ["Batch mode processing", "streaming replication", "real time processing", "parallel transaction handling"],
                 difficulty: "medium"
             },
             {
@@ -525,6 +548,7 @@
                 a: '"Built in schema evolution"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
+                mcOptions: ["Global indexing support", "Built in schema evolution", "strong referential integrity", "usage of built in stored procedures"],
                 difficulty: "medium"
             },
             {
@@ -532,6 +556,7 @@
                 a: '"allowing per row column variation"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
+                mcOptions: ["serializing rows into documents", "allowing per row column variation", "denormalizing nested rows", "delaying column indexing"],
                 difficulty: "hard"
             },
             {
@@ -539,6 +564,7 @@
                 a: '"searchable document values"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
+                mcOptions: ["flat indexing", "searchable document values", "metadata tagging", "nested relational joins"],
                 difficulty: "medium"
             },
             {
@@ -546,6 +572,7 @@
                 a: '"fast access for large datasets in a streaming fashion"',
                 source: "Lecture 7A",
                 isMultipleChoice: true,
+                mcOptions: ["suitable for storing large numbers of small files", "schema aware data model", "fast random read write capability", "fast access for large datasets in a streaming fashion"],
                 difficulty: "medium"
             },
             {
@@ -553,6 +580,7 @@
                 a: '`CREATE EXTERNAL TABLE impressions`',
                 source: "M9 Lab 5",
                 isMultipleChoice: true,
+                mcOptions: ["CREATE EXTERNAL TABLE impressions", "CREATE TABLE impressions", "CREATE EXTERNAL DATABASE impressions", "CREATE DATABASE impressions"],
                 difficulty: "medium"
             },
             {
@@ -655,17 +683,26 @@
             }
 
             const question = currentQuestions[currentIndex];
-            const allAnswers = questions.map(q => q.a);
-            const wrongAnswers = generateWrongAnswers(question.a, allAnswers);
+            let options = [];
+            let correctAnswer = "";
             
-            // Extract just the quoted answer for display
-            const extractQuotedAnswer = (answer) => {
-                const match = answer.match(/^"([^"]+)"/);
-                return match ? match[1] : answer;
-            };
-            
-            const correctShort = extractQuotedAnswer(question.a);
-            const options = shuffleArray([correctShort, ...wrongAnswers]);
+            if (question.isMultipleChoice && question.mcOptions) {
+                // Use the predefined realistic options
+                options = shuffleArray([...question.mcOptions]);
+                // Extract the correct answer from the quoted format
+                const match = question.a.match(/^"([^"]+)"/);
+                correctAnswer = match ? match[1] : question.a.replace(/^`([^`]+)`$/, '$1');
+            } else {
+                // Fallback for non-MC questions (shouldn't happen in quiz mode for MC questions)
+                const allAnswers = questions.map(q => q.a);
+                const wrongAnswers = generateWrongAnswers(question.a, allAnswers);
+                const extractQuotedAnswer = (answer) => {
+                    const match = answer.match(/^"([^"]+)"/);
+                    return match ? match[1] : answer;
+                };
+                correctAnswer = extractQuotedAnswer(question.a);
+                options = shuffleArray([correctAnswer, ...wrongAnswers]);
+            }
             
             const container = document.getElementById('cardContainer');
             container.innerHTML = `
@@ -673,7 +710,7 @@
                     <div class="question">${question.q}</div>
                     <div style="margin-top: 30px;">
                         ${options.map((option, i) => 
-                            `<div class="quiz-option" data-answer="${option}" onclick="selectAnswer(this, '${correctShort}')">${String.fromCharCode(65 + i)}) ${option}</div>`
+                            `<div class="quiz-option" data-answer="${option}" onclick="selectAnswer(this, '${correctAnswer}')">${String.fromCharCode(65 + i)}) ${option}</div>`
                         ).join('')}
                     </div>
                 </div>
