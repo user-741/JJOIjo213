@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Memorization Tool</title>
+    <title>PhD in Data Privacy & Cyber Physical Systems</title>
     <style>
         * {
             margin: 0;
@@ -15,891 +15,1258 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
             color: #333;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            padding: 20px;
         }
 
         .header {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            padding: 30px;
             text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 40px 20px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
         }
 
         .header h1 {
-            font-size: 2.5em;
+            font-size: 3rem;
             margin-bottom: 10px;
-            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2em;
-            font-weight: bold;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9em;
+        .header p {
+            font-size: 1.2rem;
             opacity: 0.9;
         }
 
-        .controls {
-            padding: 30px;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .mode-selector {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .mode-btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            background: #e2e8f0;
-            color: #475569;
-        }
-
-        .mode-btn.active {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
-        }
-
-        .difficulty-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .difficulty-btn {
-            padding: 8px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            background: white;
-            color: #64748b;
-        }
-
-        .difficulty-btn.active {
-            border-color: #f59e0b;
-            background: #f59e0b;
-            color: white;
-        }
-
-        .card-container {
-            padding: 40px;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .flashcard {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-        }
-
-        .flashcard:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .question {
-            font-size: 1.3em;
-            font-weight: 600;
-            line-height: 1.5;
-            margin-bottom: 30px;
-            color: #1e293b;
-        }
-
-        .answer {
-            font-size: 1.1em;
-            color: #059669;
-            font-weight: 600;
-            background: #ecfdf5;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #059669;
-        }
-
         .progress-bar {
-            height: 6px;
-            background: #e2e8f0;
-            margin: 20px 30px 0;
-            border-radius: 3px;
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            margin: 20px 0;
             overflow: hidden;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #10b981, #059669);
+            background: linear-gradient(90deg, #00c851, #007e33);
+            border-radius: 4px;
+            width: 0%;
             transition: width 0.3s ease;
-            border-radius: 3px;
         }
 
-        .action-buttons {
-            padding: 30px;
+        .tabs {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            background: #f8fafc;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .tab:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: white;
+            color: #667eea;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .knowledge-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .knowledge-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .critical-insight {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .critical-insight::before {
+            content: "💡 Critical Insight: ";
+            font-weight: bold;
+            color: #d63031;
+        }
+
+        .research-note {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .research-note::before {
+            content: "🔬 Research Note: ";
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        .flashcard {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            min-height: 120px;
+        }
+
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .flashcard.flipped {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+        }
+
+        .flashcard-back {
+            display: none;
+        }
+
+        .flashcard.flipped .flashcard-front {
+            display: none;
+        }
+
+        .flashcard.flipped .flashcard-back {
+            display: block;
+        }
+
+        .quiz-container {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 25px 0;
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .quiz-option {
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .quiz-option.selected {
+            border-color: white;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .quiz-option.correct {
+            background: #00b894;
+            border-color: #00a085;
+        }
+
+        .quiz-option.incorrect {
+            background: #e17055;
+            border-color: #d63031;
+        }
+
+        .practice-problem {
+            background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: #2d3436;
+        }
+
+        .practice-problem h4 {
+            margin-bottom: 15px;
+            color: #d63031;
+            font-size: 1.2rem;
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 1em;
             transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #f1f5f9;
-            color: #475569;
-            border: 2px solid #e2e8f0;
-        }
-
-        .btn-danger {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
+            margin: 10px 5px;
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .quiz-option {
-            background: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin: 10px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .quiz-option:hover {
-            border-color: #4f46e5;
-            transform: translateX(5px);
-        }
-
-        .quiz-option.correct {
-            border-color: #10b981;
-            background: #ecfdf5;
-            color: #059669;
-        }
-
-        .quiz-option.incorrect {
-            border-color: #ef4444;
-            background: #fef2f2;
-            color: #dc2626;
-        }
-
-        .completion-screen {
-            text-align: center;
-            padding: 60px 40px;
-        }
-
-        .completion-screen h2 {
-            font-size: 2.5em;
-            color: #059669;
-            margin-bottom: 20px;
-        }
-
-        .completion-stats {
-            background: #f0fdf4;
-            border-radius: 15px;
-            padding: 30px;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             margin: 30px 0;
-            border: 2px solid #bbf7d0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #00cec9 0%, #55a3ff 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .concept-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .concept-node {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .concept-node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .topology-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .topology-type {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            min-width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .topology-type:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .layer-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .osi-layer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .osi-layer:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cps-architecture {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .cps-layer {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .security-threat {
+            background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .defense-mechanism {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
         }
 
         .hidden {
             display: none;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .pulsing {
-            animation: pulse 1.5s infinite;
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .cps-architecture {
+                grid-template-columns: 1fr;
+            }
+            
+            .topology-diagram {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🧠 Test Memory Master</h1>
-            <p>Master your test questions with interactive study modes</p>
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-number" id="currentCard">1</span>
-                    <span class="stat-label">Current</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" id="totalCards">32</span>
-                    <span class="stat-label">Total</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number" id="correctCount">0</span>
-                    <span class="stat-label">Correct</span>
-                </div>
-            </div>
+            <h1>PhD in Data Privacy & Cyber Physical Systems</h1>
+            <p>Master Sessions 1 & 2 - From Fundamentals to Research Excellence</p>
             <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="completedConcepts">0</div>
+                    <div>Concepts Mastered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="correctAnswers">0</div>
+                    <div>Quiz Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="studyTime">0</div>
+                    <div>Study Time (min)</div>
+                </div>
             </div>
         </div>
 
-        <div class="controls">
-            <div class="mode-selector">
-                <button class="mode-btn active" data-mode="flashcard">📚 Flashcards</button>
-                <button class="mode-btn" data-mode="quiz">🎯 Quiz Mode</button>
-                <button class="mode-btn" data-mode="review">🔍 Review Missed</button>
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('overview')">Overview</button>
+            <button class="tab" onclick="showSection('session1')">Session 1: Networking</button>
+            <button class="tab" onclick="showSection('session2')">Session 2: CPS</button>
+            <button class="tab" onclick="showSection('flashcards')">Flashcards</button>
+            <button class="tab" onclick="showSection('quiz')">PhD Quiz</button>
+            <button class="tab" onclick="showSection('research')">Research Projects</button>
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="content-section active">
+            <h2>PhD-Level Learning Pathway</h2>
+            
+            <div class="knowledge-card">
+                <h3>Learning Objectives</h3>
+                <p>By the end of this comprehensive study, you will achieve PhD-level mastery in:</p>
+                <ul>
+                    <li>Advanced networking architectures and wireless systems security</li>
+                    <li>Cyber Physical Systems (CPS) design and implementation</li>
+                    <li>Data privacy preservation techniques in distributed systems</li>
+                    <li>Critical infrastructure protection and threat mitigation</li>
+                    <li>Research methodologies in CPS security</li>
+                </ul>
             </div>
-            <div class="difficulty-controls">
-                <button class="difficulty-btn active" data-filter="all">All Questions</button>
-                <button class="difficulty-btn" data-filter="hard">Hard Only</button>
-                <button class="difficulty-btn" data-filter="new">New Questions</button>
+
+            <div class="concept-map">
+                <div class="concept-node" onclick="showConcept('networking')">
+                    <h4>Networking Fundamentals</h4>
+                    <p>OSI Model, Topologies, Hardware</p>
+                </div>
+                <div class="concept-node" onclick="showConcept('wireless')">
+                    <h4>Wireless Systems</h4>
+                    <p>Security, Management, Deployment</p>
+                </div>
+                <div class="concept-node" onclick="showConcept('cps')">
+                    <h4>Cyber Physical Systems</h4>
+                    <p>Architecture, Applications, Integration</p>
+                </div>
+                <div class="concept-node" onclick="showConcept('security')">
+                    <h4>CPS Security</h4>
+                    <p>Threats, Attacks, Defense Mechanisms</p>
+                </div>
+                <div class="concept-node" onclick="showConcept('privacy')">
+                    <h4>Data Privacy</h4>
+                    <p>Techniques, Ethics, Legislation</p>
+                </div>
+                <div class="concept-node" onclick="showConcept('research')">
+                    <h4>Research Directions</h4>
+                    <p>Open Problems, Future Work</p>
+                </div>
             </div>
         </div>
 
-        <div class="card-container" id="cardContainer">
-            <!-- Content will be dynamically inserted here -->
+        <!-- Session 1: Networking -->
+        <div id="session1" class="content-section">
+            <h2>Session 1: Data Privacy & Cyber Physical Systems (Networking Foundations)</h2>
+
+            <div class="knowledge-card">
+                <h3>1. Networking Foundations</h3>
+                
+                <h4>Wired vs Wireless Networks</h4>
+                <div class="topology-diagram">
+                    <div class="topology-type">
+                        <h5>Wired Networks</h5>
+                        <p>✓ Fast, secure, stable, cheap</p>
+                        <p>✗ Limited mobility, physical cables</p>
+                    </div>
+                    <div class="topology-type">
+                        <h5>Wireless Networks</h5>
+                        <p>✓ Mobile, flexible</p>
+                        <p>✗ Costly, interference-prone, less secure</p>
+                    </div>
+                </div>
+
+                <div class="critical-insight">
+                    Security gap in wireless isn't "unfixable" — it's a moving arms race between encryption standards (WEP → WPA → WPA2 → WPA3) and attackers.
+                </div>
+
+                <h4>Network Topologies</h4>
+                <div class="topology-diagram">
+                    <div class="topology-type" onclick="explainTopology('star')">
+                        <h5>Star Network</h5>
+                        <p>Central hub, fast but vulnerable at center</p>
+                    </div>
+                    <div class="topology-type" onclick="explainTopology('bus')">
+                        <h5>Bus Network</h5>
+                        <p>Simple, no central node, collision-prone</p>
+                    </div>
+                    <div class="topology-type" onclick="explainTopology('ring')">
+                        <h5>Ring Network</h5>
+                        <p>Closed loop, resilient to single node failure</p>
+                    </div>
+                </div>
+
+                <div class="research-note">
+                    These "classics" underpin modern mesh networking. IoT often revisits ring/bus concepts in constrained networks.
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <h3>2. Hardware Components</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div class="concept-node">
+                        <h5>NIC</h5>
+                        <p>Network Interface Card - provides unique MAC address</p>
+                    </div>
+                    <div class="concept-node">
+                        <h5>Hub</h5>
+                        <p>Dumb broadcast device (Layer 1)</p>
+                    </div>
+                    <div class="concept-node">
+                        <h5>Switch</h5>
+                        <p>Smart forwarding based on MAC (Layer 2)</p>
+                    </div>
+                    <div class="concept-node">
+                        <h5>Router</h5>
+                        <p>Inter-networking + routing decisions (Layer 3)</p>
+                    </div>
+                </div>
+
+                <div class="critical-insight">
+                    Switches are the workhorses of LAN; routers shape traffic between networks and enforce policies.
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <h3>3. OSI Model in Wireless Context</h3>
+                
+                <div class="layer-stack">
+                    <div class="osi-layer" onclick="explainOSILayer(7)">
+                        <h5>Layer 7: Application</h5>
+                        <p>HTTP, FTP, SMTP - User-facing protocols</p>
+                    </div>
+                    <div class="osi-layer" onclick="explainOSILayer(6)">
+                        <h5>Layer 6: Presentation</h5>
+                        <p>Format translations, encryption</p>
+                    </div>
+                    <div class="osi-layer" onclick="explainOSILayer(5)">
+                        <h5>Layer 5: Session</h5>
+                        <p>Manages wireless disruptions, session continuity</p>
+                    </div>
+                    <div class="osi-layer" onclick="explainOSILayer(4)">
+                        <h5>Layer 4: Transport</h5>
+                        <p>TCP/UDP reliability</p>
+                    </div>
+                    <div class="osi-layer" onclick="explainOSILayer(3)">
+                        <h5>Layer 3: Network</h5>
+                        <p>IP routing between networks</p>
+                    </div>
+                    <div class="osi-layer" onclick="explainOSILayer(2)">
+                        <h5>Layer 2: Data Link</h5>
+                        <p>Access control, error handling</p>
+                    </div>
+                    <div class="osi-layer" onclick="explainOSILayer(1)">
+                        <h5>Layer 1: Physical</h5>
+                        <p>Waves/light - vulnerable to interference</p>
+                    </div>
+                </div>
+
+                <div class="critical-insight">
+                    Wireless-specific attacks target Layers 2-4 (jamming, spoofing, replay, session hijack). Privacy-preserving methods operate at Layers 5-7.
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Practice Problem 1: Hospital Deployment</h4>
+                <p>Given a hospital with 300 mobile devices, propose a wireless deployment model (centralized vs converged vs cloud). Justify in terms of security, reliability, and cost.</p>
+                <button class="btn" onclick="showSolution('hospital')">Show PhD-Level Solution</button>
+            </div>
         </div>
 
-        <div class="action-buttons" id="actionButtons">
-            <!-- Buttons will be dynamically inserted here -->
+        <!-- Session 2: CPS -->
+        <div id="session2" class="content-section">
+            <h2>Session 2: Cyber Physical Systems</h2>
+
+            <div class="knowledge-card">
+                <h3>1. What are Cyber Physical Systems?</h3>
+                
+                <p>CPS integrates computation, networking, and physical processes. They represent the next computing revolution after mainframe, desktop, and ubiquitous computing.</p>
+
+                <div class="cps-architecture">
+                    <div class="cps-layer">
+                        <h4>Perception Layer</h4>
+                        <p>Sensors, RFID, WSN, Smart Cards</p>
+                        <p>Data Collection & Environment Monitoring</p>
+                    </div>
+                    <div class="cps-layer">
+                        <h4>Transmission Layer</h4>
+                        <p>Wireless/Wired Networks</p>
+                        <p>Data Transport & Communication</p>
+                    </div>
+                    <div class="cps-layer">
+                        <h4>Application Layer</h4>
+                        <p>Intelligent Processing</p>
+                        <p>Decision Making & Control</p>
+                    </div>
+                </div>
+
+                <div class="research-note">
+                    CPS categories: Infrastructural CPSs (emphasize physical side, add cyber for control) vs Personal CPSs (emphasize cyber side, add physical for enhanced utility).
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <h3>2. CPS Applications</h3>
+                
+                <div class="concept-map">
+                    <div class="concept-node">
+                        <h4>Smart Grid</h4>
+                        <p>Real-time cooperative control, self-healing power systems</p>
+                    </div>
+                    <div class="concept-node">
+                        <h4>e-Transportation</h4>
+                        <p>V2V networks, autonomous navigation, 30-90 processors per car</p>
+                    </div>
+                    <div class="concept-node">
+                        <h4>Smart Healthcare</h4>
+                        <p>Electronic Patient Records, home monitoring, robotic surgery</p>
+                    </div>
+                    <div class="concept-node">
+                        <h4>Industrial Control</h4>
+                        <p>SCADA systems, process automation, critical infrastructure</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <h3>3. CPS Security Fundamentals</h3>
+                
+                <h4>CIAA Triad Extended</h4>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 20px 0;">
+                    <div class="concept-node">
+                        <h5>Confidentiality</h5>
+                        <p>Only authorized parties access assets</p>
+                    </div>
+                    <div class="concept-node">
+                        <h5>Integrity</h5>
+                        <p>Assets modified only by authorized parties</p>
+                    </div>
+                    <div class="concept-node">
+                        <h5>Availability</h5>
+                        <p>Assets accessible to authorized parties</p>
+                    </div>
+                    <div class="concept-node">
+                        <h5>Authenticity</h5>
+                        <p>Data, transactions are genuine</p>
+                    </div>
+                </div>
+
+                <div class="critical-insight">
+                    CPS security cannot simply use conventional cyber security schemes - solutions must integrate with underlying physical process control features.
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <h3>4. CPS Attacks & Threats</h3>
+                
+                <div class="security-threat">
+                    <h4>Physical Layer Attacks</h4>
+                    <ul>
+                        <li><strong>Node Capture:</strong> Control over nodes, steal encryption keys</li>
+                        <li><strong>False Node:</strong> Addition of malicious nodes sending false data</li>
+                        <li><strong>Node Outage:</strong> Stopping node services, causing DoS</li>
+                    </ul>
+                </div>
+
+                <div class="security-threat">
+                    <h4>Network Layer Attacks</h4>
+                    <ul>
+                        <li><strong>Wormhole:</strong> False routing paths creation</li>
+                        <li><strong>Jamming:</strong> Intentional interference causing DoS</li>
+                        <li><strong>Sinkhole:</strong> Malicious routing announcements</li>
+                        <li><strong>Selective Forwarding:</strong> Selective packet dropping</li>
+                    </ul>
+                </div>
+
+                <div class="security-threat">
+                    <h4>Application Layer Attacks</h4>
+                    <ul>
+                        <li><strong>Buffer Overflow:</strong> Exploiting software vulnerabilities</li>
+                        <li><strong>Malicious Code:</strong> Viruses, worms causing network slowdown</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="knowledge-card">
+                <h3>5. Defense Mechanisms</h3>
+                
+                <div class="defense-mechanism">
+                    <h4>Prevention Strategies</h4>
+                    <ul>
+                        <li>Authentication and access controls</li>
+                        <li>Security policies and network segmentation</li>
+                        <li>Cryptographic approaches and encryption</li>
+                    </ul>
+                </div>
+
+                <div class="defense-mechanism">
+                    <h4>Detection Strategies</h4>
+                    <ul>
+                        <li>Signature-based and behavior-based IDS</li>
+                        <li>Anomaly detection algorithms</li>
+                        <li>Real-time monitoring systems</li>
+                    </ul>
+                </div>
+
+                <div class="defense-mechanism">
+                    <h4>Response Mechanisms</h4>
+                    <ul>
+                        <li>Automatic mitigation without human intervention</li>
+                        <li>Self-healing and adaptive systems</li>
+                        <li>Real-time constraint handling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Practice Problem 2: Smart City CPS Security</h4>
+                <p>Compare the resilience of bus vs ring vs mesh topologies in IoT smart city deployment. Which topology provides the best privacy preservation while maintaining functionality during attacks?</p>
+                <button class="btn" onclick="showSolution('smartcity')">Show PhD-Level Analysis</button>
+            </div>
+        </div>
+
+        <!-- Flashcards Section -->
+        <div id="flashcards" class="content-section">
+            <h2>PhD-Level Flashcards</h2>
+            <p>Click each card to reveal the answer. Master all concepts for PhD-level understanding.</p>
+            
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> Which OSI layer handles routing between networks?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> Network layer (Layer 3). It provides routing of packets through networks from source to destination using protocols like IP.
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> Why are wireless LANs inherently less secure than wired LANs from a fundamental perspective?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> Because wireless signals travel through air and can be intercepted by anyone within radio range, unlike wired signals confined to physical cables.
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> What device intelligently forwards data frames based on MAC addresses?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> A switch. It operates at Layer 2 and maintains a MAC address table to forward frames only to the intended recipient.
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> What are the three main CPS architecture layers and their primary functions?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> 1) Perception Layer (sensors, data collection), 2) Transmission Layer (networking, data transport), 3) Application Layer (intelligent processing, decision making)
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> What is the difference between infrastructural and personal CPSs in terms of primary concerns?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> Infrastructural CPSs: Availability is primary concern (critical infrastructure like power/water). Personal CPSs: Privacy is primary concern (personal data collection and tracking).
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> What are the four components of the extended CIAA security triad for CPS?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> Confidentiality (authorized access only), Integrity (authorized modifications only), Availability (accessible when needed), Authenticity (genuine data/transactions).
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> Why can't conventional cyber security schemes be directly applied to CPS protection?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> Because CPS security solutions must be closely integrated with underlying physical process control features. The cyber-physical interaction requires specialized approaches.
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> What is a wormhole attack in CPS networks?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> False paths are announced through which all packets are routed, creating information holes in the network and potentially allowing traffic interception.
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="flipCard(this)">
+                <div class="flashcard-front">
+                    <strong>Q:</strong> What is the primary challenge in wireless middleware for IoT systems?
+                </div>
+                <div class="flashcard-back">
+                    <strong>A:</strong> Balancing efficiency with security while ensuring privacy guarantees - optimizations often conflict with privacy-preserving mechanisms.
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz" class="content-section">
+            <h2>PhD-Level Comprehensive Quiz</h2>
+            
+            <div class="quiz-container">
+                <div class="quiz-question" id="currentQuestion">
+                    Loading quiz...
+                </div>
+                <div class="quiz-options" id="quizOptions">
+                </div>
+                <button class="btn" onclick="nextQuestion()" id="nextBtn" style="display: none;">Next Question</button>
+                <button class="btn" onclick="submitQuiz()" id="submitBtn" style="display: none;">Submit Quiz</button>
+                <div id="quizResults" style="margin-top: 20px;"></div>
+            </div>
+        </div>
+
+        <!-- Research Section -->
+        <div id="research" class="content-section">
+            <h2>PhD-Level Research Projects</h2>
+
+            <div class="knowledge-card">
+                <h3>Open Research Questions</h3>
+                
+                <div class="research-note">
+                    How do wireless middleware optimizations affect data privacy guarantees in IoT ecosystems? Can we develop provably private middleware that maintains performance?
+                </div>
+
+                <div class="research-note">
+                    Can OSI session-layer protocols be redesigned to inherently support privacy-preserving reconnections in mobile CPS environments?
+                </div>
+
+                <div class="research-note">
+                    Is cloud-based Wi-Fi deployment fundamentally incompatible with data sovereignty laws? How can edge computing bridge this gap?
+                </div>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Research Project 1: AI-Driven Self-Healing Networks</h4>
+                <p>Design a machine learning system that can predict wireless network failures and automatically reconfigure the network without violating data privacy constraints. Consider differential privacy, federated learning, and homomorphic encryption.</p>
+                <button class="btn" onclick="showResearchGuidance('selfhealing')">Show Research Methodology</button>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Research Project 2: Information Flow Security in Smart Grids</h4>
+                <p>Develop a formal model for information flow security in smart grid CPS that prevents high-security information from leaking to low-security observers while maintaining grid stability.</p>
+                <button class="btn" onclick="showResearchGuidance('smartgrid')">Show Research Framework</button>
+            </div>
+
+            <div class="practice-problem">
+                <h4>Research Project 3: Privacy-Preserving CPS Authentication</h4>
+                <p>Create a novel authentication mechanism for CPS that provides strong security guarantees while preserving user privacy and supporting real-time constraints.</p>
+                <button class="btn" onclick="showResearchGuidance('authentication')">Show Research Approach</button>
+            </div>
         </div>
     </div>
 
     <script>
-        const questions = [
+        // Global variables
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let completedConcepts = 0;
+        let studyTime = 0;
+        let startTime = new Date();
+
+        // Quiz questions
+        const quizQuestions = [
             {
-                q: "What principle governs both parallel and distributed processing models?",
-                a: '"divide-and-conquer" - Applies the principle of divide-and-conquer to break large tasks into smaller sub-tasks that are processed in parallel or across distributed nodes.',
-                source: "Lecture 6A",
-                isMultipleChoice: false,
-                difficulty: "easy"
+                question: "In the context of CPS security, which attack specifically targets the routing layer by creating false optimal paths?",
+                options: [
+                    "Wormhole attack",
+                    "Sinkhole attack", 
+                    "Selective forwarding",
+                    "Node capture"
+                ],
+                correct: 1,
+                explanation: "Sinkhole attack announces the best routing path to attract traffic from other nodes, then can launch additional attacks like selective forwarding."
             },
             {
-                q: "Why must applications using eventually consistent systems plan for divergent reads? (M)",
-                a: '"stale data is returned"',
-                source: "Lecture 5A",
-                isMultipleChoice: true,
-                mcOptions: ["Limited storage space", "Slow data processing", "stale data is returned", "High costs"],
-                difficulty: "medium"
+                question: "Which OSI layer is primarily responsible for managing wireless disruptions and session continuity in CPS?",
+                options: [
+                    "Physical Layer",
+                    "Data Link Layer",
+                    "Session Layer",
+                    "Application Layer"
+                ],
+                correct: 2,
+                explanation: "Session Layer (Layer 5) establishes, manages, and terminates sessions, handling disruptions caused by wireless interference."
             },
             {
-                q: "What unsupervised method groups similar data points?",
-                a: '"Clustering" - Groups similar data points together based on inherent patterns without using labeled training data.',
-                source: "Lecture 8A",
-                isMultipleChoice: false,
-                difficulty: "easy"
+                question: "What is the fundamental difference between infrastructural and personal CPS in terms of design philosophy?",
+                options: [
+                    "Infrastructural CPS emphasize physical processes with added cyber control, while personal CPS emphasize cyber capabilities with added physical sensing",
+                    "Personal CPS are always wireless, infrastructural CPS are always wired",
+                    "Infrastructural CPS use different networking protocols",
+                    "Personal CPS don't require authentication"
+                ],
+                correct: 0,
+                explanation: "This reflects the core architectural difference - infrastructural systems add cyber to physical, personal systems add physical to cyber."
             },
             {
-                q: "What problems do clusters address that is inevitable in a network connected environment? (M)",
-                a: '"Communication failures"',
-                source: "Lecture 5A",
-                isMultipleChoice: true,
-                mcOptions: ["Limited storage space", "Slow data processing", "Communication failures", "High costs"],
-                difficulty: "medium"
+                question: "In the context of wireless security evolution, why is WPA3 considered more secure than WPA2?",
+                options: [
+                    "Longer encryption keys only",
+                    "Enhanced authentication, stronger encryption, and protection against offline dictionary attacks",
+                    "Better physical layer security",
+                    "Faster performance"
+                ],
+                correct: 1,
+                explanation: "WPA3 introduces individualized data encryption, stronger authentication, and protection against password attacks."
             },
             {
-                q: "Which scenario best illustrates the risk of data fragmentation in a distributed storage system using sharding? (M)",
-                a: '"queries require aggregation of data from multiple shards"',
-                source: "Lecture 5A",
-                isMultipleChoice: true,
-                mcOptions: ["all queries are routed to a single node for simplicity", "Shards are vertically partitioned by columns", "queries require aggregation of data from multiple shards", "Each shard contains the entire dataset"],
-                difficulty: "hard"
-            },
-            {
-                q: "What problem does ETI\'s IT team face regarding their understanding of base and CAP theorem? (M)",
-                a: '"they are unsure of the need and importance"',
-                source: "Lecture 5A",
-                isMultipleChoice: true,
-                mcOptions: ["They think its only for small data sets", "They have already implemented them", "they are unsure of the need and importance", "they have extensive knowledge of these concepts"],
-                difficulty: "medium"
-            },
-            {
-                q: "Which subtle consequence might arise from peer to peer replication in scenarios involving network latency and high concurrency? (M)",
-                a: '"inconsistent reads possible from replication delay"',
-                source: "Lecture 5A",
-                isMultipleChoice: true,
-                mcOptions: ["Data loss is guaranteed during failure", "Writes must be synchronized through a central server", "frequent updates are merged seamlessly", "inconsistent reads possible from replication delay"],
-                difficulty: "hard"
-            },
-            {
-                q: "What unique advantage does A/B testing offer in practical scenarios? (M)",
-                a: '"Simultaneous real world comparison"',
-                source: "Lecture 8A",
-                isMultipleChoice: true,
-                mcOptions: ["Simultaneous real world comparison", "clustering customer records", "validating and segmenting sentiment predictions", "filtering data anomalies"],
-                difficulty: "medium"
-            },
-            {
-                q: "Why might linear regression be a poor fit for modelling real world social behavior patterns? (M)",
-                a: '"it assumes constant change"',
-                source: "Lecture 8A",
-                isMultipleChoice: true,
-                mcOptions: ["It handles missing data", "it assumes constant change", "it applies exponential smoothing", "it uses categorical input"],
-                difficulty: "medium"
-            },
-            {
-                q: "How does filtering enhance the user experience in recommendation systems? (M)",
-                a: '"by aligning results with preferences"',
-                source: "Lecture 8A",
-                isMultipleChoice: true,
-                mcOptions: ["by aligning results with preferences", "by ranking supervised categories", "by clustering demographic variables", "by removing statistical bias"],
-                difficulty: "easy"
-            },
-            {
-                q: "Which technique helps in finding user specific content within large item pools? (M)",
-                a: '"Filtering"',
-                source: "Lecture 8A",
-                isMultipleChoice: true,
-                mcOptions: ["Filtering", "Data mining", "outlier detection", "regression modelling"],
-                difficulty: "easy"
-            },
-            {
-                q: "What is the purpose of the SWAP command in snowflake? (M)",
-                a: '"to promote cleaned data to production"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["To exchange schemas", "to promote cleaned data to production", "to suspend a warehouse", "to clone a table"],
-                difficulty: "medium"
-            },
-            {
-                q: "Which snowflake feature allows users to search for objects using natural language? (M)",
-                a: '"Universal search"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["Data catalog", "Universal search", "object explorer", "Metadata scanner"],
-                difficulty: "easy"
-            },
-            {
-                q: "Which snowflake feature allows cost tracking across multiple objects? (M)",
-                a: '"budget"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["Resource monitor", "budget", "query profiler", "usage dashboard"],
-                difficulty: "easy"
-            },
-            {
-                q: "Which of the following best describes the use of resource monitors in snowflake? (M)",
-                a: '"they track and limit compute credit usage"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["They monitor query performance", "they track and limit compute credit usage", "they manage user roles and privileges", "they monitor usage only"],
-                difficulty: "medium"
-            },
-            {
-                q: "What is a key advantage of using query result cache in snowflake? (M)",
-                a: '"reduces compute cost"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["Increases storage", "reduces compute cost", "improves data security", "disables time travel"],
-                difficulty: "easy"
-            },
-            {
-                q: "Which SQL function is used to extract fields from a variant column in snowflake? (M)",
-                a: '":<field_name> notation"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["GET_JSON_FIELD()", ":<field_name> notation", "PARSE_VARIANT()", "COLUMN_EXTRACT()"],
-                difficulty: "medium"
-            },
-            {
-                q: "In snowflake what is the effect of setting AUTO_RESUME to FALSE on a warehouse? (M)",
-                a: '"it must be resumed manually"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["It resumes automatically when required", "it must be resumed manually", "it cannot be resumed", "it disables caching"],
-                difficulty: "medium"
-            },
-            {
-                q: "What happens when a table is cloned using zero copy cloning and then modified in snowflake? (M)",
-                a: '"the clone diverges and stores only the changes"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["The original table is also modified", "the clone diverges and stores only the changes", "both tables share the same data permanently", "the clone becomes read only"],
-                difficulty: "hard"
-            },
-            {
-                q: "In snowflake what is the effects of executing UNDROP on a table? (M)",
-                a: '"it restores the table to its last known state"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["It permanently deletes the table", "it restores the table to its last known state", "it clones the table into a new schema", "it archives the table"],
-                difficulty: "medium"
-            },
-            {
-                q: "In snowflake which parameter controls how long a warehouse remains idle before suspending? (M)",
-                a: '"AUTO_SUSPEND"',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: true,
-                mcOptions: ["MAX_IDLE_TIME", "AUTO_SUSPEND", "SUSPEND_DELAY", "IDLE_TIMEOUT"],
-                difficulty: "medium"
-            },
-            {
-                q: "Which command resumes a suspended warehouse in snowflake?",
-                a: '`ALTER WAREHOUSE my_wh RESUME;` - Executes an ALTER command to manually resume a suspended virtual warehouse.',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: false,
-                difficulty: "medium"
-            },
-            {
-                q: "What feature allows recovery of dropped tables in snowflake?",
-                a: '"Time Travel" - Recovers accidentally dropped or modified tables from historical data within a retention window.',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: false,
-                difficulty: "easy"
-            },
-            {
-                q: "What is the benefit of zero copy cloning in snowflake?",
-                a: '"without using additional storage" - Creates copies of databases, schemas, or tables instantly without duplicating underlying storage.',
-                source: "Snowflake Lab 7",
-                isMultipleChoice: false,
-                difficulty: "medium"
-            },
-            {
-                q: "What key operational feature makes MapReduce resilient in large scale batch processing? (M)",
-                a: '"Built in fault tolerance"',
-                source: "Lecture 6A",
-                isMultipleChoice: true,
-                mcOptions: ["Centralized scheduling algorithm", "Built in fault tolerance", "Immediate response capability", "Its synchronous execution model"],
-                difficulty: "medium"
-            },
-            {
-                q: "Why might batch mode require greater disk (I/O) capacity than real time processing? (M)",
-                a: '"requires disk persistence before processing"',
-                source: "Lecture 6A",
-                isMultipleChoice: true,
-                mcOptions: ["It avoids in memory operations", "it supports higher concurrency", "it compresses data before processing", "requires disk persistence before processing"],
-                difficulty: "hard"
-            },
-            {
-                q: "Which phase of MapReduce ensures input key value types match output types for consistency? (M)",
-                a: '"Reduce stage"',
-                source: "Lecture 6A",
-                isMultipleChoice: true,
-                mcOptions: ["Map stage", "Shuffle and sort", "Reduce stage", "Partition stage"],
-                difficulty: "hard"
-            },
-            {
-                q: "Which processing mode directly addresses the volume and variety of big data through offline execution? (M)",
-                a: '"Batch mode processing"',
-                source: "Lecture 6A",
-                isMultipleChoice: true,
-                mcOptions: ["Batch mode processing", "streaming replication", "real time processing", "parallel transaction handling"],
-                difficulty: "medium"
-            },
-            {
-                q: "What enables NoSQL document stores to support evolving data structures over time? (M)",
-                a: '"Built in schema evolution"',
-                source: "Lecture 7A",
-                isMultipleChoice: true,
-                mcOptions: ["Global indexing support", "Built in schema evolution", "strong referential integrity", "usage of built in stored procedures"],
-                difficulty: "medium"
-            },
-            {
-                q: "How do column family NoSQL databases achieve schema flexibility without compromising read performance? (M)",
-                a: '"allowing per row column variation"',
-                source: "Lecture 7A",
-                isMultipleChoice: true,
-                mcOptions: ["serializing rows into documents", "allowing per row column variation", "denormalizing nested rows", "delaying column indexing"],
-                difficulty: "hard"
-            },
-            {
-                q: "What functional distinction allows document stores to be queryable compared to key value stores? (M)",
-                a: '"searchable document values"',
-                source: "Lecture 7A",
-                isMultipleChoice: true,
-                mcOptions: ["flat indexing", "searchable document values", "metadata tagging", "nested relational joins"],
-                difficulty: "medium"
-            },
-            {
-                q: "Which of the following is a characteristic of ETI\'s Chosen distributed file system? (M)",
-                a: '"fast access for large datasets in a streaming fashion"',
-                source: "Lecture 7A",
-                isMultipleChoice: true,
-                mcOptions: ["suitable for storing large numbers of small files", "schema aware data model", "fast random read write capability", "fast access for large datasets in a streaming fashion"],
-                difficulty: "medium"
-            },
-            {
-                q: "In lab 5 which command is used to create an external table named impressions in hive? (M)",
-                a: '`CREATE EXTERNAL TABLE impressions`',
-                source: "M9 Lab 5",
-                isMultipleChoice: true,
-                mcOptions: ["CREATE EXTERNAL TABLE impressions", "CREATE TABLE impressions", "CREATE EXTERNAL DATABASE impressions", "CREATE DATABASE impressions"],
-                difficulty: "medium"
-            },
-            {
-                q: "Why might write-through strategies negatively affect high frequency transactions?",
-                a: '"at the expense of write latency" - Increases write latency because each operation must wait for confirmation from backend storage before completion.',
-                source: "Lecture 7A",
-                isMultipleChoice: false,
-                difficulty: "hard"
+                question: "What is the primary challenge when applying conventional cyber security to CPS?",
+                options: [
+                    "CPS are too slow for security measures",
+                    "Physical processes are not controllable",
+                    "Security solutions must integrate with physical process control features",
+                    "CPS don't support encryption"
+                ],
+                correct: 2,
+                explanation: "CPS security requires integration with physical processes, making conventional IT security insufficient."
             }
         ];
 
-        let currentMode = 'flashcard';
-        let currentFilter = 'all';
-        let currentIndex = 0;
-        let showingAnswer = false;
-        let correctAnswers = 0;
-        let missedQuestions = [];
-        let currentQuestions = [];
-        let quizAnswers = [];
+        // Initialize application
+        window.onload = function() {
+            updateStats();
+            loadQuiz();
+            setInterval(updateStudyTime, 60000); // Update every minute
+        };
 
-        function filterQuestions() {
-            switch(currentFilter) {
-                case 'hard':
-                    return questions.filter(q => q.difficulty === 'hard');
-                case 'new':
-                    return questions.filter(q => !missedQuestions.includes(q));
-                default:
-                    return questions;
-            }
-        }
-
-        function shuffleArray(array) {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        }
-
-        function generateWrongAnswers(correctAnswer, allAnswers) {
-            // Extract just the quoted answer part for comparison
-            const extractQuotedAnswer = (answer) => {
-                const match = answer.match(/^"([^"]+)"/);
-                return match ? match[1] : answer;
-            };
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
             
-            const correctQuoted = extractQuotedAnswer(correctAnswer);
-            const allQuoted = allAnswers.map(extractQuotedAnswer);
-            const wrong = allQuoted.filter(a => a !== correctQuoted);
-            const shuffled = shuffleArray(wrong);
-            return shuffled.slice(0, 3);
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            
+            updateProgress();
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+            if (card.classList.contains('flipped')) {
+                completedConcepts++;
+                updateStats();
+            }
+        }
+
+        function explainTopology(type) {
+            const explanations = {
+                star: "Star topology: Central hub connects all devices. Advantages: Easy to manage, fast communication. Disadvantages: Single point of failure at hub.",
+                bus: "Bus topology: All devices share single communication line. Advantages: Simple, cost-effective. Disadvantages: Collision domain, single point of failure.",
+                ring: "Ring topology: Devices connected in closed loop. Advantages: No collisions, equal access. Disadvantages: Break in ring affects all."
+            };
+            alert(explanations[type]);
+        }
+
+        function explainOSILayer(layer) {
+            const explanations = {
+                7: "Application Layer: User interfaces, network services like HTTP, FTP, SMTP. In CPS: User applications and HMI systems.",
+                6: "Presentation Layer: Data formatting, encryption, compression. In CPS: Protocol translation between different systems.",
+                5: "Session Layer: Session management, dialogue control. In CPS: Critical for maintaining connections during interference.",
+                4: "Transport Layer: Reliable data delivery, flow control (TCP/UDP). In CPS: Ensures reliable control command delivery.",
+                3: "Network Layer: Routing between networks (IP). In CPS: Routes data between different network segments.",
+                2: "Data Link Layer: Frame transmission, error detection. In CPS: Vulnerable to spoofing and replay attacks.",
+                1: "Physical Layer: Physical signal transmission. In CPS: Most vulnerable to jamming and interference attacks."
+            };
+            alert(explanations[layer]);
+        }
+
+        function showSolution(problemId) {
+            const solutions = {
+                hospital: `PhD-Level Solution for Hospital Deployment:
+
+Recommendation: Hybrid Centralized-Cloud Model
+
+SECURITY Analysis:
+- Centralized: Local controller provides immediate threat response and data sovereignty
+- Cloud: Centralized management with enterprise-grade security updates
+- Hybrid approach allows critical systems (patient monitoring) on local controller while administrative systems use cloud
+
+RELIABILITY Analysis:
+- Local controller ensures availability during internet outages
+- Cloud backup provides redundancy and disaster recovery
+- 300 devices require load balancing across multiple access points
+
+COST Analysis:
+- Initial: Higher (dual infrastructure) but justified by regulatory compliance
+- Operational: Lower long-term costs due to automated cloud management
+- Risk mitigation: Reduced liability costs from data breaches
+
+PhD Research Extension: Investigate zero-trust architecture implementation in healthcare CPS with differential privacy for patient data analytics.`,
+
+                smartcity: `PhD-Level Smart City Topology Analysis:
+
+BUS Topology:
+- Privacy: POOR - All traffic visible to all nodes
+- Resilience: POOR - Single point of failure
+- Attack Recovery: POOR - Broadcast nature amplifies attacks
+
+RING Topology:
+- Privacy: MODERATE - Token passing limits exposure
+- Resilience: MODERATE - Can isolate failed segments
+- Attack Recovery: GOOD - Directional flow aids forensics
+
+MESH Topology:
+- Privacy: EXCELLENT - Multiple path obfuscation, traffic analysis resistance
+- Resilience: EXCELLENT - Self-healing, redundant paths
+- Attack Recovery: EXCELLENT - Isolated attack containment
+
+Recommendation: Hierarchical Mesh with Privacy-Preserving Routing
+
+Key Innovation: Implement onion routing at network layer with CPS-aware path selection that considers both latency constraints and privacy requirements.
+
+PhD Research Direction: Develop formal privacy metrics for CPS topologies that balance anonymity, unlinkability, and real-time performance constraints.`
+            };
+            alert(solutions[problemId]);
+        }
+
+        function loadQuiz() {
+            if (currentQuizIndex < quizQuestions.length) {
+                const question = quizQuestions[currentQuizIndex];
+                document.getElementById('currentQuestion').innerHTML = `Question ${currentQuizIndex + 1}: ${question.question}`;
+                
+                const optionsHtml = question.options.map((option, index) => 
+                    `<div class="quiz-option" onclick="selectOption(${index})">${option}</div>`
+                ).join('');
+                
+                document.getElementById('quizOptions').innerHTML = optionsHtml;
+                document.getElementById('nextBtn').style.display = 'none';
+            } else {
+                document.getElementById('submitBtn').style.display = 'block';
+            }
+        }
+
+        function selectOption(selectedIndex) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[selectedIndex].classList.add('selected');
+            
+            // Show correct/incorrect immediately for learning
+            const question = quizQuestions[currentQuizIndex];
+            options.forEach((option, index) => {
+                if (index === question.correct) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex && index !== question.correct) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            if (selectedIndex === question.correct) {
+                quizScore++;
+            }
+            
+            // Show explanation
+            document.getElementById('quizResults').innerHTML = `
+                <div style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <strong>Explanation:</strong> ${question.explanation}
+                </div>
+            `;
+            
+            document.getElementById('nextBtn').style.display = 'block';
+            updateStats();
+        }
+
+        function nextQuestion() {
+            currentQuizIndex++;
+            document.getElementById('quizResults').innerHTML = '';
+            if (currentQuizIndex >= quizQuestions.length) {
+                showFinalResults();
+            } else {
+                loadQuiz();
+            }
+        }
+
+        function showFinalResults() {
+            const percentage = Math.round((quizScore / quizQuestions.length) * 100);
+            let grade, feedback;
+            
+            if (percentage >= 90) {
+                grade = "PhD Level Mastery";
+                feedback = "Outstanding! You demonstrate PhD-level understanding of CPS and networking security.";
+            } else if (percentage >= 80) {
+                grade = "Advanced Understanding";
+                feedback = "Excellent work! You show strong grasp of the concepts with room for research-level depth.";
+            } else if (percentage >= 70) {
+                grade = "Good Foundation";
+                feedback = "Good progress! Review the missed concepts and focus on critical insights.";
+            } else {
+                grade = "Needs Improvement";
+                feedback = "Keep studying! Focus on the fundamental concepts before advancing to PhD-level material.";
+            }
+            
+            document.getElementById('currentQuestion').innerHTML = `Quiz Complete! Your Result: ${grade}`;
+            document.getElementById('quizOptions').innerHTML = `
+                <div style="text-align: center; padding: 30px;">
+                    <div style="font-size: 2rem; margin: 20px 0;">${percentage}%</div>
+                    <div style="font-size: 1.2rem; margin: 20px 0;">${feedback}</div>
+                    <button class="btn" onclick="resetQuiz()">Retake Quiz</button>
+                </div>
+            `;
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'none';
+        }
+
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            quizScore = 0;
+            document.getElementById('quizResults').innerHTML = '';
+            loadQuiz();
+            updateStats();
+        }
+
+        function showResearchGuidance(projectId) {
+            const guidance = {
+                selfhealing: `Research Methodology for AI-Driven Self-Healing Networks:
+
+1. PROBLEM FORMULATION:
+   - Define network failure prediction as supervised learning problem
+   - Incorporate differential privacy constraints in loss function
+   - Consider real-time latency requirements
+
+2. TECHNICAL APPROACH:
+   - Federated learning for distributed prediction without central data collection
+   - Homomorphic encryption for privacy-preserving model updates
+   - Reinforcement learning for dynamic reconfiguration
+
+3. EVALUATION METRICS:
+   - Privacy budget efficiency (ε-differential privacy)
+   - Prediction accuracy vs. privacy trade-off
+   - Recovery time under various attack scenarios
+
+4. RESEARCH CONTRIBUTION:
+   - Novel privacy-preserving failure prediction algorithm
+   - Theoretical analysis of privacy-utility trade-offs
+   - Experimental validation in realistic CPS environments
+
+PhD Publication Target: IEEE Transactions on Dependable and Secure Computing`,
+
+                smartgrid: `Research Framework for Information Flow Security:
+
+1. FORMAL MODEL DEVELOPMENT:
+   - Extend non-interference models for CPS with physical constraints
+   - Define information flow policies for smart grid hierarchies
+   - Model cyber-physical information leakage channels
+
+2. SECURITY ANALYSIS:
+   - Prove security properties using formal verification
+   - Analyze covert channels in power flow measurements
+   - Develop compositionality theorems for system integration
+
+3. IMPLEMENTATION STRATEGY:
+   - Design secure multi-party computation for grid operations
+   - Implement trusted execution environments for critical components
+   - Create privacy-preserving demand response protocols
+
+PhD Research Output: New theoretical framework + prototype implementation`,
+
+                authentication: `Research Approach for Privacy-Preserving Authentication:
+
+1. CRYPTOGRAPHIC FOUNDATION:
+   - Zero-knowledge proof systems for device authentication
+   - Anonymous credentials with real-time constraints
+   - Lattice-based post-quantum cryptography
+
+2. SYSTEM DESIGN:
+   - Distributed authentication without central authority
+   - Biometric template protection for continuous authentication
+   - Lightweight protocols for resource-constrained devices
+
+3. SECURITY ANALYSIS:
+   - Formal verification of protocol correctness
+   - Privacy analysis using simulation-based proofs
+   - Performance evaluation under DoS attacks
+
+PhD Innovation: First practical anonymous authentication system meeting CPS real-time constraints`
+            };
+            alert(guidance[projectId]);
         }
 
         function updateStats() {
-            document.getElementById('currentCard').textContent = currentIndex + 1;
-            document.getElementById('totalCards').textContent = currentQuestions.length;
-            document.getElementById('correctCount').textContent = correctAnswers;
-            
-            const progress = ((currentIndex + 1) / currentQuestions.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('completedConcepts').textContent = completedConcepts;
+            document.getElementById('correctAnswers').textContent = quizScore;
+            document.getElementById('studyTime').textContent = studyTime;
         }
 
-        function showFlashcard() {
-            if (currentIndex >= currentQuestions.length) {
-                showCompletion();
-                return;
-            }
-
-            const question = currentQuestions[currentIndex];
-            const container = document.getElementById('cardContainer');
-            
-            container.innerHTML = `
-                <div class="flashcard ${showingAnswer ? '' : 'pulsing'}" onclick="flipCard()">
-                    <div class="question">${question.q}</div>
-                    ${showingAnswer ? `<div class="answer">${question.a}</div>
-                    <div style="margin-top: 15px; font-size: 0.9em; color: #6b7280; font-style: italic;">Source: ${question.source}</div>` : '<p style="color: #64748b; font-style: italic;">Click to reveal answer</p>'}
-                </div>
-            `;
-
-            const buttons = document.getElementById('actionButtons');
-            if (showingAnswer) {
-                buttons.innerHTML = `
-                    <button class="btn btn-primary" onclick="markCorrect()">✅ Got it right</button>
-                    <button class="btn btn-danger" onclick="markIncorrect()">❌ Got it wrong</button>
-                    <button class="btn btn-secondary" onclick="nextCard()">⏭️ Next</button>
-                `;
-            } else {
-                buttons.innerHTML = `
-                    <button class="btn btn-secondary" onclick="flipCard()">🔄 Show Answer</button>
-                    <button class="btn btn-secondary" onclick="nextCard()">⏭️ Skip</button>
-                `;
-            }
-        }
-
-        function showQuiz() {
-            if (currentIndex >= currentQuestions.length) {
-                showCompletion();
-                return;
-            }
-
-            const question = currentQuestions[currentIndex];
-            let options = [];
-            let correctAnswer = "";
-            
-            if (question.isMultipleChoice && question.mcOptions) {
-                // Use the predefined realistic options
-                options = shuffleArray([...question.mcOptions]);
-                // Extract the correct answer from the quoted format
-                const match = question.a.match(/^"([^"]+)"/);
-                correctAnswer = match ? match[1] : question.a.replace(/^`([^`]+)`$/, '$1');
-            } else {
-                // Fallback for non-MC questions (shouldn't happen in quiz mode for MC questions)
-                const allAnswers = questions.map(q => q.a);
-                const wrongAnswers = generateWrongAnswers(question.a, allAnswers);
-                const extractQuotedAnswer = (answer) => {
-                    const match = answer.match(/^"([^"]+)"/);
-                    return match ? match[1] : answer;
-                };
-                correctAnswer = extractQuotedAnswer(question.a);
-                options = shuffleArray([correctAnswer, ...wrongAnswers]);
-            }
-            
-            const container = document.getElementById('cardContainer');
-            container.innerHTML = `
-                <div class="flashcard">
-                    <div class="question">${question.q}</div>
-                    <div style="margin-top: 30px;">
-                        ${options.map((option, i) => 
-                            `<div class="quiz-option" data-answer="${option}" onclick="selectAnswer(this, '${correctAnswer}')">${String.fromCharCode(65 + i)}) ${option}</div>`
-                        ).join('')}
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('actionButtons').innerHTML = `
-                <button class="btn btn-secondary" onclick="nextCard()">⏭️ Skip Question</button>
-            `;
-        }
-
-        function showReview() {
-            if (missedQuestions.length === 0) {
-                document.getElementById('cardContainer').innerHTML = `
-                    <div class="completion-screen">
-                        <h2>🎉 No Missed Questions!</h2>
-                        <p>You haven't missed any questions yet. Try other modes first!</p>
-                    </div>
-                `;
-                document.getElementById('actionButtons').innerHTML = '';
-                return;
-            }
-
-            currentQuestions = [...missedQuestions];
-            currentIndex = 0;
-            showingAnswer = false;
-            showFlashcard();
-        }
-
-        function flipCard() {
-            showingAnswer = !showingAnswer;
-            showFlashcard();
-        }
-
-        function selectAnswer(element, correctAnswer) {
-            const options = document.querySelectorAll('.quiz-option');
-            const selectedAnswer = element.dataset.answer;
-            
-            options.forEach(option => {
-                if (option.dataset.answer === correctAnswer) {
-                    option.classList.add('correct');
-                } else if (option === element && selectedAnswer !== correctAnswer) {
-                    option.classList.add('incorrect');
-                }
-                option.style.pointerEvents = 'none';
-            });
-
-            if (selectedAnswer === correctAnswer) {
-                correctAnswers++;
-            } else {
-                const question = currentQuestions[currentIndex];
-                if (!missedQuestions.includes(question)) {
-                    missedQuestions.push(question);
-                }
-            }
-
-            setTimeout(() => {
-                nextCard();
-            }, 2000);
-        }
-
-        function markCorrect() {
-            correctAnswers++;
-            nextCard();
-        }
-
-        function markIncorrect() {
-            const question = currentQuestions[currentIndex];
-            if (!missedQuestions.includes(question)) {
-                missedQuestions.push(question);
-            }
-            nextCard();
-        }
-
-        function nextCard() {
-            currentIndex++;
-            showingAnswer = false;
+        function updateStudyTime() {
+            studyTime = Math.floor((new Date() - startTime) / 60000);
             updateStats();
-            
-            if (currentMode === 'flashcard') {
-                showFlashcard();
-            } else if (currentMode === 'quiz') {
-                showQuiz();
-            } else {
-                showReview();
-            }
         }
 
-        function showCompletion() {
-            const accuracy = Math.round((correctAnswers / currentQuestions.length) * 100);
-            document.getElementById('cardContainer').innerHTML = `
-                <div class="completion-screen">
-                    <h2>🎉 Round Complete!</h2>
-                    <div class="completion-stats">
-                        <p><strong>Accuracy:</strong> ${accuracy}%</p>
-                        <p><strong>Correct:</strong> ${correctAnswers}/${currentQuestions.length}</p>
-                        <p><strong>Missed:</strong> ${missedQuestions.length} questions</p>
-                    </div>
-                    <p>Great progress! ${accuracy >= 80 ? '🌟 Excellent work!' : 'Keep practicing to improve!'}</p>
-                </div>
-            `;
-
-            document.getElementById('actionButtons').innerHTML = `
-                <button class="btn btn-primary" onclick="restartSession()">🔄 Try Again</button>
-                ${missedQuestions.length > 0 ? '<button class="btn btn-secondary" onclick="reviewMissed()">📖 Review Missed</button>' : ''}
-            `;
+        function updateProgress() {
+            const totalSections = 6;
+            const currentProgress = Math.min((completedConcepts / 20) * 100, 100);
+            document.getElementById('progressFill').style.width = currentProgress + '%';
         }
 
-        function restartSession() {
-            currentIndex = 0;
-            showingAnswer = false;
-            correctAnswers = 0;
-            currentQuestions = shuffleArray(filterQuestions());
-            updateStats();
-            
-            if (currentMode === 'flashcard') {
-                showFlashcard();
-            } else if (currentMode === 'quiz') {
-                showQuiz();
-            }
+        function showConcept(conceptId) {
+            // This could expand to show detailed concept explanations
+            const concepts = {
+                networking: "Deep dive into OSI model, network topologies, and hardware components with security implications.",
+                wireless: "Comprehensive wireless systems analysis including security vulnerabilities and management strategies.",
+                cps: "Detailed CPS architecture, applications, and integration challenges in various domains.",
+                security: "Advanced threat modeling, attack vectors, and defense mechanisms specific to CPS environments.", 
+                privacy: "Data privacy preservation techniques, differential privacy, and ethical considerations.",
+                research: "Current open problems, research methodologies, and future directions in CPS security."
+            };
+            alert(concepts[conceptId] || "Concept details coming soon!");
         }
-
-        function reviewMissed() {
-            currentMode = 'review';
-            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-mode="review"]').classList.add('active');
-            showReview();
-        }
-
-        // Mode switching
-        document.querySelectorAll('.mode-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                currentMode = this.dataset.mode;
-                currentIndex = 0;
-                showingAnswer = false;
-                correctAnswers = 0;
-                
-                if (currentMode === 'review') {
-                    showReview();
-                } else {
-                    currentQuestions = shuffleArray(filterQuestions());
-                    updateStats();
-                    
-                    if (currentMode === 'flashcard') {
-                        showFlashcard();
-                    } else if (currentMode === 'quiz') {
-                        showQuiz();
-                    }
-                }
-            });
-        });
-
-        // Difficulty filtering
-        document.querySelectorAll('.difficulty-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                currentFilter = this.dataset.filter;
-                restartSession();
-            });
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (currentMode === 'flashcard') {
-                if (e.code === 'Space') {
-                    e.preventDefault();
-                    if (!showingAnswer) {
-                        flipCard();
-                    } else {
-                        nextCard();
-                    }
-                } else if (e.code === 'ArrowRight' || e.code === 'Enter') {
-                    if (showingAnswer) nextCard();
-                } else if (e.code === 'KeyC') {
-                    if (showingAnswer) markCorrect();
-                } else if (e.code === 'KeyX') {
-                    if (showingAnswer) markIncorrect();
-                }
-            }
-        });
-
-        // Initialize
-        currentQuestions = shuffleArray(filterQuestions());
-        updateStats();
-        showFlashcard();
     </script>
 </body>
 </html>
