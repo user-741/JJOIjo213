@@ -398,6 +398,30 @@
             display: none;
         }
 
+        .quiz-input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .quiz-input:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -1236,62 +1260,190 @@
         let studyTime = 0;
         let startTime = new Date();
 
-        // Quiz questions
-        const quizQuestions = [
+        // Quiz questions - Enhanced for PhD-level testing
+       const quizQuestions = [
+            // Multiple Choice Questions
             {
-                question: "In the context of CPS security, which attack specifically targets the routing layer by creating false optimal paths?",
+                type: "multiple-choice",
+                question: "According to the CPS layered architecture, which specific function is performed at the 'Data-to-Information Conversion' level?",
                 options: [
-                    "Wormhole attack",
-                    "Sinkhole attack", 
-                    "Selective forwarding",
-                    "Node capture"
-                ],
-                correct: 1,
-                explanation: "Sinkhole attack announces the best routing path to attract traffic from other nodes, then can launch additional attacks like selective forwarding."
-            },
-            {
-                question: "Which OSI layer is primarily responsible for managing wireless disruptions and session continuity in CPS?",
-                options: [
-                    "Physical Layer",
-                    "Data Link Layer",
-                    "Session Layer",
-                    "Application Layer"
-                ],
-                correct: 2,
-                explanation: "Session Layer (Layer 5) establishes, manages, and terminates sessions, handling disruptions caused by wireless interference."
-            },
-            {
-                question: "What is the fundamental difference between infrastructural and personal CPS in terms of design philosophy?",
-                options: [
-                    "Infrastructural CPS emphasize physical processes with added cyber control, while personal CPS emphasize cyber capabilities with added physical sensing",
-                    "Personal CPS are always wireless, infrastructural CPS are always wired",
-                    "Infrastructural CPS use different networking protocols",
-                    "Personal CPS don't require authentication"
+                    "Processing raw data into meaningful information",
+                    "Real-time data acquisition from physical sensors", 
+                    "Digital twin and virtual representation creation",
+                    "Control and optimization of physical systems"
                 ],
                 correct: 0,
-                explanation: "This reflects the core architectural difference - infrastructural systems add cyber to physical, personal systems add physical to cyber."
+                explanation: "The Data-to-Information Conversion level specifically processes raw sensor data into meaningful information for higher layers."
             },
             {
-                question: "In the context of wireless security evolution, why is WPA3 considered more secure than WPA2?",
+                type: "multiple-choice", 
+                question: "In wireless middleware for CPS, which feature specifically addresses the challenge of session recovery after network disruption?",
                 options: [
-                    "Longer encryption keys only",
-                    "Enhanced authentication, stronger encryption, and protection against offline dictionary attacks",
-                    "Better physical layer security",
-                    "Faster performance"
+                    "Data bundling techniques",
+                    "Intelligent restarts capability",
+                    "Screen scraping and reshaping",
+                    "End system support protocols"
                 ],
                 correct: 1,
-                explanation: "WPA3 introduces individualized data encryption, stronger authentication, and protection against password attacks."
+                explanation: "Intelligent restarts provide automatic session recovery, critical for CPS continuity after wireless disruptions."
             },
             {
-                question: "What is the primary challenge when applying conventional cyber security to CPS?",
+                type: "multiple-choice",
+                question: "Which attack at the transmission layer specifically creates 'information holes in the network'?",
                 options: [
-                    "CPS are too slow for security measures",
-                    "Physical processes are not controllable",
-                    "Security solutions must integrate with physical process control features",
-                    "CPS don't support encryption"
+                    "Selective forwarding attack",
+                    "Jamming attack",
+                    "Wormhole attack", 
+                    "Sinkhole attack"
                 ],
                 correct: 2,
-                explanation: "CPS security requires integration with physical processes, making conventional IT security insufficient."
+                explanation: "Wormhole attack announces false paths through which packets are routed, creating information holes in the network."
+            },
+            {
+                type: "multiple-choice",
+                question: "According to the NSTAC IoT definition, which property specifically refers to devices performing functions either individually or as part of a larger group?",
+                options: [
+                    "Ordinary objects are individually network addressable",
+                    "Physical objects are interconnected",
+                    "The devices are intelligent and can perform functions adaptively",
+                    "Objects have embedded computational capabilities"
+                ],
+                correct: 2,
+                explanation: "The third NSTAC property emphasizes intelligent adaptive performance individually or as groups."
+            },
+            {
+                type: "multiple-choice",
+                question: "In information flow security models for CPS, which model 'leaves a low-level observer in doubt about high level events'?",
+                options: [
+                    "Non-Interference model",
+                    "Non-Inference model", 
+                    "Non-Deducibility model",
+                    "Non-Accessibility model"
+                ],
+                correct: 1,
+                explanation: "Non-Inference specifically aims to leave low-level observers in doubt about high-level events."
+            },
+            {
+                type: "multiple-choice",
+                question: "Which specific wireless NIC form factor is designed for mobile devices according to the session materials?",
+                options: [
+                    "Peripheral Component Interconnect (PCI)",
+                    "Industry-Standard Architecture (ISA)", 
+                    "Mini-PCI",
+                    "PC Card"
+                ],
+                correct: 2,
+                explanation: "Mini-PCI is specifically mentioned as a compact PCI form factor for mobile devices."
+            },
+            {
+                type: "multiple-choice",
+                question: "In CPS defense mechanisms, which strategy is designed to 'act automatically without waiting for human intervention'?",
+                options: [
+                    "Prevention strategies",
+                    "Detection strategies",
+                    "Response mechanisms",
+                    "Mitigation protocols"
+                ],
+                correct: 2,
+                explanation: "Response mechanisms must act automatically without human intervention due to real-time CPS constraints."
+            },
+            {
+                type: "multiple-choice",
+                question: "According to the OSI model in wireless context, which layer 'provides mechanisms for establishment, maintenance, and orderly termination of virtual circuits'?",
+                options: [
+                    "Session Layer (Layer 5)",
+                    "Transport Layer (Layer 4)",
+                    "Network Layer (Layer 3)", 
+                    "Presentation Layer (Layer 6)"
+                ],
+                correct: 1,
+                explanation: "Transport Layer (Layer 4) specifically handles virtual circuit establishment, maintenance, and termination."
+            },
+            {
+                type: "multiple-choice",
+                question: "In smart grid CPS, the current problem of 'equipment protection devices trip locally, reactively' will be improved by implementing what specific feature?",
+                options: [
+                    "Distributed power generation systems",
+                    "Real-time cooperative control of protection devices",
+                    "Advanced metering infrastructure deployment",
+                    "Encrypted communication protocols"
+                ],
+                correct: 1,
+                explanation: "The sessions specifically mention real-time cooperative control as the solution to local, reactive tripping."
+            },
+            {
+                type: "multiple-choice",
+                question: "Which specific cable category mentioned in the sessions can support 1Gbps transmission speeds?",
+                options: [
+                    "Category 3 and above",
+                    "Category 5 and above", 
+                    "Category 5E, 6 and 7",
+                    "Category 6 and 7 only"
+                ],
+                correct: 2,
+                explanation: "The sessions specifically state that Category 5E, 6 and 7 can transmit 1Gbps or more."
+            },
+            
+            // Short Answer Questions (exact matching required)
+            {
+                type: "short-answer",
+                question: "According to the sessions, what are the four specific security parameters that CPS must address (provide exact acronym)?",
+                answer: "CIAA",
+                explanation: "CIAA stands for Confidentiality, Integrity, Availability, and Authenticity as mentioned in the sessions."
+            },
+            {
+                type: "short-answer", 
+                question: "What is the exact percentage estimate of counterfeit high-tech products sold globally according to Guajardo et al, 2008?",
+                answer: "10%",
+                explanation: "The sessions cite exactly '10% of all high-tech products sold globally are counterfeit'."
+            },
+            {
+                type: "short-answer",
+                question: "In which decade did 'numerous computing devices in every place/person' characterize computing evolution?",
+                answer: "00's",
+                explanation: "The sessions describe ubiquitous computing as occurring in the '00's'."
+            },
+            {
+                type: "short-answer",
+                question: "What specific protocol does IEEE 802.3 standard specify for shared medium access?",
+                answer: "CSMA",
+                explanation: "The sessions state IEEE 802.3 specifies carrier sense multiple access (CSMA) protocol."
+            },
+            {
+                type: "short-answer",
+                question: "According to the sessions, how many processors were in cars in 2005?",
+                answer: "30 – 90",
+                explanation: "The sessions specifically state 'In 2005, 30 – 90 processors per car'."
+            },
+            {
+                type: "short-answer",
+                question: "What are the five specific physical security principles mentioned in the sessions (list in order presented)?",
+                answer: "Deterrence, Detection, Delay, Response, Neutralization",
+                explanation: "The sessions list these five principles in this exact order for physical security."
+            },
+            {
+                type: "short-answer",
+                question: "What encryption standard do wireless networks use to make communications reasonably as safe as wired ones?",
+                answer: "WEP",
+                explanation: "The sessions specifically mention Wired Equivalent Privacy (WEP) encryption standard."
+            },
+            {
+                type: "short-answer",
+                question: "At which OSI layer does a switch operate according to the sessions?",
+                answer: "Layer 2",
+                explanation: "The sessions explicitly state that switches operate at 'Layer 2 in OSI Reference Layer'."
+            },
+            {
+                type: "short-answer",
+                question: "What is the maximum distance limitation for wired networks mentioned in the sessions?",
+                answer: "2,000 feet",
+                explanation: "The sessions state wired networks 'can only be used for distances shorter than 2,000 feet'."
+            },
+            {
+                type: "short-answer",
+                question: "What specific memory type stores the MAC address on a network card?",
+                answer: "PROM",
+                explanation: "The sessions state 'The MAC address is stored in the PROM (Programmable read-only memory)'."
             }
         ];
 
@@ -1430,24 +1582,54 @@ PhD CONTRIBUTION: First formal verification of information flow security in smar
                 const question = quizQuestions[currentQuizIndex];
                 document.getElementById('currentQuestion').innerHTML = `Question ${currentQuizIndex + 1}: ${question.question}`;
                 
-                const optionsHtml = question.options.map((option, index) => 
-                    `<div class="quiz-option" onclick="selectOption(${index})">${option}</div>`
-                ).join('');
+                if (question.type === "multiple-choice") {
+                    const optionsHtml = question.options.map((option, index) => 
+                        `<div class="quiz-option" onclick="selectOption(${index})">${option}</div>`
+                    ).join('');
+                    document.getElementById('quizOptions').innerHTML = optionsHtml;
+                } else if (question.type === "short-answer") {
+                    document.getElementById('quizOptions').innerHTML = `
+                        <input type="text" class="quiz-input" id="shortAnswer" placeholder="Type your answer here">
+                        <button class="btn" onclick="checkShortAnswer()">Submit Answer</button>
+                    `;
+                }
                 
-                document.getElementById('quizOptions').innerHTML = optionsHtml;
                 document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('quizResults').innerHTML = '';
             } else {
-                document.getElementById('submitBtn').style.display = 'block';
+                showFinalResults();
             }
         }
 
+        function checkShortAnswer() {
+            const userAnswer = document.getElementById('shortAnswer').value.trim().toLowerCase();
+            const question = quizQuestions[currentQuizIndex];
+            const correctAnswer = question.answer.toLowerCase();
+            
+            if (userAnswer === correctAnswer) {
+                quizScore++;
+                document.getElementById('quizResults').innerHTML = `
+                    <div class="correct">Correct! ${question.explanation}</div>
+                `;
+            } else {
+                document.getElementById('quizResults').innerHTML = `
+                    <div class="incorrect">Incorrect. The correct answer is: ${question.answer}
+                    <br>${question.explanation}</div>
+                `;
+            }
+            
+            document.getElementById('nextBtn').style.display = 'block';
+            updateStats();
+        }
+
         function selectOption(selectedIndex) {
+            const question = quizQuestions[currentQuizIndex];
+            if (question.type !== "multiple-choice") return;
+            
             const options = document.querySelectorAll('.quiz-option');
             options.forEach(option => option.classList.remove('selected'));
             options[selectedIndex].classList.add('selected');
             
-            // Show correct/incorrect immediately for learning
-            const question = quizQuestions[currentQuizIndex];
             options.forEach((option, index) => {
                 if (index === question.correct) {
                     option.classList.add('correct');
@@ -1460,11 +1642,8 @@ PhD CONTRIBUTION: First formal verification of information flow security in smar
                 quizScore++;
             }
             
-            // Show explanation
             document.getElementById('quizResults').innerHTML = `
-                <div style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
-                    <strong>Explanation:</strong> ${question.explanation}
-                </div>
+                <div class="explanation">${question.explanation}</div>
             `;
             
             document.getElementById('nextBtn').style.display = 'block';
