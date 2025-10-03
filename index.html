@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIT2241 Cyber Law & Ethics Revision Guide</title>
+    <title>NIT2241 Cyber Law & Ethics - Comprehensive Study Guide</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -12,6 +12,7 @@
             --light: #ecf0f1;
             --dark: #2c3e50;
             --success: #2ecc71;
+            --warning: #f39c12;
         }
         
         * {
@@ -329,6 +330,55 @@
             margin-top: 2rem;
         }
         
+        .detail-section {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .detail-section h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-term {
+            background: #e3f2fd;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .example-box {
+            background: #fff8e1;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
@@ -343,7 +393,7 @@
 <body>
     <header>
         <h1>NIT2241 Cyber Law & Ethics</h1>
-        <p class="subtitle">Comprehensive Revision Guide for All Sessions</p>
+        <p class="subtitle">Comprehensive Study Guide with Detailed Explanations</p>
     </header>
     
     <div class="container">
@@ -356,7 +406,7 @@
         <!-- REVISION BOOKLET SECTION -->
         <div id="revision" class="content-section active">
             <h2>Complete Session Revision Guide</h2>
-            <p>Review all key concepts from your PowerPoint presentations in an organized format.</p>
+            <p>Detailed explanations of all key concepts from your PowerPoint presentations.</p>
             
             <!-- SESSION 1 -->
             <div class="session-header">
@@ -366,40 +416,114 @@
             <!-- PPT 1 -->
             <div class="ppt-card">
                 <h4 class="ppt-title">Introduction to Information Security & User Responsibilities</h4>
-                <ul class="concept-list">
-                    <li><strong>Information Security Definition:</strong> Tasks of securing digital information manipulated by microprocessors, stored on devices, or transmitted over networks</li>
-                    <li><strong>CIA Triad:</strong> Confidentiality (approved access), Integrity (accuracy), Availability (accessibility)</li>
-                    <li><strong>End-User Role:</strong> You are the "last line of defense" with responsibilities for passwords, computer security, and data protection</li>
-                    <li><strong>Security Threats:</strong> Malware, phishing, spyware, spam</li>
-                    <li><strong>Practical Measures:</strong> Password management, email security, computer protection</li>
-                    <li><strong>Legal Framework:</strong> Introduction to Privacy Act, Spam Act, Cybercrime Act</li>
-                </ul>
+                
+                <div class="detail-section">
+                    <h4>Information Security Definition</h4>
+                    <p>Information security involves protecting digital information throughout its lifecycle - when it's being processed by a microprocessor, stored on devices, or transmitted across networks. The field has evolved from physical document protection to comprehensive digital asset management.</p>
+                    
+                    <div class="example-box">
+                        <p><strong>Example:</strong> When you log into your banking app, information security ensures that:</p>
+                        <ul>
+                            <li>Your credentials are transmitted securely (confidentiality)</li>
+                            <li>Your account balance isn't altered during transmission (integrity)</li>
+                            <li>You can access your account when needed (availability)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>The CIA Triad Explained</h4>
+                    <p>The CIA triad forms the foundation of information security:</p>
+                    <ul class="concept-list">
+                        <li><span class="key-term">Confidentiality</span>: Ensuring information is accessible only to those authorized to have access. This is typically achieved through encryption, access controls, and authentication mechanisms.</li>
+                        <li><span class="key-term">Integrity</span>: Maintaining and assuring the accuracy and completeness of data over its entire lifecycle. Techniques include hashing, digital signatures, and checksums.</li>
+                        <li><span class="key-term">Availability</span>: Ensuring that information and systems are accessible when needed by authorized users. This involves redundancy, disaster recovery planning, and denial-of-service protection.</li>
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>End-User Responsibilities</h4>
+                    <p>As the "last line of defense," end-users have critical security responsibilities:</p>
+                    <ul class="concept-list">
+                        <li><strong>Password Management</strong>: Creating strong, unique passwords and not sharing them</li>
+                        <li><strong>Device Security</strong>: Keeping software updated and using antivirus protection</li>
+                        <li><strong>Data Handling</strong>: Properly classifying and protecting sensitive information</li>
+                        <li><strong>Risk Awareness</strong>: Recognizing phishing attempts and suspicious activities</li>
+                        <li><strong>Policy Compliance</strong>: Following organizational security guidelines</li>
+                    </ul>
+                </div>
             </div>
             
             <!-- PPT 2 -->
             <div class="ppt-card">
                 <h4 class="ppt-title">Emerging IT Trends and Technologies</h4>
-                <ul class="concept-list">
-                    <li><strong>Software Distribution:</strong> Pull technology (user-initiated) vs. Push technology (server-initiated)</li>
-                    <li><strong>Application Service Providers (ASPs):</strong> Provide software access for a fee</li>
-                    <li><strong>Software as a Service (SaaS):</strong> On-demand software with data stored on provider's servers</li>
-                    <li><strong>Biometrics:</strong> High-accuracy security using physical characteristics</li>
-                    <li><strong>Wireless Technologies:</strong> Wi-Fi (radio waves) and Bluetooth (PAN creation)</li>
-                    <li><strong>Computing Models:</strong> Grid computing (combined processing), Utility computing (pay-per-use), Cloud computing (IaaS, PaaS, SaaS)</li>
-                    <li><strong>Cloud Types:</strong> Public, Private, Hybrid, Community - chosen based on security needs</li>
-                    <li><strong>Nanotechnology:</strong> Manipulating materials at molecular level</li>
-                </ul>
-            </div>
-            
-            <!-- PPT 3 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">The Cybersecurity Legal & Framework Landscape</h4>
-                <ul class="concept-list">
-                    <li><strong>Cybersecurity Definition:</strong> Principles and practices to safeguard computing assets against threats</li>
-                    <li><strong>User Responsibilities:</strong> Password management, account security, data protection, risk assessment</li>
-                    <li><strong>Voluntary Frameworks:</strong> ISO, NIST, COBIT, ISM, VPDSS</li>
-                    <li><strong>Legal Environment:</strong> Combination of voluntary codes and enforcement mechanisms</li>
-                </ul>
+                
+                <div class="detail-section">
+                    <h4>Software Distribution Models</h4>
+                    <p>Modern software delivery has evolved significantly:</p>
+                    <ul class="concept-list">
+                        <li><span class="key-term">Pull Technology</span>: User-initiated requests for information (e.g., entering a URL, searching)</li>
+                        <li><span class="key-term">Push Technology</span>: Server-initiated delivery of information to subscribed users (e.g., notifications, alerts)</li>
+                        <li><span class="key-term">Application Service Providers (ASPs)</span>: Third-party entities that provide software access for a fee</li>
+                        <li><span class="key-term">Software as a Service (SaaS)</span>: Cloud-based software delivery where applications are hosted by providers and accessed over the internet</li>
+                    </ul>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Cloud Computing Models</h4>
+                    <p>Cloud computing represents a fundamental shift in how organizations access computing resources:</p>
+                    
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Service Model</th>
+                            <th>Description</th>
+                            <th>Examples</th>
+                        </tr>
+                        <tr>
+                            <td>IaaS (Infrastructure)</td>
+                            <td>Provides virtualized computing resources over the internet</td>
+                            <td>AWS EC2, Microsoft Azure</td>
+                        </tr>
+                        <tr>
+                            <td>PaaS (Platform)</td>
+                            <td>Provides platform allowing customers to develop, run, and manage applications</td>
+                            <td>Google App Engine, Heroku</td>
+                        </tr>
+                        <tr>
+                            <td>SaaS (Software)</td>
+                            <td>Software distribution model where applications are hosted by a provider</td>
+                            <td>Google Workspace, Salesforce</td>
+                        </tr>
+                    </table>
+                    
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Deployment Model</th>
+                            <th>Description</th>
+                            <th>Use Cases</th>
+                        </tr>
+                        <tr>
+                            <td>Public Cloud</td>
+                            <td>Services delivered over public internet, shared infrastructure</td>
+                            <td>Startups, testing environments</td>
+                        </tr>
+                        <tr>
+                            <td>Private Cloud</td>
+                            <td>Dedicated infrastructure for a single organization</td>
+                            <td>Financial institutions, healthcare</td>
+                        </tr>
+                        <tr>
+                            <td>Hybrid Cloud</td>
+                            <td>Combination of public and private clouds</td>
+                            <td>Large enterprises with varying needs</td>
+                        </tr>
+                        <tr>
+                            <td>Community Cloud</td>
+                            <td>Shared infrastructure for specific community with common concerns</td>
+                            <td>Government agencies, research institutions</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             
             <!-- SESSION 2 -->
@@ -410,40 +534,50 @@
             <!-- PPT 1 -->
             <div class="ppt-card">
                 <h4 class="ppt-title">Foundations of Law, Ethics, and Policy</h4>
-                <ul class="concept-list">
-                    <li><strong>Cultural Mores:</strong> Fixed morals or customs forming the basis of ethics</li>
-                    <li><strong>Ethics:</strong> Rules for socially acceptable behavior (not enforced by courts)</li>
-                    <li><strong>Laws:</strong> Rules that mandate/prohibit behavior (enforced by authorities)</li>
-                    <li><strong>Policy:</strong> Organizational laws defining acceptable workplace behavior</li>
-                    <li><strong>Key Terms:</strong> Jurisdiction, Long-arm jurisdiction, Case law, Liability, Due care, Due diligence</li>
-                    <li><strong>Law Types:</strong> Civil, Criminal, Tort, Private, Public</li>
-                    <li><strong>Information Security Role:</strong> Reduces litigation likelihood, demonstrates due care</li>
-                    <li><strong>International Laws:</strong> European Council Cyber-Crime Convention, GDPR</li>
-                    <li><strong>Ethical Challenges:</strong> Cultural differences, need for education and training</li>
-                </ul>
-            </div>
-            
-            <!-- PPT 2 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">Professional Bodies and Policy Management</h4>
-                <ul class="concept-list">
-                    <li><strong>ACM (Association of Computing Machinery):</strong> World's first educational computing society with code of ethics</li>
-                    <li><strong>CSI (Computer Security Institute):</strong> Provides training and advocates for ethical behavior</li>
-                    <li><strong>Policy Importance:</strong> Starting point for security efforts, directs issue resolution</li>
-                    <li><strong>Policy Management:</strong> Requires regular reviews, responsible personnel, revision processes</li>
-                </ul>
-            </div>
-            
-            <!-- PPT 3 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">Implementing Security: Classification, Training, and Architecture</h4>
-                <ul class="concept-list">
-                    <li><strong>Information Classification:</strong> Categorizing data (public, internal, classified)</li>
-                    <li><strong>Clean Desk Policy:</strong> Securing classified information at day's end</li>
-                    <li><strong>SETA Program:</strong> Security Education, Training, and Awareness to reduce accidental breaches</li>
-                    <li><strong>Security Architecture:</strong> Defence in depth (layered security), Security perimeter</li>
-                    <li><strong>Security Components:</strong> Firewalls, DMZ (Demilitarized Zone), IDS (Intrusion Detection Systems)</li>
-                </ul>
+                
+                <div class="detail-section">
+                    <h4>Key Terminology Distinctions</h4>
+                    <p>Understanding these concepts is crucial for navigating legal and ethical landscapes:</p>
+                    
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Concept</th>
+                            <th>Definition</th>
+                            <th>Enforcement</th>
+                        </tr>
+                        <tr>
+                            <td>Cultural Mores</td>
+                            <td>Fixed morals or customs of a specific group that form the basis of ethics</td>
+                            <td>Social pressure, tradition</td>
+                        </tr>
+                        <tr>
+                            <td>Ethics</td>
+                            <td>Rules defining socially acceptable behavior</td>
+                            <td>Professional standards, social norms</td>
+                        </tr>
+                        <tr>
+                            <td>Laws</td>
+                            <td>Rules that mandate or prohibit specific behavior</td>
+                            <td>Government authorities, courts</td>
+                        </tr>
+                        <tr>
+                            <td>Policy</td>
+                            <td>Organizational rules defining acceptable workplace behavior</td>
+                            <td>Employer sanctions, organizational procedures</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Legal Concepts in Cybersecurity</h4>
+                    <ul class="concept-list">
+                        <li><span class="key-term">Jurisdiction</span>: A court's authority to hear cases based on geographic location or subject matter. In cyberspace, jurisdiction becomes complex due to borderless nature of internet activities.</li>
+                        <li><span class="key-term">Long-arm Jurisdiction</span>: Allows courts to exercise authority over out-of-state defendants based on activities that affect residents within the state.</li>
+                        <li><span class="key-term">Liability</span>: Legal responsibility for actions or failures to act. Organizations can be held liable for security breaches if they fail to implement reasonable safeguards.</li>
+                        <li><span class="key-term">Due Care</span>: The responsibility to act as a reasonable person would in similar circumstances. In cybersecurity, this means implementing industry-standard security measures.</li>
+                        <li><span class="key-term">Due Diligence</span>: The ongoing process of maintaining security measures and staying informed about emerging threats.</li>
+                    </ul>
+                </div>
             </div>
             
             <!-- SESSION 3 -->
@@ -454,48 +588,86 @@
             <!-- PPT 1 -->
             <div class="ppt-card">
                 <h4 class="ppt-title">Cyber Law Fundamentals and Data Privacy Regulations</h4>
-                <ul class="concept-list">
-                    <li><strong>Cyber Law Definition:</strong> Legal issues related to networked information devices and technologies</li>
-                    <li><strong>Need for Cyber Law:</strong> Cyberspace is intangible, borderless, high-volume, open, anonymous, and economically efficient</li>
-                    <li><strong>Privacy Act 1988:</strong> Australian law protecting personal information with 13 APPs</li>
-                    <li><strong>Key APPs:</strong> Open management (APP 1), Anonymity (APP 2), Collection limitations (APP 3), Security (APP 11), Access rights (APP 12)</li>
-                    <li><strong>OAIC:</strong> Office of the Australian Information Commissioner enforces privacy laws</li>
-                    <li><strong>GDPR:</strong> EU regulation with extraterritorial reach, heavy fines, "Right to be Forgotten"</li>
-                    <li><strong>APP vs. GDPR:</strong> Similar requirements but GDPR has stronger individual rights</li>
-                </ul>
-            </div>
-            
-            <!-- PPT 2 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">A Taxonomy of Cybercrimes</h4>
-                <ul class="concept-list">
-                    <li><strong>Personal Cybercrimes:</strong>
-                        <ul>
-                            <li>Harassment (cyberbullying between minors, cyber-harassment between adults)</li>
-                            <li>Cyber-stalking (pattern of harassment with credible threat)</li>
-                            <li>Phishing (fraudulent emails to steal credentials)</li>
-                            <li>Pharming (redirecting to fake websites)</li>
-                            <li>Identity theft (using personal information for gain)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Social Network Attacks:</strong>
-                        <ul>
-                            <li>Adware and malware</li>
-                            <li>Clickjacking (malicious links posting unwanted content)</li>
-                            <li>Malicious script scams</li>
-                            <li>Fraud and shill bidding</li>
-                            <li>Keyloggers (capturing typed information)</li>
-                        </ul>
-                    </li>
-                    <li><strong>Cybercrimes Against Organizations:</strong>
-                        <ul>
-                            <li>Hacking: White-hat (ethical), Black-hat (malicious), Gray-hat (illegal but not malicious)</li>
-                            <li>Hacktivism (political statement hacking)</li>
-                            <li>Data breaches (unauthorized data access)</li>
-                            <li>Cyber-terrorism</li>
-                        </ul>
-                    </li>
-                </ul>
+                
+                <div class="detail-section">
+                    <h4>Australian Privacy Principles (APPs) Deep Dive</h4>
+                    <p>The APPs establish the framework for handling personal information in Australia:</p>
+                    
+                    <table class="comparison-table">
+                        <tr>
+                            <th>APP</th>
+                            <th>Focus Area</th>
+                            <th>Key Requirements</th>
+                        </tr>
+                        <tr>
+                            <td>APP 1</td>
+                            <td>Open and transparent management</td>
+                            <td>Maintain a privacy policy, implement processes to comply with APPs</td>
+                        </tr>
+                        <tr>
+                            <td>APP 2</td>
+                            <td>Anonymity and pseudonymity</td>
+                            <td>Allow individuals to interact anonymously where practicable</td>
+                        </tr>
+                        <tr>
+                            <td>APP 3</td>
+                            <td>Collection of solicited personal information</td>
+                            <td>Only collect information necessary for functions, with higher standards for sensitive information</td>
+                        </tr>
+                        <tr>
+                            <td>APP 5</td>
+                            <td>Notification of collection</td>
+                            <td>Notify individuals about collection circumstances and purposes</td>
+                        </tr>
+                        <tr>
+                            <td>APP 6</td>
+                            <td>Use or disclosure</td>
+                            <td>Only use or disclose information for primary purpose or specific secondary purposes</td>
+                        </tr>
+                        <tr>
+                            <td>APP 11</td>
+                            <td>Security of personal information</td>
+                            <td>Take reasonable steps to protect information from misuse, interference, loss, unauthorized access, modification or disclosure</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>GDPR vs. Australian Privacy Act Comparison</h4>
+                    
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Australian Privacy Act</th>
+                            <th>GDPR</th>
+                        </tr>
+                        <tr>
+                            <td>Scope</td>
+                            <td>Applies to Australian government agencies and organizations with >$3M annual turnover</td>
+                            <td>Applies to all organizations processing EU residents' data, regardless of location</td>
+                        </tr>
+                        <tr>
+                            <td>Consent</td>
+                            <td>Implied consent often sufficient</td>
+                            <td>Explicit, informed, unambiguous consent required</td>
+                        </tr>
+                        <tr>
+                            <td>Right to Erasure</td>
+                            <td>No explicit right to be forgotten</td>
+                            <td>Explicit right to erasure ("right to be forgotten")</td>
+                        </tr>
+                        <tr>
+                            <td>Data Breach Notification</td>
+                            <td>Mandatory for eligible data breaches</td>
+                            <td>Mandatory within 72 hours of awareness</td>
+                        </tr>
+                        <tr>
+                            <td>Penalties</td>
+                            <td>Up to $2.1M for organizations</td>
+                            <td>Up to 4% of global annual turnover or €20M</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         
@@ -514,12 +686,12 @@
             <div class="flashcard-container">
                 <div class="flashcard">
                     <div class="flashcard-front">
-                        <h3>What does the "C" in CIA Triad stand for?</h3>
+                        <h3>What does the "C" in CIA Triad stand for and what does it mean?</h3>
                         <p>Click to flip</p>
                     </div>
                     <div class="flashcard-back">
                         <h3>Confidentiality</h3>
-                        <p>Ensuring that only approved individuals may access information.</p>
+                        <p>Ensuring that only approved individuals may access information. This is typically achieved through encryption, access controls, and authentication mechanisms.</p>
                     </div>
                 </div>
             </div>
@@ -553,15 +725,15 @@
             
             <div class="quiz-container">
                 <div class="quiz-question">
-                    <h3>What are the three components of the CIA Triad in information security?</h3>
+                    <h3>What are the three components of the CIA Triad in information security and what does each component protect?</h3>
                     <ul class="quiz-options">
-                        <li data-correct="true">Confidentiality, Integrity, Availability</li>
-                        <li>Cybersecurity, Intelligence, Access</li>
-                        <li>Control, Inspection, Authorization</li>
-                        <li>Confidentiality, Inspection, Access</li>
+                        <li data-correct="true">Confidentiality (access control), Integrity (data accuracy), Availability (system accessibility)</li>
+                        <li>Cybersecurity (threat prevention), Intelligence (data analysis), Access (user permissions)</li>
+                        <li>Control (system management), Inspection (security auditing), Authorization (user validation)</li>
+                        <li>Confidentiality (privacy protection), Inspection (security monitoring), Access (resource availability)</li>
                     </ul>
                     <div class="quiz-feedback">
-                        <p><strong>Correct!</strong> The CIA Triad stands for Confidentiality (approved access), Integrity (accuracy), and Availability (accessibility).</p>
+                        <p><strong>Correct!</strong> The CIA Triad stands for Confidentiality (ensuring only authorized access), Integrity (maintaining data accuracy), and Availability (ensuring systems and data are accessible when needed).</p>
                     </div>
                 </div>
                 
@@ -575,7 +747,7 @@
     
     <footer>
         <p>NIT2241 Cyber Law Policy and Professional Ethics - Victoria University</p>
-        <p>Use this guide to prepare for your assessments effectively.</p>
+        <p>Use this comprehensive guide to prepare for your assessments effectively.</p>
     </footer>
 
     <script>
@@ -595,54 +767,64 @@
         // Flashcard functionality
         const flashcards = [
             {
-                front: "What does the 'C' in CIA Triad stand for?",
-                back: "Confidentiality - Ensuring that only approved individuals may access information.",
+                front: "What does the 'C' in CIA Triad stand for and what does it mean?",
+                back: "Confidentiality - Ensuring that only approved individuals may access information. This is typically achieved through encryption, access controls, and authentication mechanisms.",
                 session: 1
             },
             {
                 front: "What is the difference between ethics and laws?",
-                back: "Ethics are rules for socially acceptable behavior (not enforced by courts), while Laws are rules that mandate/prohibit behavior (enforced by authorities).",
+                back: "Ethics are rules for socially acceptable behavior (not enforced by courts), while Laws are rules that mandate/prohibit behavior (enforced by authorities). Ethics define what you should do, while laws define what you must do.",
                 session: 2
             },
             {
-                front: "What is the main Australian legislation that protects personal information?",
-                back: "Privacy Act 1988, which contains the Australian Privacy Principles (APPs).",
+                front: "What is the main Australian legislation that protects personal information and what are its key components?",
+                back: "Privacy Act 1988, which contains the Australian Privacy Principles (APPs). The APPs establish standards for collecting, using, storing, and disclosing personal information.",
                 session: 3
             },
             {
                 front: "What is the key difference between phishing and pharming?",
-                back: "Phishing uses fraudulent emails to trick users, while Pharming redirects users to fake websites even when typing the correct URL.",
+                back: "Phishing uses fraudulent emails to trick users into providing sensitive information, while Pharming redirects users to fake websites even when typing the correct URL by hijacking DNS systems.",
                 session: 3
             },
             {
-                front: "What are the three types of hackers based on intent?",
-                back: "White-hat (ethical), Black-hat (malicious), and Gray-hat (illegal but not malicious).",
+                front: "What are the three types of hackers based on intent and what distinguishes them?",
+                back: "White-hat (ethical hackers who work to improve security), Black-hat (malicious hackers with criminal intent), and Gray-hat (hackers who operate without authorization but without malicious intent).",
                 session: 3
             },
             {
-                front: "What does GDPR stand for and who does it apply to?",
-                back: "General Data Protection Regulation. It applies to any organization processing personal data of EU residents, regardless of where the organization is located.",
+                front: "What does GDPR stand for, who does it apply to, and what are its key requirements?",
+                back: "General Data Protection Regulation. It applies to any organization processing personal data of EU residents, regardless of location. Key requirements include explicit consent, right to erasure, data breach notification within 72 hours, and privacy by design.",
                 session: 3
             },
             {
-                front: "What is the purpose of a 'clean desk policy'?",
-                back: "To ensure that classified information is properly secured at the end of the business day.",
+                front: "What is the purpose of a 'clean desk policy' in information security?",
+                back: "To ensure that classified or sensitive information is properly secured at the end of the business day, reducing the risk of unauthorized access or information leakage.",
                 session: 2
             },
             {
-                front: "What is the concept of 'defence in depth'?",
-                back: "Implementing security in multiple layers so that an intruder faces multiple controls.",
+                front: "What is the concept of 'defence in depth' in security architecture?",
+                back: "Implementing security in multiple layers so that an intruder faces multiple controls. If one layer fails, others provide backup protection.",
                 session: 2
             },
             {
-                front: "What is the role of the OAIC?",
-                back: "Office of the Australian Information Commissioner enforces privacy laws, handles complaints, and provides guidance on data protection.",
+                front: "What is the role of the OAIC and what are its main functions?",
+                back: "Office of the Australian Information Commissioner enforces privacy laws, handles complaints, conducts investigations, reviews FOI decisions, and provides guidance on data protection.",
                 session: 3
             },
             {
-                front: "What is the key difference between APPs and GDPR?",
-                back: "While both have similar requirements, GDPR includes stronger individual rights like the 'Right to be Forgotten' which isn't in APPs.",
+                front: "What are the key differences between APPs and GDPR?",
+                back: "While both have similar requirements, GDPR includes stronger individual rights like the 'Right to be Forgotten', requires explicit consent, has broader extraterritorial application, and imposes significantly higher penalties for non-compliance.",
                 session: 3
+            },
+            {
+                front: "What are the main components of cloud computing service models (IaaS, PaaS, SaaS)?",
+                back: "IaaS provides virtualized computing resources, PaaS provides platform for application development, and SaaS provides software applications as services.",
+                session: 1
+            },
+            {
+                front: "What is the difference between due care and due diligence in cybersecurity?",
+                back: "Due care is knowing what security measures should be implemented (the standard of care), while due diligence is the ongoing process of implementing and maintaining those measures.",
+                session: 2
             }
         ];
         
@@ -704,8 +886,10 @@
         function updateCard() {
             const card = flashcards[currentCardIndex];
             cardElement.querySelector('.flashcard-front h3').textContent = card.front;
-            cardElement.querySelector('.flashcard-back h3').textContent = card.back.split(' - ')[0];
-            cardElement.querySelector('.flashcard-back p').textContent = card.back.split(' - ')[1] || card.back;
+            
+            const backParts = card.back.split(' - ');
+            cardElement.querySelector('.flashcard-back h3').textContent = backParts[0];
+            cardElement.querySelector('.flashcard-back p').textContent = backParts[1] || card.back;
             
             // Reset flip state
             cardElement.classList.remove('flipped');
@@ -720,15 +904,15 @@
         // Quiz functionality
         const quizQuestions = [
             {
-                question: "What are the three components of the CIA Triad in information security?",
+                question: "What are the three components of the CIA Triad in information security and what does each component protect?",
                 options: [
-                    "Confidentiality, Integrity, Availability",
-                    "Cybersecurity, Intelligence, Access",
-                    "Control, Inspection, Authorization",
-                    "Confidentiality, Inspection, Access"
+                    "Confidentiality (access control), Integrity (data accuracy), Availability (system accessibility)",
+                    "Cybersecurity (threat prevention), Intelligence (data analysis), Access (user permissions)",
+                    "Control (system management), Inspection (security auditing), Authorization (user validation)",
+                    "Confidentiality (privacy protection), Inspection (security monitoring), Access (resource availability)"
                 ],
                 correct: 0,
-                explanation: "The CIA Triad stands for Confidentiality (approved access), Integrity (accuracy), and Availability (accessibility).",
+                explanation: "The CIA Triad stands for Confidentiality (ensuring only authorized access), Integrity (maintaining data accuracy), and Availability (ensuring systems and data are accessible when needed).",
                 session: 1
             },
             {
@@ -740,144 +924,28 @@
                     "Ethics are more important than laws"
                 ],
                 correct: 0,
-                explanation: "Laws are enforced by governing authorities with legal sanctions, while ethics define socially acceptable behavior without legal enforcement.",
+                explanation: "Laws are enforced by governing authorities with legal sanctions, while ethics define socially acceptable behavior without legal enforcement. Both are important but serve different purposes in society.",
                 session: 2
             },
             {
-                question: "What is the primary purpose of the Privacy Act 1988 in Australia?",
+                question: "What is the primary purpose of the Privacy Act 1988 in Australia and what are its key components?",
                 options: [
-                    "To protect individuals' personal information",
-                    "To regulate internet service providers",
-                    "To establish cybersecurity standards for businesses",
-                    "To combat cybercrime"
+                    "To protect individuals' personal information through the Australian Privacy Principles (APPs)",
+                    "To regulate internet service providers and telecommunications companies",
+                    "To establish cybersecurity standards for businesses and organizations",
+                    "To combat cybercrime and prosecute digital offenders"
                 ],
                 correct: 0,
-                explanation: "The Privacy Act 1988 provides for the protection of individuals' personal information and contains the Australian Privacy Principles (APPs).",
+                explanation: "The Privacy Act 1988 provides for the protection of individuals' personal information and contains the Australian Privacy Principles (APPs) that govern how organizations handle personal data.",
                 session: 3
-            }
-        ];
-        
-        let currentQuestionIndex = 0;
-        const quizProgress = document.getElementById('quiz-progress');
-        const checkAnswerButton = document.getElementById('check-answer');
-        const nextQuestionButton = document.getElementById('next-question');
-        const quizSessionButtons = document.querySelectorAll('.session-btn[data-quiz]');
-        
-        // Initialize first question
-        displayQuestion(currentQuestionIndex);
-        updateProgressBar();
-        
-        // Option selection
-        document.querySelectorAll('.quiz-options li').forEach(option => {
-            option.addEventListener('click', function() {
-                // Remove selected class from all options
-                document.querySelectorAll('.quiz-options li').forEach(li => {
-                    li.classList.remove('selected');
-                });
-                
-                // Add selected class to clicked option
-                this.classList.add('selected');
-            });
-        });
-        
-        // Check answer button
-        checkAnswerButton.addEventListener('click', () => {
-            const selectedOption = document.querySelector('.quiz-options li.selected');
-            if (!selectedOption) {
-                alert('Please select an answer first!');
-                return;
-            }
-            
-            const correctIndex = quizQuestions[currentQuestionIndex].correct;
-            const options = document.querySelectorAll('.quiz-options li');
-            
-            // Show correct/incorrect states
-            options.forEach((option, index) => {
-                if (index === correctIndex) {
-                    option.classList.add('correct');
-                } else if (option.classList.contains('selected') && index !== correctIndex) {
-                    option.classList.add('incorrect');
-                }
-            });
-            
-            // Show feedback
-            const feedback = document.querySelector('.quiz-feedback');
-            feedback.textContent = quizQuestions[currentQuestionIndex].explanation;
-            feedback.classList.add(selectedOption.classList.contains('correct') ? 'correct' : 'incorrect');
-            
-            // Update buttons
-            checkAnswerButton.style.display = 'none';
-            nextQuestionButton.style.display = 'inline-block';
-        });
-        
-        // Next question button
-        nextQuestionButton.addEventListener('click', () => {
-            if (currentQuestionIndex < quizQuestions.length - 1) {
-                currentQuestionIndex++;
-                displayQuestion(currentQuestionIndex);
-                updateProgressBar();
-                
-                // Reset buttons
-                checkAnswerButton.style.display = 'inline-block';
-                nextQuestionButton.style.display = 'none';
-            } else {
-                alert('You have completed the quiz!');
-            }
-        });
-        
-        // Session filtering for quizzes
-        quizSessionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                quizSessionButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // In a full implementation, this would filter questions by session
-                // For this demo, we'll just reset to the first question
-                currentQuestionIndex = 0;
-                displayQuestion(currentQuestionIndex);
-                updateProgressBar();
-            });
-        });
-        
-        function displayQuestion(index) {
-            const question = quizQuestions[index];
-            const questionElement = document.querySelector('.quiz-question');
-            
-            questionElement.querySelector('h3').textContent = question.question;
-            
-            const optionsList = questionElement.querySelector('.quiz-options');
-            optionsList.innerHTML = '';
-            
-            question.options.forEach((option, i) => {
-                const li = document.createElement('li');
-                li.textContent = option;
-                li.dataset.correct = i === question.correct ? 'true' : 'false';
-                optionsList.appendChild(li);
-            });
-            
-            // Reset feedback
-            const feedback = questionElement.querySelector('.quiz-feedback');
-            feedback.classList.remove('correct', 'incorrect');
-            feedback.style.display = 'none';
-            
-            // Reattach event listeners to new options
-            document.querySelectorAll('.quiz-options li').forEach(option => {
-                option.addEventListener('click', function() {
-                    document.querySelectorAll('.quiz-options li').forEach(li => {
-                        li.classList.remove('selected');
-                    });
-                    this.classList.add('selected');
-                });
-            });
-        }
-        
-        function updateProgressBar() {
-            const progress = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
-            quizProgress.style.width = `${progress}%`;
-        }
-        
-        // Initialize the first card
-        updateCard();
-    </script>
-</body>
-</html>
+            },
+            {
+                question: "What is the key difference between IaaS, PaaS, and SaaS cloud service models?",
+                options: [
+                    "IaaS provides infrastructure, PaaS provides development platforms, SaaS provides software applications",
+                    "IaaS is for large enterprises, PaaS for medium businesses, SaaS for small businesses",
+                    "IaaS is the most expensive, PaaS is moderately priced, SaaS is the cheapest",
+                    "IaaS requires the most technical knowledge, PaaS requires some knowledge, SaaS requires no technical knowledge"
+                ],
+                correct: 0,
+                explanation: "IaaS (Infrastructure as a Service) provides virtualized computing resources, PaaS (Platform as a Service) provides platforms for application development, and SaaS (Software as a Service)
