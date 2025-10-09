@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIT2241 Cyber Law & Ethics - Comprehensive Study Guide</title>
+    <title>Cyber Law Policy & Professional Ethics Study Hub</title>
     <style>
         :root {
             --primary: #2c3e50;
@@ -12,13 +12,12 @@
             --light: #ecf0f1;
             --dark: #2c3e50;
             --success: #2ecc71;
-            --warning: #f39c12;
         }
         
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
@@ -31,13 +30,25 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 2rem 1rem;
+            padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
         }
         
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 0.5rem;
         }
         
@@ -48,26 +59,26 @@
         
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
         }
         
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
         }
         
         .tab {
-            flex: 1;
-            padding: 1rem;
-            text-align: center;
+            padding: 1rem 1.5rem;
             cursor: pointer;
+            flex: 1;
+            text-align: center;
             transition: all 0.3s ease;
-            font-weight: 600;
             border-bottom: 3px solid transparent;
         }
         
@@ -77,7 +88,8 @@
         
         .tab.active {
             border-bottom: 3px solid var(--secondary);
-            color: var(--secondary);
+            background-color: #f8f9fa;
+            font-weight: 600;
         }
         
         .content-section {
@@ -85,75 +97,114 @@
             background: white;
             border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
         }
         
         .content-section.active {
             display: block;
+            animation: fadeIn 0.5s ease;
         }
         
-        .session-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            color: var(--primary);
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--light);
+            border-bottom: 2px solid #eee;
         }
         
-        .session-title {
-            color: var(--primary);
-            font-size: 1.8rem;
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
         }
         
-        .ppt-card {
+        .slide-content {
+            margin-bottom: 2rem;
+        }
+        
+        .slide-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .slide-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote {
             background: #f8f9fa;
             border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        
+        .quiz-container, .flashcards-container {
+            background: #f8f9fa;
+            border-radius: 8px;
             padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .question {
             margin-bottom: 1.5rem;
-            border-radius: 4px;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
         }
         
-        .ppt-title {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-        
-        .concept-list {
-            list-style-type: none;
-        }
-        
-        .concept-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eaeaea;
-        }
-        
-        .concept-list li:last-child {
+        .question:last-child {
             border-bottom: none;
         }
         
-        .flashcard-container {
-            perspective: 1000px;
-            margin: 2rem auto;
-            width: 100%;
-            max-width: 500px;
-            height: 300px;
+        .options {
+            margin-top: 1rem;
+        }
+        
+        .option {
+            display: block;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .option:hover {
+            background: #e9ecef;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
         }
         
         .flashcard {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-            cursor: pointer;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            perspective: 1000px;
+            height: 250px;
+            margin-bottom: 1.5rem;
         }
         
-        .flashcard.flipped {
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .flashcard.flipped .flashcard-inner {
             transform: rotateY(180deg);
         }
         
@@ -166,128 +217,47 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .flashcard-front {
-            background: var(--secondary);
-            color: white;
+            background: white;
+            color: var(--primary);
         }
         
         .flashcard-back {
-            background: white;
-            color: var(--dark);
+            background: var(--secondary);
+            color: white;
             transform: rotateY(180deg);
-            border: 2px solid var(--secondary);
         }
         
-        .flashcard-nav {
+        .flashcard-controls {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
+            justify-content: space-between;
             margin-top: 1rem;
         }
         
-        .btn {
-            padding: 0.7rem 1.5rem;
+        button {
             background: var(--secondary);
             color: white;
             border: none;
+            padding: 0.7rem 1.5rem;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: 600;
             transition: all 0.3s ease;
+            font-weight: 600;
         }
         
-        .btn:hover {
+        button:hover {
             background: #2980b9;
             transform: translateY(-2px);
         }
         
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-        }
-        
-        .btn-outline:hover {
-            background: var(--secondary);
-            color: white;
-        }
-        
-        .quiz-container {
-            margin: 2rem 0;
-        }
-        
-        .quiz-question {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .quiz-options {
-            list-style-type: none;
-            margin: 1rem 0;
-        }
-        
-        .quiz-options li {
-            padding: 0.8rem;
-            margin-bottom: 0.5rem;
-            background: white;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid #e0e0e0;
-        }
-        
-        .quiz-options li:hover {
-            background: #f0f0f0;
-        }
-        
-        .quiz-options li.selected {
-            background: var(--secondary);
-            color: white;
-            border-color: var(--secondary);
-        }
-        
-        .quiz-options li.correct {
-            background: var(--success);
-            color: white;
-        }
-        
-        .quiz-options li.incorrect {
-            background: var(--accent);
-            color: white;
-        }
-        
-        .quiz-feedback {
-            padding: 1rem;
-            border-radius: 4px;
-            margin-top: 1rem;
-            display: none;
-        }
-        
-        .quiz-feedback.correct {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            display: block;
-        }
-        
-        .quiz-feedback.incorrect {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-            display: block;
-        }
-        
         .progress-bar {
             height: 6px;
-            background: #e0e0e0;
+            background: #e9ecef;
             border-radius: 3px;
             margin: 1rem 0;
             overflow: hidden;
@@ -295,31 +265,17 @@
         
         .progress {
             height: 100%;
-            background: var(--secondary);
+            background: var(--success);
             width: 0%;
             transition: width 0.3s ease;
         }
         
-        .session-selector {
+        .stats {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .session-btn {
-            padding: 0.5rem 1rem;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .session-btn.active {
-            background: var(--secondary);
-            color: white;
-            border-color: var(--secondary);
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #6c757d;
         }
         
         footer {
@@ -327,56 +283,7 @@
             padding: 2rem;
             background: var(--dark);
             color: white;
-            margin-top: 2rem;
-        }
-        
-        .detail-section {
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 6px;
-        }
-        
-        .detail-section h4 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .key-term {
-            background: #e3f2fd;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        .example-box {
-            background: #fff8e1;
-            border-left: 4px solid var(--warning);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        
-        .comparison-table th, .comparison-table td {
-            padding: 0.8rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .comparison-table th {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .comparison-table tr:nth-child(even) {
-            background: #f2f2f2;
+            margin-top: 3rem;
         }
         
         @media (max-width: 768px) {
@@ -384,370 +291,865 @@
                 flex-direction: column;
             }
             
-            .flashcard-container {
-                height: 250px;
+            .tab {
+                flex: none;
+            }
+            
+            .flashcard {
+                height: 200px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>NIT2241 Cyber Law & Ethics</h1>
-        <p class="subtitle">Comprehensive Study Guide with Detailed Explanations</p>
+        <div class="logo">
+            <div class="logo-icon">🔒</div>
+            <div>
+                <h1>Cyber Law Policy & Professional Ethics</h1>
+                <div class="subtitle">VICTORIA UNIVERSITY - RTO Code 3113, CRICOS Provider Code 00124K (Melbourne), 02475D (Sydney)</div>
+            </div>
+        </div>
     </header>
     
     <div class="container">
         <div class="tabs">
-            <div class="tab active" data-tab="revision">Revision Booklet</div>
-            <div class="tab" data-tab="flashcards">Flashcards</div>
-            <div class="tab" data-tab="quizzes">Quizzes</div>
+            <div class="tab active" data-tab="session4-1">Session 4-1</div>
+            <div class="tab" data-tab="session4-2">Session 4-2</div>
+            <div class="tab" data-tab="session5-1">Session 5-1</div>
+            <div class="tab" data-tab="session5-2">Session 5-2</div>
+            <div class="tab" data-tab="session5-3">Session 5-3</div>
         </div>
         
-        <!-- REVISION BOOKLET SECTION -->
-        <div id="revision" class="content-section active">
-            <h2>Complete Session Revision Guide</h2>
-            <p>Detailed explanations of all key concepts from your PowerPoint presentations.</p>
+        <!-- Session 4-1 Content -->
+        <div id="session4-1" class="content-section active">
+            <h2>Session 4-1: Information Security Policy</h2>
             
-            <!-- SESSION 1 -->
-            <div class="session-header">
-                <h3 class="session-title">Session 1: Principles and Foundation of Cybersecurity</h3>
-            </div>
-            
-            <!-- PPT 1 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">Introduction to Information Security & User Responsibilities</h4>
+            <div class="slide-content">
+                <h3>Introduction</h3>
+                <ul>
+                    <li>Policy is the essential foundation of an effective information security program</li>
+                    <li>Policy maker sets the tone and emphasis on the importance of information security</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>Information Security Definition</h4>
-                    <p>Information security involves protecting digital information throughout its lifecycle - when it's being processed by a microprocessor, stored on devices, or transmitted across networks. The field has evolved from physical document protection to comprehensive digital asset management.</p>
-                    
-                    <div class="example-box">
-                        <p><strong>Example:</strong> When you log into your banking app, information security ensures that:</p>
+                <h3>Objectives</h3>
+                <ul>
+                    <li>Reduced risk</li>
+                    <li>Compliance with laws and regulations</li>
+                    <li>Assurance of operational continuity, information integrity, and confidentiality</li>
+                </ul>
+                
+                <h3>Why Policy?</h3>
+                <ul>
+                    <li>Policies are the least expensive means of control and often the most difficult to implement</li>
+                    <li>Basic rules for shaping a policy:
                         <ul>
-                            <li>Your credentials are transmitted securely (confidentiality)</li>
-                            <li>Your account balance isn't altered during transmission (integrity)</li>
-                            <li>You can access your account when needed (availability)</li>
+                            <li>Policy should never conflict with law</li>
+                            <li>Policy must be able to stand up in court if challenged</li>
+                            <li>Policy must be properly supported and administered</li>
                         </ul>
-                    </div>
-                </div>
+                    </li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>The CIA Triad Explained</h4>
-                    <p>The CIA triad forms the foundation of information security:</p>
-                    <ul class="concept-list">
-                        <li><span class="key-term">Confidentiality</span>: Ensuring information is accessible only to those authorized to have access. This is typically achieved through encryption, access controls, and authentication mechanisms.</li>
-                        <li><span class="key-term">Integrity</span>: Maintaining and assuring the accuracy and completeness of data over its entire lifecycle. Techniques include hashing, digital signatures, and checksums.</li>
-                        <li><span class="key-term">Availability</span>: Ensuring that information and systems are accessible when needed by authorized users. This involves redundancy, disaster recovery planning, and denial-of-service protection.</li>
-                    </ul>
-                </div>
+                <h3>Bulls-eye Model</h3>
+                <ul>
+                    <li>Networks: threats first meet the organization's network</li>
+                    <li>Systems: computers and manufacturing systems</li>
+                    <li>Applications: all applications systems</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>End-User Responsibilities</h4>
-                    <p>As the "last line of defense," end-users have critical security responsibilities:</p>
-                    <ul class="concept-list">
-                        <li><strong>Password Management</strong>: Creating strong, unique passwords and not sharing them</li>
-                        <li><strong>Device Security</strong>: Keeping software updated and using antivirus protection</li>
-                        <li><strong>Data Handling</strong>: Properly classifying and protecting sensitive information</li>
-                        <li><strong>Risk Awareness</strong>: Recognizing phishing attempts and suspicious activities</li>
-                        <li><strong>Policy Compliance</strong>: Following organizational security guidelines</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- PPT 2 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">Emerging IT Trends and Technologies</h4>
+                <h3>Why Policy? (cont'd.)</h3>
+                <ul>
+                    <li>Policies are important reference documents</li>
+                    <li>For internal audits</li>
+                    <li>For the resolution of legal disputes about management's due diligence</li>
+                    <li>Policy documents can act as a clear statement of management's intent</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>Software Distribution Models</h4>
-                    <p>Modern software delivery has evolved significantly:</p>
-                    <ul class="concept-list">
-                        <li><span class="key-term">Pull Technology</span>: User-initiated requests for information (e.g., entering a URL, searching)</li>
-                        <li><span class="key-term">Push Technology</span>: Server-initiated delivery of information to subscribed users (e.g., notifications, alerts)</li>
-                        <li><span class="key-term">Application Service Providers (ASPs)</span>: Third-party entities that provide software access for a fee</li>
-                        <li><span class="key-term">Software as a Service (SaaS)</span>: Cloud-based software delivery where applications are hosted by providers and accessed over the internet</li>
-                    </ul>
-                </div>
+                <h3>Types of Information Security Policy</h3>
+                <ul>
+                    <li>Enterprise information security program policy</li>
+                    <li>Issue-specific information security policies</li>
+                    <li>Systems-specific policies</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>Cloud Computing Models</h4>
-                    <p>Cloud computing represents a fundamental shift in how organizations access computing resources:</p>
-                    
-                    <table class="comparison-table">
-                        <tr>
-                            <th>Service Model</th>
-                            <th>Description</th>
-                            <th>Examples</th>
-                        </tr>
-                        <tr>
-                            <td>IaaS (Infrastructure)</td>
-                            <td>Provides virtualized computing resources over the internet</td>
-                            <td>AWS EC2, Microsoft Azure</td>
-                        </tr>
-                        <tr>
-                            <td>PaaS (Platform)</td>
-                            <td>Provides platform allowing customers to develop, run, and manage applications</td>
-                            <td>Google App Engine, Heroku</td>
-                        </tr>
-                        <tr>
-                            <td>SaaS (Software)</td>
-                            <td>Software distribution model where applications are hosted by a provider</td>
-                            <td>Google Workspace, Salesforce</td>
-                        </tr>
-                    </table>
-                    
-                    <table class="comparison-table">
-                        <tr>
-                            <th>Deployment Model</th>
-                            <th>Description</th>
-                            <th>Use Cases</th>
-                        </tr>
-                        <tr>
-                            <td>Public Cloud</td>
-                            <td>Services delivered over public internet, shared infrastructure</td>
-                            <td>Startups, testing environments</td>
-                        </tr>
-                        <tr>
-                            <td>Private Cloud</td>
-                            <td>Dedicated infrastructure for a single organization</td>
-                            <td>Financial institutions, healthcare</td>
-                        </tr>
-                        <tr>
-                            <td>Hybrid Cloud</td>
-                            <td>Combination of public and private clouds</td>
-                            <td>Large enterprises with varying needs</td>
-                        </tr>
-                        <tr>
-                            <td>Community Cloud</td>
-                            <td>Shared infrastructure for specific community with common concerns</td>
-                            <td>Government agencies, research institutions</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- SESSION 2 -->
-            <div class="session-header">
-                <h3 class="session-title">Session 2: Law and Information Security</h3>
-            </div>
-            
-            <!-- PPT 1 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">Foundations of Law, Ethics, and Policy</h4>
+                <h3>Policy, Standards, and Practices</h3>
+                <ul>
+                    <li>Policy: A plan or course of action that influences decisions
+                        <ul>
+                            <li>must be properly disseminated, read, understood, agreed-to, and uniformly enforced</li>
+                            <li>require constant modification and maintenance</li>
+                        </ul>
+                    </li>
+                    <li>Standards: A more detailed statement of what must be done to comply with policy</li>
+                    <li>Practices: Procedures and guidelines explain how employees will comply with policy</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>Key Terminology Distinctions</h4>
-                    <p>Understanding these concepts is crucial for navigating legal and ethical landscapes:</p>
-                    
-                    <table class="comparison-table">
-                        <tr>
-                            <th>Concept</th>
-                            <th>Definition</th>
-                            <th>Enforcement</th>
-                        </tr>
-                        <tr>
-                            <td>Cultural Mores</td>
-                            <td>Fixed morals or customs of a specific group that form the basis of ethics</td>
-                            <td>Social pressure, tradition</td>
-                        </tr>
-                        <tr>
-                            <td>Ethics</td>
-                            <td>Rules defining socially acceptable behavior</td>
-                            <td>Professional standards, social norms</td>
-                        </tr>
-                        <tr>
-                            <td>Laws</td>
-                            <td>Rules that mandate or prohibit specific behavior</td>
-                            <td>Government authorities, courts</td>
-                        </tr>
-                        <tr>
-                            <td>Policy</td>
-                            <td>Organizational rules defining acceptable workplace behavior</td>
-                            <td>Employer sanctions, organizational procedures</td>
-                        </tr>
-                    </table>
-                </div>
+                <h3>Enterprise Information Security Policy (EISP)</h3>
+                <ul>
+                    <li>Sets strategic direction, scope, and tone for organization's security efforts</li>
+                    <li>Assigns responsibilities for various areas of information security</li>
+                    <li>Guides development, implementation, and management requirements of information security program</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>Legal Concepts in Cybersecurity</h4>
-                    <ul class="concept-list">
-                        <li><span class="key-term">Jurisdiction</span>: A court's authority to hear cases based on geographic location or subject matter. In cyberspace, jurisdiction becomes complex due to borderless nature of internet activities.</li>
-                        <li><span class="key-term">Long-arm Jurisdiction</span>: Allows courts to exercise authority over out-of-state defendants based on activities that affect residents within the state.</li>
-                        <li><span class="key-term">Liability</span>: Legal responsibility for actions or failures to act. Organizations can be held liable for security breaches if they fail to implement reasonable safeguards.</li>
-                        <li><span class="key-term">Due Care</span>: The responsibility to act as a reasonable person would in similar circumstances. In cybersecurity, this means implementing industry-standard security measures.</li>
-                        <li><span class="key-term">Due Diligence</span>: The ongoing process of maintaining security measures and staying informed about emerging threats.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- SESSION 3 -->
-            <div class="session-header">
-                <h3 class="session-title">Session 3: Cyber Law Policy</h3>
-            </div>
-            
-            <!-- PPT 1 -->
-            <div class="ppt-card">
-                <h4 class="ppt-title">Cyber Law Fundamentals and Data Privacy Regulations</h4>
+                <h3>EISP Elements</h3>
+                <ul>
+                    <li>Corporate philosophy on security</li>
+                    <li>Information security organization and information security roles</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>Australian Privacy Principles (APPs) Deep Dive</h4>
-                    <p>The APPs establish the framework for handling personal information in Australia:</p>
-                    
-                    <table class="comparison-table">
-                        <tr>
-                            <th>APP</th>
-                            <th>Focus Area</th>
-                            <th>Key Requirements</th>
-                        </tr>
-                        <tr>
-                            <td>APP 1</td>
-                            <td>Open and transparent management</td>
-                            <td>Maintain a privacy policy, implement processes to comply with APPs</td>
-                        </tr>
-                        <tr>
-                            <td>APP 2</td>
-                            <td>Anonymity and pseudonymity</td>
-                            <td>Allow individuals to interact anonymously where practicable</td>
-                        </tr>
-                        <tr>
-                            <td>APP 3</td>
-                            <td>Collection of solicited personal information</td>
-                            <td>Only collect information necessary for functions, with higher standards for sensitive information</td>
-                        </tr>
-                        <tr>
-                            <td>APP 5</td>
-                            <td>Notification of collection</td>
-                            <td>Notify individuals about collection circumstances and purposes</td>
-                        </tr>
-                        <tr>
-                            <td>APP 6</td>
-                            <td>Use or disclosure</td>
-                            <td>Only use or disclose information for primary purpose or specific secondary purposes</td>
-                        </tr>
-                        <tr>
-                            <td>APP 11</td>
-                            <td>Security of personal information</td>
-                            <td>Take reasonable steps to protect information from misuse, interference, loss, unauthorized access, modification or disclosure</td>
-                        </tr>
-                    </table>
-                </div>
+                <h3>Example ESIP Components</h3>
+                <ul>
+                    <li>Statement of purpose</li>
+                    <li>Information technology security elements</li>
+                    <li>Need for information technology security</li>
+                    <li>Information technology security responsibilities and roles</li>
+                    <li>Reference to other information technology standards and guidelines</li>
+                </ul>
                 
-                <div class="detail-section">
-                    <h4>GDPR vs. Australian Privacy Act Comparison</h4>
-                    
-                    <table class="comparison-table">
-                        <tr>
-                            <th>Aspect</th>
-                            <th>Australian Privacy Act</th>
-                            <th>GDPR</th>
-                        </tr>
-                        <tr>
-                            <td>Scope</td>
-                            <td>Applies to Australian government agencies and organizations with >$3M annual turnover</td>
-                            <td>Applies to all organizations processing EU residents' data, regardless of location</td>
-                        </tr>
-                        <tr>
-                            <td>Consent</td>
-                            <td>Implied consent often sufficient</td>
-                            <td>Explicit, informed, unambiguous consent required</td>
-                        </tr>
-                        <tr>
-                            <td>Right to Erasure</td>
-                            <td>No explicit right to be forgotten</td>
-                            <td>Explicit right to erasure ("right to be forgotten")</td>
-                        </tr>
-                        <tr>
-                            <td>Data Breach Notification</td>
-                            <td>Mandatory for eligible data breaches</td>
-                            <td>Mandatory within 72 hours of awareness</td>
-                        </tr>
-                        <tr>
-                            <td>Penalties</td>
-                            <td>Up to $2.1M for organizations</td>
-                            <td>Up to 4% of global annual turnover or €20M</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        
-        <!-- FLASHCARDS SECTION -->
-        <div id="flashcards" class="content-section">
-            <h2>Interactive Flashcards</h2>
-            <p>Click on flashcards to flip them. Use navigation to move between cards.</p>
-            
-            <div class="session-selector">
-                <div class="session-btn active" data-session="all">All Sessions</div>
-                <div class="session-btn" data-session="1">Session 1</div>
-                <div class="session-btn" data-session="2">Session 2</div>
-                <div class="session-btn" data-session="3">Session 3</div>
-            </div>
-            
-            <div class="flashcard-container">
-                <div class="flashcard">
-                    <div class="flashcard-front">
-                        <h3>What does the "C" in CIA Triad stand for and what does it mean?</h3>
-                        <p>Click to flip</p>
-                    </div>
-                    <div class="flashcard-back">
-                        <h3>Confidentiality</h3>
-                        <p>Ensuring that only approved individuals may access information. This is typically achieved through encryption, access controls, and authentication mechanisms.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flashcard-nav">
-                <button class="btn" id="prev-card">Previous</button>
-                <span id="card-counter">1/20</span>
-                <button class="btn" id="next-card">Next</button>
-            </div>
-            
-            <div style="text-align: center; margin-top: 1rem;">
-                <button class="btn btn-outline" id="shuffle-cards">Shuffle Cards</button>
-            </div>
-        </div>
-        
-        <!-- QUIZZES SECTION -->
-        <div id="quizzes" class="content-section">
-            <h2>Knowledge Check Quizzes</h2>
-            <p>Test your understanding with these quiz questions.</p>
-            
-            <div class="session-selector">
-                <div class="session-btn active" data-quiz="all">All Sessions</div>
-                <div class="session-btn" data-quiz="1">Session 1</div>
-                <div class="session-btn" data-quiz="2">Session 2</div>
-                <div class="session-btn" data-quiz="3">Session 3</div>
-            </div>
-            
-            <div class="progress-bar">
-                <div class="progress" id="quiz-progress"></div>
+                <h3>Issue-Specific Security Policy (ISSP)</h3>
+                <ul>
+                    <li>Provides detailed, targeted guidance</li>
+                    <li>Instruction for secure use of a technology systems</li>
+                    <li>Begins with introduction to fundamental technological philosophy of the organization</li>
+                    <li>Protects organization from inefficiency and ambiguity</li>
+                    <li>Documents how the technology-based system is controlled</li>
+                    <li>Identifies the processes and authorities that provide this control</li>
+                    <li>Indemnifies the organization against liability for an employee's inappropriate or illegal system use</li>
+                </ul>
+                
+                <h3>Issue-Specific Security Policy - contd</h3>
+                <ul>
+                    <li>ISSP topics
+                        <ul>
+                            <li>Email and internet use</li>
+                            <li>Minimum system configurations</li>
+                            <li>Prohibitions against hacking</li>
+                            <li>Home use of company-owned computer equipment</li>
+                            <li>Use of personal equipment on company networks</li>
+                            <li>Use of telecommunications technologies</li>
+                            <li>Use of photocopy equipment</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>Components of the ISSP</h3>
+                <ul>
+                    <li>Statement of Purpose</li>
+                    <li>Scope and applicability</li>
+                    <li>Definition of technology addressed</li>
+                    <li>Responsibilities</li>
+                    <li>Authorized Access and Usage of Equipment
+                        <ul>
+                            <li>User access</li>
+                            <li>Fair and responsible use</li>
+                            <li>Protection of privacy</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>Components of the ISSP - contd</h3>
+                <ul>
+                    <li>Prohibited Usage of Equipment
+                        <ul>
+                            <li>Disruptive use or misuse</li>
+                            <li>Criminal use</li>
+                            <li>Offensive or harassing materials</li>
+                            <li>Copyrighted, licensed or other intellectual property</li>
+                            <li>Other restrictions</li>
+                        </ul>
+                    </li>
+                    <li>Systems management
+                        <ul>
+                            <li>Management of stored materials</li>
+                            <li>Employer monitoring</li>
+                            <li>Virus protection</li>
+                            <li>Physical security</li>
+                            <li>Encryption</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>Components of the ISSP - contd</h3>
+                <ul>
+                    <li>Violations of policy
+                        <ul>
+                            <li>Procedures for reporting violations</li>
+                            <li>Penalties for violations</li>
+                        </ul>
+                    </li>
+                    <li>Policy review and modification
+                        <ul>
+                            <li>Scheduled review of policy and procedures for modification</li>
+                        </ul>
+                    </li>
+                    <li>Limitations of liability
+                        <ul>
+                            <li>Statements of liability or disclaimers</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>System-Specific Security Policy</h3>
+                <ul>
+                    <li>System-specific security policies (SysSPs) frequently do not look like other types of policy</li>
+                    <li>may function as standards or procedures to be used when configuring or maintaining systems</li>
+                    <li>SysSPs can be separated into
+                        <ul>
+                            <li>Management guidance</li>
+                            <li>Technical specifications</li>
+                        </ul>
+                    </li>
+                    <li>Or combined in a single policy document</li>
+                </ul>
+                
+                <h3>Managerial Guidance SysSPs</h3>
+                <ul>
+                    <li>Created by management to guide the implementation and configuration of technology</li>
+                    <li>Applies to any technology that affects the confidentiality, integrity or availability of information, e.g. firewall configuration</li>
+                    <li>Informs technologists of management intent</li>
+                </ul>
+                
+                <h3>Technical Specifications SysSPs</h3>
+                <ul>
+                    <li>System administrators' directions on implementing managerial policy</li>
+                    <li>Each type of equipment has its own type of policies</li>
+                    <li>General methods of implementing technical controls
+                        <ul>
+                            <li>Access control lists</li>
+                            <li>Configuration rules</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>Access Control Lists</h3>
+                <ul>
+                    <li>Include the user access lists, matrices, and capability tables that govern the rights and privileges</li>
+                    <li>A similar method that specifies which subjects and objects users or groups can access is called a capability table</li>
+                    <li>These specifications are frequently complex matrices, rather than simple lists or tables</li>
+                    <li>Enable administrations to restrict access according to user, computer, time, duration, or even a particular file</li>
+                </ul>
+                
+                <h3>Technical Specifications SysSPs - contd</h3>
+                <ul>
+                    <li>Access control lists regulate
+                        <ul>
+                            <li>Who can use the system</li>
+                            <li>What authorized users can access</li>
+                            <li>When authorized users can access the system</li>
+                            <li>Where authorized users can access the system from</li>
+                            <li>How authorized users can access the system</li>
+                        </ul>
+                    </li>
+                    <li>Restricting what users can access, e.g. printers, files, communications, and applications</li>
+                    <li>Administrators set user privileges
+                        <ul>
+                            <li>Read, write, create, modify, delete, compare, copy</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>Technical Specifications SysSPs - contd</h3>
+                <ul>
+                    <li>Configuration rules</li>
+                    <li>Specific configuration codes entered into security systems</li>
+                    <li>Guide the execution of the system when information is passing through it</li>
+                    <li>Many security systems require specific configuration scripts telling the systems what actions to perform on each set of information they process</li>
+                </ul>
             </div>
             
             <div class="quiz-container">
-                <div class="quiz-question">
-                    <h3>What are the three components of the CIA Triad in information security and what does each component protect?</h3>
-                    <ul class="quiz-options">
-                        <li data-correct="true">Confidentiality (access control), Integrity (data accuracy), Availability (system accessibility)</li>
-                        <li>Cybersecurity (threat prevention), Intelligence (data analysis), Access (user permissions)</li>
-                        <li>Control (system management), Inspection (security auditing), Authorization (user validation)</li>
-                        <li>Confidentiality (privacy protection), Inspection (security monitoring), Access (resource availability)</li>
-                    </ul>
-                    <div class="quiz-feedback">
-                        <p><strong>Correct!</strong> The CIA Triad stands for Confidentiality (ensuring only authorized access), Integrity (maintaining data accuracy), and Availability (ensuring systems and data are accessible when needed).</p>
+                <h3>Session 4-1 Quiz</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="quiz-progress-4-1"></div>
+                </div>
+                <div class="stats">
+                    <span id="quiz-stats-4-1">0/0 questions answered</span>
+                    <span id="quiz-score-4-1">Score: 0%</span>
+                </div>
+                
+                <div id="quiz-4-1">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+                
+                <button id="check-answers-4-1">Check Answers</button>
+                <button id="reset-quiz-4-1" style="display: none;">Reset Quiz</button>
+            </div>
+            
+            <div class="flashcards-container">
+                <h3>Session 4-1 Flashcards</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="flashcard-progress-4-1"></div>
+                </div>
+                <div class="stats">
+                    <span id="flashcard-stats-4-1">0/0 flashcards reviewed</span>
+                </div>
+                
+                <div class="flashcard" id="flashcard-4-1">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h3>Flashcard Front</h3>
+                            <p>Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3>Flashcard Back</h3>
+                            <p>Content will appear here</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div style="text-align: center;">
-                    <button class="btn" id="check-answer">Check Answer</button>
-                    <button class="btn btn-outline" id="next-question" style="display: none;">Next Question</button>
+                <div class="flashcard-controls">
+                    <button id="prev-flashcard-4-1">Previous</button>
+                    <button id="flip-flashcard-4-1">Flip Card</button>
+                    <button id="next-flashcard-4-1">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Session 4-2 Content -->
+        <div id="session4-2" class="content-section">
+            <h2>Session 4-2: Information Security Policy</h2>
+            
+            <div class="slide-content">
+                <h3>Guidelines for Effective Policy</h3>
+                <p>Policies must be properly:</p>
+                <ul>
+                    <li>Developed using industry-accepted practices</li>
+                    <li>Distributed or disseminated using all appropriate methods</li>
+                    <li>Reviewed or read by all employees</li>
+                    <li>Understood by all employees</li>
+                    <li>Formally agreed to by act or assertion</li>
+                    <li>Uniformly applied and enforced</li>
+                </ul>
+                
+                <h3>Development Steps</h3>
+                <ul>
+                    <li>Investigation (goals, support, participation)</li>
+                    <li>Analysis (risk assessment)</li>
+                    <li>Design (components, dissemination)</li>
+                    <li>Implement (detailed specification)</li>
+                    <li>Maintenance</li>
+                </ul>
+                
+                <h3>Distribution</h3>
+                
+                <h3>Policy Comprehension</h3>
+                <ul>
+                    <li>Figure 4-9 Readability statistics</li>
+                    <li>Source: Course Technology/Cengage Learning</li>
+                </ul>
+                
+                <h3>Automated Tools</h3>
+                <ul>
+                    <li>Figure 4-10 The VigilEnt policy center</li>
+                    <li>Source: Course Technology/Cengage Learning</li>
+                </ul>
+                
+                <h3>The Information Securities Policy Made Easy Approach</h3>
+                <ul>
+                    <li>Gathering key reference materials</li>
+                    <li>Defining a framework for policies</li>
+                    <li>Preparing a coverage matrix</li>
+                    <li>Making critical systems design decisions</li>
+                    <li>Structuring review, approval, and enforcement processes</li>
+                </ul>
+                
+                <h3>The Information Securities Policy Made Easy Approach (cont'd.)</h3>
+                <ul>
+                    <li>Figure 4-11 A sample coverage matrix</li>
+                    <li>Source: Course Technology/Cengage Learning</li>
+                </ul>
+                
+                <h3>A Final Note on Policy</h3>
+                <ul>
+                    <li>Lest you believe that the only reason to have policies is to avoid litigation, it is important to emphasize the preventative nature of policy</li>
+                    <li>Policies exist, first and foremost, to inform employees of what is and is not acceptable behavior in the organization</li>
+                    <li>Policy seeks to improve employee productivity, and prevent potentially embarrassing situations</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-container">
+                <h3>Session 4-2 Quiz</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="quiz-progress-4-2"></div>
+                </div>
+                <div class="stats">
+                    <span id="quiz-stats-4-2">0/0 questions answered</span>
+                    <span id="quiz-score-4-2">Score: 0%</span>
+                </div>
+                
+                <div id="quiz-4-2">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+                
+                <button id="check-answers-4-2">Check Answers</button>
+                <button id="reset-quiz-4-2" style="display: none;">Reset Quiz</button>
+            </div>
+            
+            <div class="flashcards-container">
+                <h3>Session 4-2 Flashcards</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="flashcard-progress-4-2"></div>
+                </div>
+                <div class="stats">
+                    <span id="flashcard-stats-4-2">0/0 flashcards reviewed</span>
+                </div>
+                
+                <div class="flashcard" id="flashcard-4-2">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h3>Flashcard Front</h3>
+                            <p>Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3>Flashcard Back</h3>
+                            <p>Content will appear here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <button id="prev-flashcard-4-2">Previous</button>
+                    <button id="flip-flashcard-4-2">Flip Card</button>
+                    <button id="next-flashcard-4-2">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Session 5-1 Content -->
+        <div id="session5-1" class="content-section">
+            <h2>Session 5-1: Ethics, Ethical Principles and Computer Ethics-I</h2>
+            
+            <div class="slide-content">
+                <h3>Why ethics for organisations?</h3>
+                <ul>
+                    <li>A basis for values and visions</li>
+                    <li>To motivate employees</li>
+                    <li>Perhaps demanded by customers</li>
+                    <li>For good relationships to stakeholders</li>
+                    <li>An overall check on plans</li>
+                    <li>To avoid various exposures and risks</li>
+                    <li>Part of governance</li>
+                    <li>Sustainability</li>
+                </ul>
+                
+                <h3>Why ethics II</h3>
+                <ul>
+                    <li>The finance crisis</li>
+                    <li>A number of crimes, near-crimes and transgressions</li>
+                    <li>Managerialism (Robert Locke)</li>
+                    <li>Management not contributing to organisation growth/health</li>
+                    <li>Not contributing to society</li>
+                    <li>Money only management</li>
+                    <li>«Greed is good»</li>
+                    <li>Short term and limited plans</li>
+                </ul>
+                
+                <div class="quote">
+                    <p>Greed is good. Embrace it. Love it. Live it. In fact, greed may be the one thing that can save us. Don't believe me? Greed was the foundation for this country. The brave souls who risked their life to settle in a new country did so out of self interest. Our forefathers recognized the importance of self-interest in the Declaration of Independence where they emphasized our unalienable right to pursue happiness.</p>
+                    <p>- Robert Pagliarini blog, Moneywatch 2010</p>
+                </div>
+                
+                <h3>Why ethics III</h3>
+                <ul>
+                    <li>Self-interest is pervasive economic idea</li>
+                    <li>Not supported by research, as overriding paradigm</li>
+                    <li>Country differences, in Japan a negative personality trait</li>
+                    <li>Other personal goals, sometimes more important:
+                        <ul>
+                            <li>Family and friends</li>
+                            <li>Personal development (e.g. Maslow)</li>
+                            <li>Aestetics, a nice place to live</li>
+                            <li>Contribution to society</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h3>Relevance of ethics to ICT</h3>
+                <ul>
+                    <li>Do good work (Aristotle)</li>
+                    <li>Plan holistically (systems theory)</li>
+                    <li>Consider end use (Aristotle)</li>
+                    <li>Evaluate both ends and means (Kant)</li>
+                    <li>Be stakeholder oriented (ISO 26000)</li>
+                    <li>Take care of the environment (ISO 26000)</li>
+                    <li>Contribute to knowledge</li>
+                </ul>
+                
+                <h3>Definition Ethics</h3>
+                <ul>
+                    <li>Moral philosophy.</li>
+                    <li>Determining rights and wrongs, selecting actions to achieve good results, evaluating motives.</li>
+                    <li>(attempting to summarise several definitions)</li>
+                    <li>The achievement of wisdom, choosing actions that are benefical and acceptable long term; or sustainable. This implies a society focus.</li>
+                </ul>
+                
+                <h3>Definition Morals</h3>
+                <ul>
+                    <li>Beliefs and behaviour of group. The group can be:
+                        <ul>
+                            <li>Nation, or geographical area</li>
+                            <li>Group of nations</li>
+                            <li>Religious or life view groups, and subgroups</li>
+                            <li>Profession or similar</li>
+                            <li>Other organisation, e.g. sports, clan, NGO...</li>
+                        </ul>
+                    </li>
+                    <li>In an international organisation there can be many morals.</li>
+                </ul>
+                
+                <h3>Forms of ethics</h3>
+                <ol>
+                    <li>Metaethics (what is good? etc)</li>
+                    <li>Normative ethics (what should we do?)</li>
+                    <li>Applied ethics (how do we apply ethics to work and lives?)</li>
+                    <li>Moral psychology (the biological and psychological bases)</li>
+                    <li>Descriptive ethics (what morals people follow)</li>
+                </ol>
+            </div>
+            
+            <div class="quiz-container">
+                <h3>Session 5-1 Quiz</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="quiz-progress-5-1"></div>
+                </div>
+                <div class="stats">
+                    <span id="quiz-stats-5-1">0/0 questions answered</span>
+                    <span id="quiz-score-5-1">Score: 0%</span>
+                </div>
+                
+                <div id="quiz-5-1">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+                
+                <button id="check-answers-5-1">Check Answers</button>
+                <button id="reset-quiz-5-1" style="display: none;">Reset Quiz</button>
+            </div>
+            
+            <div class="flashcards-container">
+                <h3>Session 5-1 Flashcards</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="flashcard-progress-5-1"></div>
+                </div>
+                <div class="stats">
+                    <span id="flashcard-stats-5-1">0/0 flashcards reviewed</span>
+                </div>
+                
+                <div class="flashcard" id="flashcard-5-1">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h3>Flashcard Front</h3>
+                            <p>Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3>Flashcard Back</h3>
+                            <p>Content will appear here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <button id="prev-flashcard-5-1">Previous</button>
+                    <button id="flip-flashcard-5-1">Flip Card</button>
+                    <button id="next-flashcard-5-1">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Session 5-2 Content -->
+        <div id="session5-2" class="content-section">
+            <h2>Session 5-2: Ethics, Ethical Principles and Computer Ethics-I</h2>
+            
+            <div class="slide-content">
+                <h3>Codes of ethics</h3>
+                <p>Applying ethics to a profession or discipline, examples:</p>
+                <ul>
+                    <li>ICT</li>
+                    <li>Engineering</li>
+                    <li>Medicine</li>
+                    <li>Law</li>
+                    <li>Journalism</li>
+                    <li>Psychology</li>
+                </ul>
+                
+                <h3>The Challenger disaster</h3>
+                
+                <h3>Symmetrical ethics – the golden rule</h3>
+                <ul>
+                    <li>Do to others what you want them to do to you.</li>
+                    <li>If you demand from others, demand the same from yourself (perhaps more if you are a leader)</li>
+                    <li>See yourself as the other (good even for design!)</li>
+                    <li>Empathy</li>
+                </ul>
+                
+                <h3>the Gold-in Rule:</h3>
+                <p>Do whatever is necessary to bring in the maximum gold, without getting caught</p>
+                <p>http://www.kevinmd.com/bloghttp://www.kevinmd.com/blog</p>
+                
+                <h3>Assymetrical ethics</h3>
+                <ul>
+                    <li>When one party has more resources, knowledge, power</li>
+                    <li>Often in professions (engineering, nursing, law...)</li>
+                    <li>Need to be careful (professional!)</li>
+                    <li>Need to be considerate</li>
+                </ul>
+                
+                <h3>Instrumental ethics</h3>
+                <ul>
+                    <li>Ethics an instrument for achieving something else.</li>
+                    <li>Not based on principles or conviction.</li>
+                    <li>«Greenwashing»</li>
+                    <li>Philantrophy used as an «excuse»</li>
+                </ul>
+                
+                <h3>Principle based ethics</h3>
+                <ul>
+                    <li>Based on principles like (from websites):
+                        <ul>
+                            <li>We want to deliver first class design</li>
+                            <li>We want to be best in our discipline</li>
+                            <li>We will contribute to society</li>
+                            <li>We consider ecological impact</li>
+                            <li>We contribute to environmentalism</li>
+                        </ul>
+                    </li>
+                    <li>Preferably followed by action</li>
+                </ul>
+                <p>Picture from www.bouvet.no, design for Sjømannskirken.</p>
+                
+                <h3>Compliance ethics</h3>
+                <ul>
+                    <li>Within existing laws, standards, guidelines, morals</li>
+                    <li>May need a «compliance officer» in large organisations</li>
+                    <li>- e.g. what does it mean to «follow standard»?</li>
+                    <li>Ensures that organisation «does no wrongs», but difficult</li>
+                </ul>
+                <p>The Ethics & Compliance Officer Association (ECOA) is a member-driven association exclusively for individuals responsible for their organization's ethics, compliance, and business conduct programs. The only organization of its kind, its members represent the largest group of ethics and compliance practitioners in the world. The ECOA is credited with formally "founding" the ethics and compliance field in 1991.</p>
+                <p>www.theecoa.org December 2010</p>
+                
+                <h3>Positive ethics</h3>
+                <ul>
+                    <li>Contributing positively to:
+                        <ul>
+                            <li>Organisation</li>
+                            <li>Profession</li>
+                            <li>Society</li>
+                            <li>Environment</li>
+                            <li>and other stakeholders</li>
+                        </ul>
+                    </li>
+                    <li>Normally cannot balance lack of compliance</li>
+                </ul>
+                <p>Positive ethics 2011:</p>
+                <p>We invite you to submit a a manuscript for the Special Issue of the Journal of Business Ethics on Positive Organizational (POE). This issue targets the Journal of Business Ethics view that ethics encompasses "all human action aimed at securing a good life." Towards this end, more research must be directed toward the best of human functioning, especially within the context of today's ethically challenged business environment and protracted economic downturn.</p>
+                <p>www.strategie-aims.com</p>
+                
+                <h3>The moralist</h3>
+                <ul>
+                    <li>My life view is superior</li>
+                    <li>Other views are inferior</li>
+                    <li>I have the answers</li>
+                    <li>I need no other authority</li>
+                </ul>
+                
+                <h3>The ethicist</h3>
+                <ul>
+                    <li>My life view is based on reflection</li>
+                    <li>I evaluate life views</li>
+                    <li>I have questions</li>
+                    <li>I respect other views</li>
+                </ul>
+                
+                <h3>Aristotle (384-322) ?</h3>
+            </div>
+            
+            <div class="quiz-container">
+                <h3>Session 5-2 Quiz</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="quiz-progress-5-2"></div>
+                </div>
+                <div class="stats">
+                    <span id="quiz-stats-5-2">0/0 questions answered</span>
+                    <span id="quiz-score-5-2">Score: 0%</span>
+                </div>
+                
+                <div id="quiz-5-2">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+                
+                <button id="check-answers-5-2">Check Answers</button>
+                <button id="reset-quiz-5-2" style="display: none;">Reset Quiz</button>
+            </div>
+            
+            <div class="flashcards-container">
+                <h3>Session 5-2 Flashcards</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="flashcard-progress-5-2"></div>
+                </div>
+                <div class="stats">
+                    <span id="flashcard-stats-5-2">0/0 flashcards reviewed</span>
+                </div>
+                
+                <div class="flashcard" id="flashcard-5-2">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h3>Flashcard Front</h3>
+                            <p>Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3>Flashcard Back</h3>
+                            <p>Content will appear here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <button id="prev-flashcard-5-2">Previous</button>
+                    <button id="flip-flashcard-5-2">Flip Card</button>
+                    <button id="next-flashcard-5-2">Next</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Session 5-3 Content -->
+        <div id="session5-3" class="content-section">
+            <h2>Session 5-3: Ethics, Ethical Principles and Computer Ethics-I</h2>
+            
+            <div class="slide-content">
+                <h3>Openness and privacy</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <th style="padding: 10px; border: 1px solid #ddd; text-align: center; background: #f8f9fa;">Openness</th>
+                        <th style="padding: 10px; border: 1px solid #ddd; text-align: center; background: #f8f9fa;">Privacy</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Publish information</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">«Personal room», integrity</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Register information</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Information may cause harm</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Compare information</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Info may cause embarrasment</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Analyse information</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Wrong information</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Find missing information</td>
+                        <td style="padding: 10px; border: 1px solid #ddd;">Wrong use of information</td>
+                    </tr>
+                </table>
+                
+                <h3>Issues:</h3>
+                <ul>
+                    <li>Data Protection</li>
+                    <li>Data Inspectorate</li>
+                    <li>Open Government</li>
+                </ul>
+                
+                <h3>Discussion</h3>
+                <p>Wikileaks Villains or heroes?</p>
+                
+                <h3>Quality information (as applied to website)</h3>
+                <ul>
+                    <li>Correct</li>
+                    <li>Timely</li>
+                    <li>Relevant</li>
+                    <li>Interesting</li>
+                    <li>Useful</li>
+                </ul>
+                
+                <h3>Principles («organisation virtues»):</h3>
+                <p>Already:</p>
+                <ul>
+                    <li>Openness – privacy</li>
+                    <li>Symmetrical – asymmetrical ethics</li>
+                    <li>Quality</li>
+                </ul>
+                <p>Also:</p>
+                <ul>
+                    <li>Legitimacy</li>
+                    <li>Credibility</li>
+                    <li>Traceability</li>
+                    <li>Accountability</li>
+                    <li>Stewardship</li>
+                    <li>Objectivity</li>
+                    <li>Fairness</li>
+                    <li>Flexibility</li>
+                    <li>Creativity</li>
+                    <li>Sustainability</li>
+                </ul>
+                
+                <h3>Ethics applies to:</h3>
+                <ul>
+                    <li>Professional duties</li>
+                    <li>Employee care</li>
+                    <li>Customer care, and supplier responsibilities</li>
+                    <li>Environment care</li>
+                    <li>Ownership (price, value, opportunities..)</li>
+                    <li>Financing</li>
+                    <li>Exploration</li>
+                    <li>* - the list is being extended</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-container">
+                <h3>Session 5-3 Quiz</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="quiz-progress-5-3"></div>
+                </div>
+                <div class="stats">
+                    <span id="quiz-stats-5-3">0/0 questions answered</span>
+                    <span id="quiz-score-5-3">Score: 0%</span>
+                </div>
+                
+                <div id="quiz-5-3">
+                    <!-- Quiz questions will be dynamically inserted here -->
+                </div>
+                
+                <button id="check-answers-5-3">Check Answers</button>
+                <button id="reset-quiz-5-3" style="display: none;">Reset Quiz</button>
+            </div>
+            
+            <div class="flashcards-container">
+                <h3>Session 5-3 Flashcards</h3>
+                <div class="progress-bar">
+                    <div class="progress" id="flashcard-progress-5-3"></div>
+                </div>
+                <div class="stats">
+                    <span id="flashcard-stats-5-3">0/0 flashcards reviewed</span>
+                </div>
+                
+                <div class="flashcard" id="flashcard-5-3">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h3>Flashcard Front</h3>
+                            <p>Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3>Flashcard Back</h3>
+                            <p>Content will appear here</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flashcard-controls">
+                    <button id="prev-flashcard-5-3">Previous</button>
+                    <button id="flip-flashcard-5-3">Flip Card</button>
+                    <button id="next-flashcard-5-3">Next</button>
                 </div>
             </div>
         </div>
     </div>
     
     <footer>
-        <p>NIT2241 Cyber Law Policy and Professional Ethics - Victoria University</p>
-        <p>Use this comprehensive guide to prepare for your assessments effectively.</p>
+        <p>VICTORIA UNIVERSITY - RTO Code 3113, CRICOS Provider Code 00124K (Melbourne), 02475D (Sydney)</p>
+        <p>NIT2241 Cyber Law Policy and Professional Ethics</p>
+        <p>These slides are based on those from Suprakash Datta, Computer Security Management: Assessment and Forensics</p>
     </footer>
 
     <script>
@@ -764,188 +1166,758 @@
             });
         });
         
-        // Flashcard functionality
-        const flashcards = [
-            {
-                front: "What does the 'C' in CIA Triad stand for and what does it mean?",
-                back: "Confidentiality - Ensuring that only approved individuals may access information. This is typically achieved through encryption, access controls, and authentication mechanisms.",
-                session: 1
-            },
-            {
-                front: "What is the difference between ethics and laws?",
-                back: "Ethics are rules for socially acceptable behavior (not enforced by courts), while Laws are rules that mandate/prohibit behavior (enforced by authorities). Ethics define what you should do, while laws define what you must do.",
-                session: 2
-            },
-            {
-                front: "What is the main Australian legislation that protects personal information and what are its key components?",
-                back: "Privacy Act 1988, which contains the Australian Privacy Principles (APPs). The APPs establish standards for collecting, using, storing, and disclosing personal information.",
-                session: 3
-            },
-            {
-                front: "What is the key difference between phishing and pharming?",
-                back: "Phishing uses fraudulent emails to trick users into providing sensitive information, while Pharming redirects users to fake websites even when typing the correct URL by hijacking DNS systems.",
-                session: 3
-            },
-            {
-                front: "What are the three types of hackers based on intent and what distinguishes them?",
-                back: "White-hat (ethical hackers who work to improve security), Black-hat (malicious hackers with criminal intent), and Gray-hat (hackers who operate without authorization but without malicious intent).",
-                session: 3
-            },
-            {
-                front: "What does GDPR stand for, who does it apply to, and what are its key requirements?",
-                back: "General Data Protection Regulation. It applies to any organization processing personal data of EU residents, regardless of location. Key requirements include explicit consent, right to erasure, data breach notification within 72 hours, and privacy by design.",
-                session: 3
-            },
-            {
-                front: "What is the purpose of a 'clean desk policy' in information security?",
-                back: "To ensure that classified or sensitive information is properly secured at the end of the business day, reducing the risk of unauthorized access or information leakage.",
-                session: 2
-            },
-            {
-                front: "What is the concept of 'defence in depth' in security architecture?",
-                back: "Implementing security in multiple layers so that an intruder faces multiple controls. If one layer fails, others provide backup protection.",
-                session: 2
-            },
-            {
-                front: "What is the role of the OAIC and what are its main functions?",
-                back: "Office of the Australian Information Commissioner enforces privacy laws, handles complaints, conducts investigations, reviews FOI decisions, and provides guidance on data protection.",
-                session: 3
-            },
-            {
-                front: "What are the key differences between APPs and GDPR?",
-                back: "While both have similar requirements, GDPR includes stronger individual rights like the 'Right to be Forgotten', requires explicit consent, has broader extraterritorial application, and imposes significantly higher penalties for non-compliance.",
-                session: 3
-            },
-            {
-                front: "What are the main components of cloud computing service models (IaaS, PaaS, SaaS)?",
-                back: "IaaS provides virtualized computing resources, PaaS provides platform for application development, and SaaS provides software applications as services.",
-                session: 1
-            },
-            {
-                front: "What is the difference between due care and due diligence in cybersecurity?",
-                back: "Due care is knowing what security measures should be implemented (the standard of care), while due diligence is the ongoing process of implementing and maintaining those measures.",
-                session: 2
-            }
-        ];
+        // Quiz data for each session
+        const quizData = {
+            "session4-1": [
+                {
+                    question: "What is the essential foundation of an effective information security program?",
+                    options: [
+                        "Technology",
+                        "Policy",
+                        "Training",
+                        "Monitoring"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What are the objectives of information security policy?",
+                    options: [
+                        "Increased profits, market share, customer satisfaction",
+                        "Reduced risk, compliance with laws, assurance of operational continuity",
+                        "Employee satisfaction, brand recognition, innovation",
+                        "Cost reduction, efficiency, scalability"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Why are policies considered the least expensive means of control?",
+                    options: [
+                        "They don't require any resources to implement",
+                        "They are often the most difficult to implement",
+                        "They prevent issues before they occur with minimal cost",
+                        "They can be copied from other organizations"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "According to the Bulls-eye model, where do threats first meet the organization?",
+                    options: [
+                        "Systems",
+                        "Applications",
+                        "Networks",
+                        "Users"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is the purpose of an Enterprise Information Security Policy (EISP)?",
+                    options: [
+                        "To provide detailed technical specifications",
+                        "To set strategic direction and assign responsibilities",
+                        "To document specific system configurations",
+                        "To outline employee disciplinary procedures"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does ISSP stand for?",
+                    options: [
+                        "International Security Standards Protocol",
+                        "Information Systems Security Policy",
+                        "Issue-Specific Security Policy",
+                        "Integrated System Security Plan"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "Which of these is NOT typically an ISSP topic?",
+                    options: [
+                        "Email and internet use",
+                        "Prohibitions against hacking",
+                        "Financial investment strategies",
+                        "Home use of company-owned equipment"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What do System-Specific Security Policies (SysSPs) frequently look like?",
+                    options: [
+                        "Legal documents",
+                        "Marketing materials",
+                        "Standards or procedures",
+                        "Financial reports"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is the purpose of Access Control Lists (ACLs)?",
+                    options: [
+                        "To track employee attendance",
+                        "To manage financial transactions",
+                        "To govern rights and privileges for system access",
+                        "To document meeting minutes"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What do configuration rules in SysSPs do?",
+                    options: [
+                        "Define employee work schedules",
+                        "Guide the execution of security systems",
+                        "Set company financial targets",
+                        "Determine marketing strategies"
+                    ],
+                    correct: 1
+                }
+            ],
+            "session4-2": [
+                {
+                    question: "What is the first guideline for effective policy development?",
+                    options: [
+                        "Policies must be developed using industry-accepted practices",
+                        "Policies must be uniformly enforced",
+                        "Policies must be understood by all employees",
+                        "Policies must be formally agreed to"
+                    ],
+                    correct: 0
+                },
+                {
+                    question: "What is the first step in policy development?",
+                    options: [
+                        "Analysis",
+                        "Design",
+                        "Investigation",
+                        "Implementation"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What does the Investigation step involve?",
+                    options: [
+                        "Risk assessment",
+                        "Components and dissemination",
+                        "Goals, support, and participation",
+                        "Detailed specification"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is the purpose of policy readability statistics?",
+                    options: [
+                        "To make policies look more professional",
+                        "To ensure employees can understand the policies",
+                        "To reduce printing costs",
+                        "To meet legal requirements"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What automated tool is mentioned for policy management?",
+                    options: [
+                        "PolicyPro",
+                        "SecurePolicy",
+                        "The VigilEnt Policy Center",
+                        "ComplianceManager"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is the first step in the Information Security Policy Made Easy approach?",
+                    options: [
+                        "Defining a framework for policies",
+                        "Gathering key reference materials",
+                        "Preparing a coverage matrix",
+                        "Making critical systems design decisions"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does a coverage matrix do?",
+                    options: [
+                        "Tracks employee attendance at policy training",
+                        "Maps policies to regulations and risks",
+                        "Calculates the cost of policy implementation",
+                        "Measures policy effectiveness"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "According to the final note on policy, what is the primary purpose of policies?",
+                    options: [
+                        "To avoid litigation",
+                        "To inform employees of acceptable behavior",
+                        "To impress customers",
+                        "To meet regulatory requirements"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What do policies seek to improve according to the final note?",
+                    options: [
+                        "Profit margins",
+                        "Employee productivity",
+                        "Market share",
+                        "Brand recognition"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What potentially embarrassing situations do policies seek to prevent?",
+                    options: [
+                        "Office parties",
+                        "Team building exercises",
+                        "Inappropriate employee behavior",
+                        "Company picnics"
+                    ],
+                    correct: 2
+                }
+            ],
+            "session5-1": [
+                {
+                    question: "Why do organizations need ethics according to the slides?",
+                    options: [
+                        "To increase profits",
+                        "As a basis for values and visions",
+                        "To reduce employee count",
+                        "To simplify operations"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is one reason ethics can motivate employees?",
+                    options: [
+                        "Higher salaries",
+                        "Sense of purpose and values",
+                        "More vacation time",
+                        "Better office space"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What concept did Robert Locke criticize?",
+                    options: [
+                        "Social responsibility",
+                        "Managerialism",
+                        "Environmental sustainability",
+                        "Technological innovation"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "According to the Robert Pagliarini blog excerpt, what was the foundation for the country?",
+                    options: [
+                        "Altruism",
+                        "Greed",
+                        "Religion",
+                        "Education"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "How is self-interest viewed in Japan according to the slides?",
+                    options: [
+                        "As a positive personality trait",
+                        "As a negative personality trait",
+                        "As irrelevant to business",
+                        "As essential for success"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What did Aristotle contribute to ICT ethics?",
+                    options: [
+                        "Stakeholder orientation",
+                        "Environmental care",
+                        "Do good work and consider end use",
+                        "Knowledge contribution"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is ethics defined as?",
+                    options: [
+                        "Company rules and regulations",
+                        "Legal requirements",
+                        "Moral philosophy",
+                        "Religious teachings"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "How are morals defined?",
+                    options: [
+                        "Personal preferences",
+                        "Legal requirements",
+                        "Beliefs and behavior of a group",
+                        "Universal truths"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "Which form of ethics asks 'what is good?'",
+                    options: [
+                        "Normative ethics",
+                        "Applied ethics",
+                        "Metaethics",
+                        "Moral psychology"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What does descriptive ethics study?",
+                    options: [
+                        "What people should do",
+                        "How to apply ethics to work",
+                        "What morals people actually follow",
+                        "The biological bases of morality"
+                    ],
+                    correct: 2
+                }
+            ],
+            "session5-2": [
+                {
+                    question: "What are codes of ethics applied to?",
+                    options: [
+                        "Personal life only",
+                        "Professions or disciplines",
+                        "Government regulations only",
+                        "International treaties"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which disaster is mentioned as an example of engineering ethics failure?",
+                    options: [
+                        "Chernobyl",
+                        "The Challenger",
+                        "Three Mile Island",
+                        "Deepwater Horizon"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is the Golden Rule of symmetrical ethics?",
+                    options: [
+                        "Do whatever brings maximum gold",
+                        "Do to others what you want them to do to you",
+                        "The one with the gold makes the rules",
+                        "Demand more from others than yourself"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is the 'Gold-in' Rule?",
+                    options: [
+                        "A serious ethical principle",
+                        "A satirical take on greed-driven behavior",
+                        "A financial regulation",
+                        "A religious teaching"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "When does asymmetrical ethics apply?",
+                    options: [
+                        "When all parties have equal power",
+                        "When one party has more resources, knowledge, or power",
+                        "In personal relationships only",
+                        "In financial transactions only"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is instrumental ethics?",
+                    options: [
+                        "Ethics based on musical principles",
+                        "Ethics as a tool to achieve something else",
+                        "Ethics for machine learning",
+                        "Ethics in manufacturing"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What is 'greenwashing'?",
+                    options: [
+                        "Environmental cleaning",
+                        "Fake environmentalism",
+                        "Sustainable agriculture",
+                        "Eco-friendly products"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does principle-based ethics require?",
+                    options: [
+                        "Legal compliance only",
+                        "Action following principles",
+                        "Financial success",
+                        "Government approval"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does compliance ethics ensure?",
+                    options: [
+                        "Maximum profits",
+                        "Organization 'does no wrongs'",
+                        "Employee happiness",
+                        "Market dominance"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "How does positive ethics differ from compliance ethics?",
+                    options: [
+                        "It focuses only on profits",
+                        "It goes beyond compliance to contribute positively",
+                        "It ignores legal requirements",
+                        "It applies only to large organizations"
+                    ],
+                    correct: 1
+                }
+            ],
+            "session5-3": [
+                {
+                    question: "What is the tension between openness and privacy?",
+                    options: [
+                        "They are the same concept",
+                        "They are completely unrelated",
+                        "They represent competing values",
+                        "Openness always trumps privacy"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What does openness involve according to the table?",
+                    options: [
+                        "Keeping information secret",
+                        "Publishing and analyzing information",
+                        "Protecting personal data only",
+                        "Following government regulations"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What privacy concern is mentioned regarding information?",
+                    options: [
+                        "It may be too expensive",
+                        "It may cause harm or embarrassment",
+                        "It may be difficult to store",
+                        "It may increase profits"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What organization is mentioned in the discussion of openness vs privacy?",
+                    options: [
+                        "Google",
+                        "Facebook",
+                        "Wikileaks",
+                        "The New York Times"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What are the characteristics of quality information?",
+                    options: [
+                        "Expensive, complex, proprietary",
+                        "Correct, timely, relevant, interesting, useful",
+                        "Lengthy, detailed, technical",
+                        "Simple, brief, entertaining"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "Which of these is NOT listed as an organizational virtue?",
+                    options: [
+                        "Legitimacy",
+                        "Credibility",
+                        "Profitability",
+                        "Accountability"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What does stewardship refer to in organizational virtues?",
+                    options: [
+                        "Financial management",
+                        "Responsible management of resources",
+                        "Employee supervision",
+                        "Marketing strategy"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "What does traceability mean in the context of organizational virtues?",
+                    options: [
+                        "Ability to track shipments",
+                        "Ability to follow the path of decisions or data",
+                        "Employee location tracking",
+                        "Financial auditing"
+                    ],
+                    correct: 1
+                },
+                {
+                    question: "According to the slides, what does ethics apply to?",
+                    options: [
+                        "Only professional duties",
+                        "Only customer care",
+                        "Multiple areas including professional duties and environment care",
+                        "Only financial matters"
+                    ],
+                    correct: 2
+                },
+                {
+                    question: "What is indicated by the asterisk next to the list of what ethics applies to?",
+                    options: [
+                        "These items are optional",
+                        "The list is being extended",
+                        "These are the most important items",
+                        "These items are required by law"
+                    ],
+                    correct: 1
+                }
+            ]
+        };
         
-        let currentCardIndex = 0;
-        const cardElement = document.querySelector('.flashcard');
-        const cardCounter = document.getElementById('card-counter');
-        const prevButton = document.getElementById('prev-card');
-        const nextButton = document.getElementById('next-card');
-        const shuffleButton = document.getElementById('shuffle-cards');
-        const sessionButtons = document.querySelectorAll('.session-btn[data-session]');
+        // Flashcard data for each session
+        const flashcardData = {
+            "session4-1": [
+                { front: "What is the essential foundation of an effective information security program?", back: "Policy" },
+                { front: "What are the three main objectives of information security policy?", back: "Reduced risk, compliance with laws and regulations, assurance of operational continuity" },
+                { front: "Why are policies considered the least expensive means of control?", back: "They prevent issues before they occur with minimal cost" },
+                { front: "According to the Bulls-eye model, what are the three layers of defense?", back: "Networks, Systems, Applications" },
+                { front: "What does EISP stand for and what is its purpose?", back: "Enterprise Information Security Program Policy - sets strategic direction and assigns responsibilities" },
+                { front: "What does ISSP stand for and what does it provide?", back: "Issue-Specific Security Policy - provides detailed, targeted guidance for specific technologies" },
+                { front: "What are some common ISSP topics?", back: "Email and internet use, prohibitions against hacking, home use of company equipment" },
+                { front: "What are the two types of System-Specific Security Policies (SysSPs)?", back: "Managerial guidance and technical specifications" },
+                { front: "What do Access Control Lists (ACLs) regulate?", back: "Who can use the system, what they can access, when, where, and how" },
+                { front: "What is the purpose of configuration rules in SysSPs?", back: "To guide the execution of security systems when information is passing through them" }
+            ],
+            "session4-2": [
+                { front: "What are the six guidelines for effective policy?", back: "Properly developed, distributed, reviewed, understood, agreed to, and uniformly enforced" },
+                { front: "What are the five steps in policy development?", back: "Investigation, Analysis, Design, Implementation, Maintenance" },
+                { front: "What does the Investigation step involve?", back: "Goals, support, and participation" },
+                { front: "Why is policy readability important?", back: "To ensure employees can understand the policies" },
+                { front: "What automated tool is mentioned for policy management?", back: "The VigilEnt Policy Center" },
+                { front: "What is the first step in the Information Security Policy Made Easy approach?", back: "Gathering key reference materials" },
+                { front: "What is a coverage matrix used for?", back: "Mapping policies to regulations and risks" },
+                { front: "According to the final note, what is the primary purpose of policies?", back: "To inform employees of acceptable behavior" },
+                { front: "What do policies seek to improve?", back: "Employee productivity" },
+                { front: "What potentially embarrassing situations do policies seek to prevent?", back: "Inappropriate employee behavior" }
+            ],
+            "session5-1": [
+                { front: "Why do organizations need ethics?", back: "As a basis for values and visions, to motivate employees, for good stakeholder relationships" },
+                { front: "What concept did Robert Locke criticize?", back: "Managerialism - management focused only on money, not growth or society" },
+                { front: "According to the Robert Pagliarini blog, what was the foundation for the country?", back: "Greed/self-interest" },
+                { front: "How is self-interest viewed in Japan?", back: "As a negative personality trait" },
+                { front: "What are some personal goals that can be more important than self-interest?", back: "Family and friends, personal development, contribution to society" },
+                { front: "What is the definition of ethics?", back: "Moral philosophy - determining right and wrong, selecting actions to achieve good results" },
+                { front: "What is the definition of morals?", back: "Beliefs and behavior of a group" },
+                { front: "What are the five forms of ethics?", back: "Metaethics, Normative ethics, Applied ethics, Moral psychology, Descriptive ethics" },
+                { front: "What does metaethics study?", back: "What is good? Fundamental questions about ethics" },
+                { front: "What does descriptive ethics study?", back: "What morals people actually follow" }
+            ],
+            "session5-2": [
+                { front: "What are codes of ethics applied to?", back: "Professions or disciplines like ICT, engineering, medicine, law" },
+                { front: "What disaster is mentioned as an example of engineering ethics failure?", back: "The Challenger disaster" },
+                { front: "What is the Golden Rule of symmetrical ethics?", back: "Do to others what you want them to do to you" },
+                { front: "What is the 'Gold-in' Rule?", back: "A satirical rule: Do whatever brings maximum gold without getting caught" },
+                { front: "When does asymmetrical ethics apply?", back: "When one party has more resources, knowledge, or power" },
+                { front: "What is instrumental ethics?", back: "Using ethics as a tool to achieve something else, not based on principles" },
+                { front: "What is 'greenwashing'?", back: "Fake environmentalism - pretending to be environmentally responsible" },
+                { front: "What is principle-based ethics?", back: "Ethics based on clear principles like contributing to society, followed by action" },
+                { front: "What is compliance ethics?", back: "Acting within existing laws, standards, guidelines, and morals" },
+                { front: "What is positive ethics?", back: "Going beyond compliance to positively contribute to organization, profession, society, environment" }
+            ],
+            "session5-3": [
+                { front: "What is the tension between openness and privacy?", back: "They represent competing values that need to be balanced" },
+                { front: "What does openness involve?", back: "Publishing, registering, comparing, analyzing, and finding missing information" },
+                { front: "What does privacy involve?", back: "Protecting personal information that may cause harm, embarrassment, or be misused" },
+                { front: "What organization is mentioned in the discussion of openness vs privacy?", back: "Wikileaks" },
+                { front: "What are the characteristics of quality information?", back: "Correct, timely, relevant, interesting, useful" },
+                { front: "What are some organizational virtues/principles?", back: "Legitimacy, credibility, traceability, accountability, stewardship, objectivity, fairness" },
+                { front: "What does stewardship mean in organizational virtues?", back: "Responsible management of resources entrusted to the organization" },
+                { front: "What does traceability mean?", back: "Ability to follow the path of decisions, actions, or data" },
+                { front: "What does ethics apply to according to the slides?", back: "Professional duties, employee care, customer care, environment care, ownership, financing, exploration" },
+                { front: "What does the asterisk next to the list of what ethics applies to indicate?", back: "The list is being extended" }
+            ]
+        };
         
-        // Initialize card counter
-        updateCardCounter();
-        
-        // Flip card on click
-        cardElement.addEventListener('click', () => {
-            cardElement.classList.toggle('flipped');
+        // Initialize quizzes and flashcards for each session
+        Object.keys(quizData).forEach(sessionId => {
+            initializeQuiz(sessionId);
+            initializeFlashcards(sessionId);
         });
         
-        // Navigation buttons
-        prevButton.addEventListener('click', () => {
-            if (currentCardIndex > 0) {
-                currentCardIndex--;
-                updateCard();
-            }
-        });
-        
-        nextButton.addEventListener('click', () => {
-            if (currentCardIndex < flashcards.length - 1) {
-                currentCardIndex++;
-                updateCard();
-            }
-        });
-        
-        // Shuffle cards
-        shuffleButton.addEventListener('click', () => {
-            // Simple shuffle algorithm
-            for (let i = flashcards.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
-            }
-            currentCardIndex = 0;
-            updateCard();
-        });
-        
-        // Session filtering
-        sessionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                sessionButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // In a full implementation, this would filter cards by session
-                // For this demo, we'll just reset to the first card
-                currentCardIndex = 0;
-                updateCard();
+        function initializeQuiz(sessionId) {
+            const quizContainer = document.getElementById(`quiz-${sessionId}`);
+            const checkButton = document.getElementById(`check-answers-${sessionId}`);
+            const resetButton = document.getElementById(`reset-quiz-${sessionId}`);
+            const progressBar = document.getElementById(`quiz-progress-${sessionId}`);
+            const statsElement = document.getElementById(`quiz-stats-${sessionId}`);
+            const scoreElement = document.getElementById(`quiz-score-${sessionId}`);
+            
+            const questions = quizData[sessionId];
+            let userAnswers = new Array(questions.length).fill(null);
+            let quizSubmitted = false;
+            
+            // Create quiz questions
+            questions.forEach((q, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.innerHTML = `
+                    <h4>${index + 1}. ${q.question}</h4>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <div class="option" data-question="${index}" data-option="${optIndex}">
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                quizContainer.appendChild(questionElement);
             });
-        });
-        
-        function updateCard() {
-            const card = flashcards[currentCardIndex];
-            cardElement.querySelector('.flashcard-front h3').textContent = card.front;
             
-            const backParts = card.back.split(' - ');
-            cardElement.querySelector('.flashcard-back h3').textContent = backParts[0];
-            cardElement.querySelector('.flashcard-back p').textContent = backParts[1] || card.back;
+            // Add event listeners to options
+            quizContainer.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (quizSubmitted) return;
+                    
+                    const questionIndex = parseInt(this.dataset.question);
+                    const optionIndex = parseInt(this.dataset.option);
+                    
+                    // Remove selected class from all options in this question
+                    const allOptions = this.parentElement.querySelectorAll('.option');
+                    allOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Store user's answer
+                    userAnswers[questionIndex] = optionIndex;
+                    
+                    updateProgress();
+                });
+            });
             
-            // Reset flip state
-            cardElement.classList.remove('flipped');
+            // Check answers button
+            checkButton.addEventListener('click', function() {
+                if (quizSubmitted) return;
+                
+                let correctCount = 0;
+                
+                questions.forEach((q, index) => {
+                    const userAnswer = userAnswers[index];
+                    const correctAnswer = q.correct;
+                    const options = quizContainer.querySelectorAll(`.option[data-question="${index}"]`);
+                    
+                    if (userAnswer === correctAnswer) {
+                        correctCount++;
+                        options[userAnswer].classList.add('correct');
+                    } else {
+                        if (userAnswer !== null) {
+                            options[userAnswer].classList.add('incorrect');
+                        }
+                        options[correctAnswer].classList.add('correct');
+                    }
+                });
+                
+                const score = Math.round((correctCount / questions.length) * 100);
+                scoreElement.textContent = `Score: ${score}%`;
+                quizSubmitted = true;
+                checkButton.style.display = 'none';
+                resetButton.style.display = 'inline-block';
+            });
             
-            updateCardCounter();
+            // Reset quiz button
+            resetButton.addEventListener('click', function() {
+                userAnswers = new Array(questions.length).fill(null);
+                quizSubmitted = false;
+                
+                quizContainer.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                scoreElement.textContent = 'Score: 0%';
+                checkButton.style.display = 'inline-block';
+                resetButton.style.display = 'none';
+                
+                updateProgress();
+            });
+            
+            function updateProgress() {
+                const answeredCount = userAnswers.filter(answer => answer !== null).length;
+                const progress = (answeredCount / questions.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                statsElement.textContent = `${answeredCount}/${questions.length} questions answered`;
+            }
+            
+            // Initialize progress
+            updateProgress();
         }
         
-        function updateCardCounter() {
-            cardCounter.textContent = `${currentCardIndex + 1}/${flashcards.length}`;
+        function initializeFlashcards(sessionId) {
+            const flashcards = flashcardData[sessionId];
+            const flashcardElement = document.getElementById(`flashcard-${sessionId}`);
+            const prevButton = document.getElementById(`prev-flashcard-${sessionId}`);
+            const flipButton = document.getElementById(`flip-flashcard-${sessionId}`);
+            const nextButton = document.getElementById(`next-flashcard-${sessionId}`);
+            const progressBar = document.getElementById(`flashcard-progress-${sessionId}`);
+            const statsElement = document.getElementById(`flashcard-stats-${sessionId}`);
+            
+            let currentIndex = 0;
+            let reviewedCards = new Set();
+            
+            function showCard(index) {
+                const card = flashcards[index];
+                const front = flashcardElement.querySelector('.flashcard-front');
+                const back = flashcardElement.querySelector('.flashcard-back');
+                
+                front.innerHTML = `<h3>Flashcard ${index + 1}</h3><p>${card.front}</p>`;
+                back.innerHTML = `<h3>Answer</h3><p>${card.back}</p>`;
+                
+                // Reset flip state
+                flashcardElement.classList.remove('flipped');
+                
+                updateProgress();
+            }
+            
+            function updateProgress() {
+                const progress = ((currentIndex + 1) / flashcards.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                statsElement.textContent = `${currentIndex + 1}/${flashcards.length} flashcards reviewed`;
+                
+                // Mark card as reviewed
+                reviewedCards.add(currentIndex);
+            }
+            
+            // Event listeners
+            flashcardElement.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+            
+            flipButton.addEventListener('click', function() {
+                flashcardElement.classList.toggle('flipped');
+            });
+            
+            prevButton.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    showCard(currentIndex);
+                }
+            });
+            
+            nextButton.addEventListener('click', function() {
+                if (currentIndex < flashcards.length - 1) {
+                    currentIndex++;
+                    showCard(currentIndex);
+                }
+            });
+            
+            // Initialize first card
+            showCard(currentIndex);
         }
-        
-        // Quiz functionality
-        const quizQuestions = [
-            {
-                question: "What are the three components of the CIA Triad in information security and what does each component protect?",
-                options: [
-                    "Confidentiality (access control), Integrity (data accuracy), Availability (system accessibility)",
-                    "Cybersecurity (threat prevention), Intelligence (data analysis), Access (user permissions)",
-                    "Control (system management), Inspection (security auditing), Authorization (user validation)",
-                    "Confidentiality (privacy protection), Inspection (security monitoring), Access (resource availability)"
-                ],
-                correct: 0,
-                explanation: "The CIA Triad stands for Confidentiality (ensuring only authorized access), Integrity (maintaining data accuracy), and Availability (ensuring systems and data are accessible when needed).",
-                session: 1
-            },
-            {
-                question: "Which of the following is a key difference between laws and ethics?",
-                options: [
-                    "Laws are enforced by governing authorities, while ethics are not",
-                    "Ethics carry legal sanctions, while laws do not",
-                    "Laws are the same in every country, while ethics vary",
-                    "Ethics are more important than laws"
-                ],
-                correct: 0,
-                explanation: "Laws are enforced by governing authorities with legal sanctions, while ethics define socially acceptable behavior without legal enforcement. Both are important but serve different purposes in society.",
-                session: 2
-            },
-            {
-                question: "What is the primary purpose of the Privacy Act 1988 in Australia and what are its key components?",
-                options: [
-                    "To protect individuals' personal information through the Australian Privacy Principles (APPs)",
-                    "To regulate internet service providers and telecommunications companies",
-                    "To establish cybersecurity standards for businesses and organizations",
-                    "To combat cybercrime and prosecute digital offenders"
-                ],
-                correct: 0,
-                explanation: "The Privacy Act 1988 provides for the protection of individuals' personal information and contains the Australian Privacy Principles (APPs) that govern how organizations handle personal data.",
-                session: 3
-            },
-            {
-                question: "What is the key difference between IaaS, PaaS, and SaaS cloud service models?",
-                options: [
-                    "IaaS provides infrastructure, PaaS provides development platforms, SaaS provides software applications",
-                    "IaaS is for large enterprises, PaaS for medium businesses, SaaS for small businesses",
-                    "IaaS is the most expensive, PaaS is moderately priced, SaaS is the cheapest",
-                    "IaaS requires the most technical knowledge, PaaS requires some knowledge, SaaS requires no technical knowledge"
-                ],
-                correct: 0,
-                explanation: "IaaS (Infrastructure as a Service) provides virtualized computing resources, PaaS (Platform as a Service) provides platforms for application development, and SaaS (Software as a Service)
+    </script>
+</body>
+</html>
