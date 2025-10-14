@@ -1,1923 +1,581 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Law Policy & Professional Ethics Study Hub</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #2ecc71;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-        
-        .logo-icon {
-            font-size: 2.5rem;
-            margin-right: 1rem;
-        }
-        
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-        
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-        
-        .tab {
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            flex: 1;
-            text-align: center;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .tab:hover {
-            background-color: #f8f9fa;
-        }
-        
-        .tab.active {
-            border-bottom: 3px solid var(--secondary);
-            background-color: #f8f9fa;
-            font-weight: 600;
-        }
-        
-        .content-section {
-            display: none;
-            background: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-        
-        .content-section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #eee;
-        }
-        
-        h3 {
-            color: var(--secondary);
-            margin: 1.5rem 0 1rem;
-        }
-        
-        .slide-content {
-            margin-bottom: 2rem;
-        }
-        
-        .slide-content ul {
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .slide-content li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .quote {
-            background: #f8f9fa;
-            border-left: 4px solid var(--secondary);
-            padding: 1rem;
-            margin: 1.5rem 0;
-            font-style: italic;
-        }
-        
-        .quiz-container, .flashcards-container {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .question {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .question:last-child {
-            border-bottom: none;
-        }
-        
-        .options {
-            margin-top: 1rem;
-        }
-        
-        .option {
-            display: block;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem;
-            background: white;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .option:hover {
-            background: #e9ecef;
-        }
-        
-        .option.correct {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .option.incorrect {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .flashcard {
-            perspective: 1000px;
-            height: 250px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .flashcard-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-        
-        .flashcard.flipped .flashcard-inner {
-            transform: rotateY(180deg);
-        }
-        
-        .flashcard-front, .flashcard-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .flashcard-front {
-            background: white;
-            color: var(--primary);
-        }
-        
-        .flashcard-back {
-            background: var(--secondary);
-            color: white;
-            transform: rotateY(180deg);
-        }
-        
-        .flashcard-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-        }
-        
-        button {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        button:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-        
-        .progress-bar {
-            height: 6px;
-            background: #e9ecef;
-            border-radius: 3px;
-            margin: 1rem 0;
-            overflow: hidden;
-        }
-        
-        .progress {
-            height: 100%;
-            background: var(--success);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-        
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #6c757d;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: var(--dark);
-            color: white;
-            margin-top: 3rem;
-        }
-        
-        @media (max-width: 768px) {
-            .tabs {
-                flex-direction: column;
-            }
-            
-            .tab {
-                flex: none;
-            }
-            
-            .flashcard {
-                height: 200px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Law Policy & Professional Ethics Study Hub</title>
+<style>
+:root{--primary:#2c3e50;--secondary:#3498db;--accent:#e74c3c;--light:#ecf0f1;--dark:#2c3e50;--success:#2ecc71;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
+body{background-color:#f5f7fa;color:#333;line-height:1.6;}
+header{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:1.5rem;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+.logo{display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+.logo-icon{font-size:2.5rem;margin-right:1rem;}
+h1{font-size:2.2rem;margin-bottom:0.5rem;}
+.subtitle{font-size:1.2rem;opacity:0.9;}
+.container{max-width:1200px;margin:2rem auto;padding:0 1.5rem;}
+.tabs{display:flex;flex-wrap:wrap;background:white;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,0.05);margin-bottom:2rem;}
+.tab{padding:1rem 1.5rem;cursor:pointer;flex:1;text-align:center;transition:all 0.3s ease;border-bottom:3px solid transparent;}
+.tab:hover{background-color:#f8f9fa;}
+.tab.active{border-bottom:3px solid var(--secondary);background-color:#f8f9fa;font-weight:600;}
+.content-section{display:none;background:white;border-radius:8px;padding:2rem;box-shadow:0 4px 6px rgba(0,0,0,0.05);margin-bottom:2rem;}
+.content-section.active{display:block;animation:fadeIn 0.5s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+h2{color:var(--primary);margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #eee;}
+h3{color:var(--secondary);margin:1.5rem 0 1rem;}
+.slide-content{margin-bottom:2rem;}
+.slide-content ul{padding-left:1.5rem;margin-bottom:1rem;}
+.slide-content li{margin-bottom:0.5rem;}
+.quote{background:#f8f9fa;border-left:4px solid var(--secondary);padding:1rem;margin:1.5rem 0;font-style:italic;}
+.quiz-container,.flashcards-container{background:#f8f9fa;border-radius:8px;padding:1.5rem;margin-top:2rem;}
+.question{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid #ddd;}
+.question:last-child{border-bottom:none;}
+.options{margin-top:1rem;}
+.option{display:block;margin-bottom:0.5rem;padding:0.5rem;background:white;border-radius:4px;cursor:pointer;transition:all 0.2s ease;}
+.option:hover{background:#e9ecef;}
+.option.correct{background:#d4edda;border:1px solid #c3e6cb;}
+.option.incorrect{background:#f8d7da;border:1px solid #f5c6cb;}
+.flashcard{perspective:1000px;height:250px;margin-bottom:1.5rem;}
+.flashcard-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform 0.6s;transform-style:preserve-3d;}
+.flashcard.flipped .flashcard-inner{transform:rotateY(180deg);}
+.flashcard-front,.flashcard-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.5rem;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+.flashcard-front{background:white;color:var(--primary);}
+.flashcard-back{background:var(--secondary);color:white;transform:rotateY(180deg);}
+.flashcard-controls{display:flex;justify-content:space-between;margin-top:1rem;}
+button{background:var(--secondary);color:white;border:none;padding:0.7rem 1.5rem;border-radius:4px;cursor:pointer;transition:all 0.3s ease;font-weight:600;}
+button:hover{background:#2980b9;transform:translateY(-2px);}
+.progress-bar{height:6px;background:#e9ecef;border-radius:3px;margin:1rem 0;overflow:hidden;}
+.progress{height:100%;background:var(--success);width:0%;transition:width 0.3s ease;}
+.stats{display:flex;justify-content:space-between;margin-top:1rem;font-size:0.9rem;color:#6c757d;}
+footer{text-align:center;padding:2rem;background:var(--dark);color:white;margin-top:3rem;}
+@media(max-width:768px){.tabs{flex-direction:column;}.tab{flex:none;}.flashcard{height:200px;}}
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <div class="logo-icon">🔒</div>
-            <div>
-                <h1>Cyber Law Policy & Professional Ethics</h1>
-                <div class="subtitle">VICTORIA UNIVERSITY - RTO Code 3113, CRICOS Provider Code 00124K (Melbourne), 02475D (Sydney)</div>
-            </div>
-        </div>
-    </header>
-    
-    <div class="container">
-        <div class="tabs">
-            <div class="tab active" data-tab="session4-1">Session 4-1</div>
-            <div class="tab" data-tab="session4-2">Session 4-2</div>
-            <div class="tab" data-tab="session5-1">Session 5-1</div>
-            <div class="tab" data-tab="session5-2">Session 5-2</div>
-            <div class="tab" data-tab="session5-3">Session 5-3</div>
-        </div>
-        
-        <!-- Session 4-1 Content -->
-        <div id="session4-1" class="content-section active">
-            <h2>Session 4-1: Information Security Policy</h2>
-            
-            <div class="slide-content">
-                <h3>Introduction</h3>
-                <ul>
-                    <li>Policy is the essential foundation of an effective information security program</li>
-                    <li>Policy maker sets the tone and emphasis on the importance of information security</li>
-                </ul>
-                
-                <h3>Objectives</h3>
-                <ul>
-                    <li>Reduced risk</li>
-                    <li>Compliance with laws and regulations</li>
-                    <li>Assurance of operational continuity, information integrity, and confidentiality</li>
-                </ul>
-                
-                <h3>Why Policy?</h3>
-                <ul>
-                    <li>Policies are the least expensive means of control and often the most difficult to implement</li>
-                    <li>Basic rules for shaping a policy:
-                        <ul>
-                            <li>Policy should never conflict with law</li>
-                            <li>Policy must be able to stand up in court if challenged</li>
-                            <li>Policy must be properly supported and administered</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>Bulls-eye Model</h3>
-                <ul>
-                    <li>Networks: threats first meet the organization's network</li>
-                    <li>Systems: computers and manufacturing systems</li>
-                    <li>Applications: all applications systems</li>
-                </ul>
-                
-                <h3>Why Policy? (cont'd.)</h3>
-                <ul>
-                    <li>Policies are important reference documents</li>
-                    <li>For internal audits</li>
-                    <li>For the resolution of legal disputes about management's due diligence</li>
-                    <li>Policy documents can act as a clear statement of management's intent</li>
-                </ul>
-                
-                <h3>Types of Information Security Policy</h3>
-                <ul>
-                    <li>Enterprise information security program policy</li>
-                    <li>Issue-specific information security policies</li>
-                    <li>Systems-specific policies</li>
-                </ul>
-                
-                <h3>Policy, Standards, and Practices</h3>
-                <ul>
-                    <li>Policy: A plan or course of action that influences decisions
-                        <ul>
-                            <li>must be properly disseminated, read, understood, agreed-to, and uniformly enforced</li>
-                            <li>require constant modification and maintenance</li>
-                        </ul>
-                    </li>
-                    <li>Standards: A more detailed statement of what must be done to comply with policy</li>
-                    <li>Practices: Procedures and guidelines explain how employees will comply with policy</li>
-                </ul>
-                
-                <h3>Enterprise Information Security Policy (EISP)</h3>
-                <ul>
-                    <li>Sets strategic direction, scope, and tone for organization's security efforts</li>
-                    <li>Assigns responsibilities for various areas of information security</li>
-                    <li>Guides development, implementation, and management requirements of information security program</li>
-                </ul>
-                
-                <h3>EISP Elements</h3>
-                <ul>
-                    <li>Corporate philosophy on security</li>
-                    <li>Information security organization and information security roles</li>
-                </ul>
-                
-                <h3>Example ESIP Components</h3>
-                <ul>
-                    <li>Statement of purpose</li>
-                    <li>Information technology security elements</li>
-                    <li>Need for information technology security</li>
-                    <li>Information technology security responsibilities and roles</li>
-                    <li>Reference to other information technology standards and guidelines</li>
-                </ul>
-                
-                <h3>Issue-Specific Security Policy (ISSP)</h3>
-                <ul>
-                    <li>Provides detailed, targeted guidance</li>
-                    <li>Instruction for secure use of a technology systems</li>
-                    <li>Begins with introduction to fundamental technological philosophy of the organization</li>
-                    <li>Protects organization from inefficiency and ambiguity</li>
-                    <li>Documents how the technology-based system is controlled</li>
-                    <li>Identifies the processes and authorities that provide this control</li>
-                    <li>Indemnifies the organization against liability for an employee's inappropriate or illegal system use</li>
-                </ul>
-                
-                <h3>Issue-Specific Security Policy - contd</h3>
-                <ul>
-                    <li>ISSP topics
-                        <ul>
-                            <li>Email and internet use</li>
-                            <li>Minimum system configurations</li>
-                            <li>Prohibitions against hacking</li>
-                            <li>Home use of company-owned computer equipment</li>
-                            <li>Use of personal equipment on company networks</li>
-                            <li>Use of telecommunications technologies</li>
-                            <li>Use of photocopy equipment</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>Components of the ISSP</h3>
-                <ul>
-                    <li>Statement of Purpose</li>
-                    <li>Scope and applicability</li>
-                    <li>Definition of technology addressed</li>
-                    <li>Responsibilities</li>
-                    <li>Authorized Access and Usage of Equipment
-                        <ul>
-                            <li>User access</li>
-                            <li>Fair and responsible use</li>
-                            <li>Protection of privacy</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>Components of the ISSP - contd</h3>
-                <ul>
-                    <li>Prohibited Usage of Equipment
-                        <ul>
-                            <li>Disruptive use or misuse</li>
-                            <li>Criminal use</li>
-                            <li>Offensive or harassing materials</li>
-                            <li>Copyrighted, licensed or other intellectual property</li>
-                            <li>Other restrictions</li>
-                        </ul>
-                    </li>
-                    <li>Systems management
-                        <ul>
-                            <li>Management of stored materials</li>
-                            <li>Employer monitoring</li>
-                            <li>Virus protection</li>
-                            <li>Physical security</li>
-                            <li>Encryption</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>Components of the ISSP - contd</h3>
-                <ul>
-                    <li>Violations of policy
-                        <ul>
-                            <li>Procedures for reporting violations</li>
-                            <li>Penalties for violations</li>
-                        </ul>
-                    </li>
-                    <li>Policy review and modification
-                        <ul>
-                            <li>Scheduled review of policy and procedures for modification</li>
-                        </ul>
-                    </li>
-                    <li>Limitations of liability
-                        <ul>
-                            <li>Statements of liability or disclaimers</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>System-Specific Security Policy</h3>
-                <ul>
-                    <li>System-specific security policies (SysSPs) frequently do not look like other types of policy</li>
-                    <li>may function as standards or procedures to be used when configuring or maintaining systems</li>
-                    <li>SysSPs can be separated into
-                        <ul>
-                            <li>Management guidance</li>
-                            <li>Technical specifications</li>
-                        </ul>
-                    </li>
-                    <li>Or combined in a single policy document</li>
-                </ul>
-                
-                <h3>Managerial Guidance SysSPs</h3>
-                <ul>
-                    <li>Created by management to guide the implementation and configuration of technology</li>
-                    <li>Applies to any technology that affects the confidentiality, integrity or availability of information, e.g. firewall configuration</li>
-                    <li>Informs technologists of management intent</li>
-                </ul>
-                
-                <h3>Technical Specifications SysSPs</h3>
-                <ul>
-                    <li>System administrators' directions on implementing managerial policy</li>
-                    <li>Each type of equipment has its own type of policies</li>
-                    <li>General methods of implementing technical controls
-                        <ul>
-                            <li>Access control lists</li>
-                            <li>Configuration rules</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>Access Control Lists</h3>
-                <ul>
-                    <li>Include the user access lists, matrices, and capability tables that govern the rights and privileges</li>
-                    <li>A similar method that specifies which subjects and objects users or groups can access is called a capability table</li>
-                    <li>These specifications are frequently complex matrices, rather than simple lists or tables</li>
-                    <li>Enable administrations to restrict access according to user, computer, time, duration, or even a particular file</li>
-                </ul>
-                
-                <h3>Technical Specifications SysSPs - contd</h3>
-                <ul>
-                    <li>Access control lists regulate
-                        <ul>
-                            <li>Who can use the system</li>
-                            <li>What authorized users can access</li>
-                            <li>When authorized users can access the system</li>
-                            <li>Where authorized users can access the system from</li>
-                            <li>How authorized users can access the system</li>
-                        </ul>
-                    </li>
-                    <li>Restricting what users can access, e.g. printers, files, communications, and applications</li>
-                    <li>Administrators set user privileges
-                        <ul>
-                            <li>Read, write, create, modify, delete, compare, copy</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>Technical Specifications SysSPs - contd</h3>
-                <ul>
-                    <li>Configuration rules</li>
-                    <li>Specific configuration codes entered into security systems</li>
-                    <li>Guide the execution of the system when information is passing through it</li>
-                    <li>Many security systems require specific configuration scripts telling the systems what actions to perform on each set of information they process</li>
-                </ul>
-            </div>
-            
-            <div class="quiz-container">
-                <h3>Session 4-1 Quiz</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="quiz-progress-4-1"></div>
-                </div>
-                <div class="stats">
-                    <span id="quiz-stats-4-1">0/0 questions answered</span>
-                    <span id="quiz-score-4-1">Score: 0%</span>
-                </div>
-                
-                <div id="quiz-4-1">
-                    <!-- Quiz questions will be dynamically inserted here -->
-                </div>
-                
-                <button id="check-answers-4-1">Check Answers</button>
-                <button id="reset-quiz-4-1" style="display: none;">Reset Quiz</button>
-            </div>
-            
-            <div class="flashcards-container">
-                <h3>Session 4-1 Flashcards</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="flashcard-progress-4-1"></div>
-                </div>
-                <div class="stats">
-                    <span id="flashcard-stats-4-1">0/0 flashcards reviewed</span>
-                </div>
-                
-                <div class="flashcard" id="flashcard-4-1">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <h3>Flashcard Front</h3>
-                            <p>Click to flip</p>
-                        </div>
-                        <div class="flashcard-back">
-                            <h3>Flashcard Back</h3>
-                            <p>Content will appear here</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flashcard-controls">
-                    <button id="prev-flashcard-4-1">Previous</button>
-                    <button id="flip-flashcard-4-1">Flip Card</button>
-                    <button id="next-flashcard-4-1">Next</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Session 4-2 Content -->
-        <div id="session4-2" class="content-section">
-            <h2>Session 4-2: Information Security Policy</h2>
-            
-            <div class="slide-content">
-                <h3>Guidelines for Effective Policy</h3>
-                <p>Policies must be properly:</p>
-                <ul>
-                    <li>Developed using industry-accepted practices</li>
-                    <li>Distributed or disseminated using all appropriate methods</li>
-                    <li>Reviewed or read by all employees</li>
-                    <li>Understood by all employees</li>
-                    <li>Formally agreed to by act or assertion</li>
-                    <li>Uniformly applied and enforced</li>
-                </ul>
-                
-                <h3>Development Steps</h3>
-                <ul>
-                    <li>Investigation (goals, support, participation)</li>
-                    <li>Analysis (risk assessment)</li>
-                    <li>Design (components, dissemination)</li>
-                    <li>Implement (detailed specification)</li>
-                    <li>Maintenance</li>
-                </ul>
-                
-                <h3>Distribution</h3>
-                
-                <h3>Policy Comprehension</h3>
-                <ul>
-                    <li>Figure 4-9 Readability statistics</li>
-                    <li>Source: Course Technology/Cengage Learning</li>
-                </ul>
-                
-                <h3>Automated Tools</h3>
-                <ul>
-                    <li>Figure 4-10 The VigilEnt policy center</li>
-                    <li>Source: Course Technology/Cengage Learning</li>
-                </ul>
-                
-                <h3>The Information Securities Policy Made Easy Approach</h3>
-                <ul>
-                    <li>Gathering key reference materials</li>
-                    <li>Defining a framework for policies</li>
-                    <li>Preparing a coverage matrix</li>
-                    <li>Making critical systems design decisions</li>
-                    <li>Structuring review, approval, and enforcement processes</li>
-                </ul>
-                
-                <h3>The Information Securities Policy Made Easy Approach (cont'd.)</h3>
-                <ul>
-                    <li>Figure 4-11 A sample coverage matrix</li>
-                    <li>Source: Course Technology/Cengage Learning</li>
-                </ul>
-                
-                <h3>A Final Note on Policy</h3>
-                <ul>
-                    <li>Lest you believe that the only reason to have policies is to avoid litigation, it is important to emphasize the preventative nature of policy</li>
-                    <li>Policies exist, first and foremost, to inform employees of what is and is not acceptable behavior in the organization</li>
-                    <li>Policy seeks to improve employee productivity, and prevent potentially embarrassing situations</li>
-                </ul>
-            </div>
-            
-            <div class="quiz-container">
-                <h3>Session 4-2 Quiz</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="quiz-progress-4-2"></div>
-                </div>
-                <div class="stats">
-                    <span id="quiz-stats-4-2">0/0 questions answered</span>
-                    <span id="quiz-score-4-2">Score: 0%</span>
-                </div>
-                
-                <div id="quiz-4-2">
-                    <!-- Quiz questions will be dynamically inserted here -->
-                </div>
-                
-                <button id="check-answers-4-2">Check Answers</button>
-                <button id="reset-quiz-4-2" style="display: none;">Reset Quiz</button>
-            </div>
-            
-            <div class="flashcards-container">
-                <h3>Session 4-2 Flashcards</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="flashcard-progress-4-2"></div>
-                </div>
-                <div class="stats">
-                    <span id="flashcard-stats-4-2">0/0 flashcards reviewed</span>
-                </div>
-                
-                <div class="flashcard" id="flashcard-4-2">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <h3>Flashcard Front</h3>
-                            <p>Click to flip</p>
-                        </div>
-                        <div class="flashcard-back">
-                            <h3>Flashcard Back</h3>
-                            <p>Content will appear here</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flashcard-controls">
-                    <button id="prev-flashcard-4-2">Previous</button>
-                    <button id="flip-flashcard-4-2">Flip Card</button>
-                    <button id="next-flashcard-4-2">Next</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Session 5-1 Content -->
-        <div id="session5-1" class="content-section">
-            <h2>Session 5-1: Ethics, Ethical Principles and Computer Ethics-I</h2>
-            
-            <div class="slide-content">
-                <h3>Why ethics for organisations?</h3>
-                <ul>
-                    <li>A basis for values and visions</li>
-                    <li>To motivate employees</li>
-                    <li>Perhaps demanded by customers</li>
-                    <li>For good relationships to stakeholders</li>
-                    <li>An overall check on plans</li>
-                    <li>To avoid various exposures and risks</li>
-                    <li>Part of governance</li>
-                    <li>Sustainability</li>
-                </ul>
-                
-                <h3>Why ethics II</h3>
-                <ul>
-                    <li>The finance crisis</li>
-                    <li>A number of crimes, near-crimes and transgressions</li>
-                    <li>Managerialism (Robert Locke)</li>
-                    <li>Management not contributing to organisation growth/health</li>
-                    <li>Not contributing to society</li>
-                    <li>Money only management</li>
-                    <li>«Greed is good»</li>
-                    <li>Short term and limited plans</li>
-                </ul>
-                
-                <div class="quote">
-                    <p>Greed is good. Embrace it. Love it. Live it. In fact, greed may be the one thing that can save us. Don't believe me? Greed was the foundation for this country. The brave souls who risked their life to settle in a new country did so out of self interest. Our forefathers recognized the importance of self-interest in the Declaration of Independence where they emphasized our unalienable right to pursue happiness.</p>
-                    <p>- Robert Pagliarini blog, Moneywatch 2010</p>
-                </div>
-                
-                <h3>Why ethics III</h3>
-                <ul>
-                    <li>Self-interest is pervasive economic idea</li>
-                    <li>Not supported by research, as overriding paradigm</li>
-                    <li>Country differences, in Japan a negative personality trait</li>
-                    <li>Other personal goals, sometimes more important:
-                        <ul>
-                            <li>Family and friends</li>
-                            <li>Personal development (e.g. Maslow)</li>
-                            <li>Aestetics, a nice place to live</li>
-                            <li>Contribution to society</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <h3>Relevance of ethics to ICT</h3>
-                <ul>
-                    <li>Do good work (Aristotle)</li>
-                    <li>Plan holistically (systems theory)</li>
-                    <li>Consider end use (Aristotle)</li>
-                    <li>Evaluate both ends and means (Kant)</li>
-                    <li>Be stakeholder oriented (ISO 26000)</li>
-                    <li>Take care of the environment (ISO 26000)</li>
-                    <li>Contribute to knowledge</li>
-                </ul>
-                
-                <h3>Definition Ethics</h3>
-                <ul>
-                    <li>Moral philosophy.</li>
-                    <li>Determining rights and wrongs, selecting actions to achieve good results, evaluating motives.</li>
-                    <li>(attempting to summarise several definitions)</li>
-                    <li>The achievement of wisdom, choosing actions that are benefical and acceptable long term; or sustainable. This implies a society focus.</li>
-                </ul>
-                
-                <h3>Definition Morals</h3>
-                <ul>
-                    <li>Beliefs and behaviour of group. The group can be:
-                        <ul>
-                            <li>Nation, or geographical area</li>
-                            <li>Group of nations</li>
-                            <li>Religious or life view groups, and subgroups</li>
-                            <li>Profession or similar</li>
-                            <li>Other organisation, e.g. sports, clan, NGO...</li>
-                        </ul>
-                    </li>
-                    <li>In an international organisation there can be many morals.</li>
-                </ul>
-                
-                <h3>Forms of ethics</h3>
-                <ol>
-                    <li>Metaethics (what is good? etc)</li>
-                    <li>Normative ethics (what should we do?)</li>
-                    <li>Applied ethics (how do we apply ethics to work and lives?)</li>
-                    <li>Moral psychology (the biological and psychological bases)</li>
-                    <li>Descriptive ethics (what morals people follow)</li>
-                </ol>
-            </div>
-            
-            <div class="quiz-container">
-                <h3>Session 5-1 Quiz</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="quiz-progress-5-1"></div>
-                </div>
-                <div class="stats">
-                    <span id="quiz-stats-5-1">0/0 questions answered</span>
-                    <span id="quiz-score-5-1">Score: 0%</span>
-                </div>
-                
-                <div id="quiz-5-1">
-                    <!-- Quiz questions will be dynamically inserted here -->
-                </div>
-                
-                <button id="check-answers-5-1">Check Answers</button>
-                <button id="reset-quiz-5-1" style="display: none;">Reset Quiz</button>
-            </div>
-            
-            <div class="flashcards-container">
-                <h3>Session 5-1 Flashcards</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="flashcard-progress-5-1"></div>
-                </div>
-                <div class="stats">
-                    <span id="flashcard-stats-5-1">0/0 flashcards reviewed</span>
-                </div>
-                
-                <div class="flashcard" id="flashcard-5-1">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <h3>Flashcard Front</h3>
-                            <p>Click to flip</p>
-                        </div>
-                        <div class="flashcard-back">
-                            <h3>Flashcard Back</h3>
-                            <p>Content will appear here</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flashcard-controls">
-                    <button id="prev-flashcard-5-1">Previous</button>
-                    <button id="flip-flashcard-5-1">Flip Card</button>
-                    <button id="next-flashcard-5-1">Next</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Session 5-2 Content -->
-        <div id="session5-2" class="content-section">
-            <h2>Session 5-2: Ethics, Ethical Principles and Computer Ethics-I</h2>
-            
-            <div class="slide-content">
-                <h3>Codes of ethics</h3>
-                <p>Applying ethics to a profession or discipline, examples:</p>
-                <ul>
-                    <li>ICT</li>
-                    <li>Engineering</li>
-                    <li>Medicine</li>
-                    <li>Law</li>
-                    <li>Journalism</li>
-                    <li>Psychology</li>
-                </ul>
-                
-                <h3>The Challenger disaster</h3>
-                
-                <h3>Symmetrical ethics – the golden rule</h3>
-                <ul>
-                    <li>Do to others what you want them to do to you.</li>
-                    <li>If you demand from others, demand the same from yourself (perhaps more if you are a leader)</li>
-                    <li>See yourself as the other (good even for design!)</li>
-                    <li>Empathy</li>
-                </ul>
-                
-                <h3>the Gold-in Rule:</h3>
-                <p>Do whatever is necessary to bring in the maximum gold, without getting caught</p>
-                <p>http://www.kevinmd.com/bloghttp://www.kevinmd.com/blog</p>
-                
-                <h3>Assymetrical ethics</h3>
-                <ul>
-                    <li>When one party has more resources, knowledge, power</li>
-                    <li>Often in professions (engineering, nursing, law...)</li>
-                    <li>Need to be careful (professional!)</li>
-                    <li>Need to be considerate</li>
-                </ul>
-                
-                <h3>Instrumental ethics</h3>
-                <ul>
-                    <li>Ethics an instrument for achieving something else.</li>
-                    <li>Not based on principles or conviction.</li>
-                    <li>«Greenwashing»</li>
-                    <li>Philantrophy used as an «excuse»</li>
-                </ul>
-                
-                <h3>Principle based ethics</h3>
-                <ul>
-                    <li>Based on principles like (from websites):
-                        <ul>
-                            <li>We want to deliver first class design</li>
-                            <li>We want to be best in our discipline</li>
-                            <li>We will contribute to society</li>
-                            <li>We consider ecological impact</li>
-                            <li>We contribute to environmentalism</li>
-                        </ul>
-                    </li>
-                    <li>Preferably followed by action</li>
-                </ul>
-                <p>Picture from www.bouvet.no, design for Sjømannskirken.</p>
-                
-                <h3>Compliance ethics</h3>
-                <ul>
-                    <li>Within existing laws, standards, guidelines, morals</li>
-                    <li>May need a «compliance officer» in large organisations</li>
-                    <li>- e.g. what does it mean to «follow standard»?</li>
-                    <li>Ensures that organisation «does no wrongs», but difficult</li>
-                </ul>
-                <p>The Ethics & Compliance Officer Association (ECOA) is a member-driven association exclusively for individuals responsible for their organization's ethics, compliance, and business conduct programs. The only organization of its kind, its members represent the largest group of ethics and compliance practitioners in the world. The ECOA is credited with formally "founding" the ethics and compliance field in 1991.</p>
-                <p>www.theecoa.org December 2010</p>
-                
-                <h3>Positive ethics</h3>
-                <ul>
-                    <li>Contributing positively to:
-                        <ul>
-                            <li>Organisation</li>
-                            <li>Profession</li>
-                            <li>Society</li>
-                            <li>Environment</li>
-                            <li>and other stakeholders</li>
-                        </ul>
-                    </li>
-                    <li>Normally cannot balance lack of compliance</li>
-                </ul>
-                <p>Positive ethics 2011:</p>
-                <p>We invite you to submit a a manuscript for the Special Issue of the Journal of Business Ethics on Positive Organizational (POE). This issue targets the Journal of Business Ethics view that ethics encompasses "all human action aimed at securing a good life." Towards this end, more research must be directed toward the best of human functioning, especially within the context of today's ethically challenged business environment and protracted economic downturn.</p>
-                <p>www.strategie-aims.com</p>
-                
-                <h3>The moralist</h3>
-                <ul>
-                    <li>My life view is superior</li>
-                    <li>Other views are inferior</li>
-                    <li>I have the answers</li>
-                    <li>I need no other authority</li>
-                </ul>
-                
-                <h3>The ethicist</h3>
-                <ul>
-                    <li>My life view is based on reflection</li>
-                    <li>I evaluate life views</li>
-                    <li>I have questions</li>
-                    <li>I respect other views</li>
-                </ul>
-                
-                <h3>Aristotle (384-322) ?</h3>
-            </div>
-            
-            <div class="quiz-container">
-                <h3>Session 5-2 Quiz</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="quiz-progress-5-2"></div>
-                </div>
-                <div class="stats">
-                    <span id="quiz-stats-5-2">0/0 questions answered</span>
-                    <span id="quiz-score-5-2">Score: 0%</span>
-                </div>
-                
-                <div id="quiz-5-2">
-                    <!-- Quiz questions will be dynamically inserted here -->
-                </div>
-                
-                <button id="check-answers-5-2">Check Answers</button>
-                <button id="reset-quiz-5-2" style="display: none;">Reset Quiz</button>
-            </div>
-            
-            <div class="flashcards-container">
-                <h3>Session 5-2 Flashcards</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="flashcard-progress-5-2"></div>
-                </div>
-                <div class="stats">
-                    <span id="flashcard-stats-5-2">0/0 flashcards reviewed</span>
-                </div>
-                
-                <div class="flashcard" id="flashcard-5-2">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <h3>Flashcard Front</h3>
-                            <p>Click to flip</p>
-                        </div>
-                        <div class="flashcard-back">
-                            <h3>Flashcard Back</h3>
-                            <p>Content will appear here</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flashcard-controls">
-                    <button id="prev-flashcard-5-2">Previous</button>
-                    <button id="flip-flashcard-5-2">Flip Card</button>
-                    <button id="next-flashcard-5-2">Next</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Session 5-3 Content -->
-        <div id="session5-3" class="content-section">
-            <h2>Session 5-3: Ethics, Ethical Principles and Computer Ethics-I</h2>
-            
-            <div class="slide-content">
-                <h3>Openness and privacy</h3>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                        <th style="padding: 10px; border: 1px solid #ddd; text-align: center; background: #f8f9fa;">Openness</th>
-                        <th style="padding: 10px; border: 1px solid #ddd; text-align: center; background: #f8f9fa;">Privacy</th>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Publish information</td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">«Personal room», integrity</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Register information</td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Information may cause harm</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Compare information</td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Info may cause embarrasment</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Analyse information</td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Wrong information</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Find missing information</td>
-                        <td style="padding: 10px; border: 1px solid #ddd;">Wrong use of information</td>
-                    </tr>
-                </table>
-                
-                <h3>Issues:</h3>
-                <ul>
-                    <li>Data Protection</li>
-                    <li>Data Inspectorate</li>
-                    <li>Open Government</li>
-                </ul>
-                
-                <h3>Discussion</h3>
-                <p>Wikileaks Villains or heroes?</p>
-                
-                <h3>Quality information (as applied to website)</h3>
-                <ul>
-                    <li>Correct</li>
-                    <li>Timely</li>
-                    <li>Relevant</li>
-                    <li>Interesting</li>
-                    <li>Useful</li>
-                </ul>
-                
-                <h3>Principles («organisation virtues»):</h3>
-                <p>Already:</p>
-                <ul>
-                    <li>Openness – privacy</li>
-                    <li>Symmetrical – asymmetrical ethics</li>
-                    <li>Quality</li>
-                </ul>
-                <p>Also:</p>
-                <ul>
-                    <li>Legitimacy</li>
-                    <li>Credibility</li>
-                    <li>Traceability</li>
-                    <li>Accountability</li>
-                    <li>Stewardship</li>
-                    <li>Objectivity</li>
-                    <li>Fairness</li>
-                    <li>Flexibility</li>
-                    <li>Creativity</li>
-                    <li>Sustainability</li>
-                </ul>
-                
-                <h3>Ethics applies to:</h3>
-                <ul>
-                    <li>Professional duties</li>
-                    <li>Employee care</li>
-                    <li>Customer care, and supplier responsibilities</li>
-                    <li>Environment care</li>
-                    <li>Ownership (price, value, opportunities..)</li>
-                    <li>Financing</li>
-                    <li>Exploration</li>
-                    <li>* - the list is being extended</li>
-                </ul>
-            </div>
-            
-            <div class="quiz-container">
-                <h3>Session 5-3 Quiz</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="quiz-progress-5-3"></div>
-                </div>
-                <div class="stats">
-                    <span id="quiz-stats-5-3">0/0 questions answered</span>
-                    <span id="quiz-score-5-3">Score: 0%</span>
-                </div>
-                
-                <div id="quiz-5-3">
-                    <!-- Quiz questions will be dynamically inserted here -->
-                </div>
-                
-                <button id="check-answers-5-3">Check Answers</button>
-                <button id="reset-quiz-5-3" style="display: none;">Reset Quiz</button>
-            </div>
-            
-            <div class="flashcards-container">
-                <h3>Session 5-3 Flashcards</h3>
-                <div class="progress-bar">
-                    <div class="progress" id="flashcard-progress-5-3"></div>
-                </div>
-                <div class="stats">
-                    <span id="flashcard-stats-5-3">0/0 flashcards reviewed</span>
-                </div>
-                
-                <div class="flashcard" id="flashcard-5-3">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <h3>Flashcard Front</h3>
-                            <p>Click to flip</p>
-                        </div>
-                        <div class="flashcard-back">
-                            <h3>Flashcard Back</h3>
-                            <p>Content will appear here</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flashcard-controls">
-                    <button id="prev-flashcard-5-3">Previous</button>
-                    <button id="flip-flashcard-5-3">Flip Card</button>
-                    <button id="next-flashcard-5-3">Next</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer>
-        <p>VICTORIA UNIVERSITY - RTO Code 3113, CRICOS Provider Code 00124K (Melbourne), 02475D (Sydney)</p>
-        <p>NIT2241 Cyber Law Policy and Professional Ethics</p>
-        <p>These slides are based on those from Suprakash Datta, Computer Security Management: Assessment and Forensics</p>
-    </footer>
-
-    <script>
-        // Tab functionality
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and content sections
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-                
-                // Add active class to clicked tab and corresponding content section
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.tab).classList.add('active');
-            });
-        });
-        
-        // Quiz data for each session
-        const quizData = {
-            "session4-1": [
-                {
-                    question: "What is the essential foundation of an effective information security program?",
-                    options: [
-                        "Technology",
-                        "Policy",
-                        "Training",
-                        "Monitoring"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What are the objectives of information security policy?",
-                    options: [
-                        "Increased profits, market share, customer satisfaction",
-                        "Reduced risk, compliance with laws, assurance of operational continuity",
-                        "Employee satisfaction, brand recognition, innovation",
-                        "Cost reduction, efficiency, scalability"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "Why are policies considered the least expensive means of control?",
-                    options: [
-                        "They don't require any resources to implement",
-                        "They are often the most difficult to implement",
-                        "They prevent issues before they occur with minimal cost",
-                        "They can be copied from other organizations"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "According to the Bulls-eye model, where do threats first meet the organization?",
-                    options: [
-                        "Systems",
-                        "Applications",
-                        "Networks",
-                        "Users"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What is the purpose of an Enterprise Information Security Policy (EISP)?",
-                    options: [
-                        "To provide detailed technical specifications",
-                        "To set strategic direction and assign responsibilities",
-                        "To document specific system configurations",
-                        "To outline employee disciplinary procedures"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What does ISSP stand for?",
-                    options: [
-                        "International Security Standards Protocol",
-                        "Information Systems Security Policy",
-                        "Issue-Specific Security Policy",
-                        "Integrated System Security Plan"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "Which of these is NOT typically an ISSP topic?",
-                    options: [
-                        "Email and internet use",
-                        "Prohibitions against hacking",
-                        "Financial investment strategies",
-                        "Home use of company-owned equipment"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What do System-Specific Security Policies (SysSPs) frequently look like?",
-                    options: [
-                        "Legal documents",
-                        "Marketing materials",
-                        "Standards or procedures",
-                        "Financial reports"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What is the purpose of Access Control Lists (ACLs)?",
-                    options: [
-                        "To track employee attendance",
-                        "To manage financial transactions",
-                        "To govern rights and privileges for system access",
-                        "To document meeting minutes"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What do configuration rules in SysSPs do?",
-                    options: [
-                        "Define employee work schedules",
-                        "Guide the execution of security systems",
-                        "Set company financial targets",
-                        "Determine marketing strategies"
-                    ],
-                    correct: 1
-                }
-            ],
-            "session4-2": [
-                {
-                    question: "What is the first guideline for effective policy development?",
-                    options: [
-                        "Policies must be developed using industry-accepted practices",
-                        "Policies must be uniformly enforced",
-                        "Policies must be understood by all employees",
-                        "Policies must be formally agreed to"
-                    ],
-                    correct: 0
-                },
-                {
-                    question: "What is the first step in policy development?",
-                    options: [
-                        "Analysis",
-                        "Design",
-                        "Investigation",
-                        "Implementation"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What does the Investigation step involve?",
-                    options: [
-                        "Risk assessment",
-                        "Components and dissemination",
-                        "Goals, support, and participation",
-                        "Detailed specification"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What is the purpose of policy readability statistics?",
-                    options: [
-                        "To make policies look more professional",
-                        "To ensure employees can understand the policies",
-                        "To reduce printing costs",
-                        "To meet legal requirements"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What automated tool is mentioned for policy management?",
-                    options: [
-                        "PolicyPro",
-                        "SecurePolicy",
-                        "The VigilEnt Policy Center",
-                        "ComplianceManager"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What is the first step in the Information Security Policy Made Easy approach?",
-                    options: [
-                        "Defining a framework for policies",
-                        "Gathering key reference materials",
-                        "Preparing a coverage matrix",
-                        "Making critical systems design decisions"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What does a coverage matrix do?",
-                    options: [
-                        "Tracks employee attendance at policy training",
-                        "Maps policies to regulations and risks",
-                        "Calculates the cost of policy implementation",
-                        "Measures policy effectiveness"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "According to the final note on policy, what is the primary purpose of policies?",
-                    options: [
-                        "To avoid litigation",
-                        "To inform employees of acceptable behavior",
-                        "To impress customers",
-                        "To meet regulatory requirements"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What do policies seek to improve according to the final note?",
-                    options: [
-                        "Profit margins",
-                        "Employee productivity",
-                        "Market share",
-                        "Brand recognition"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What potentially embarrassing situations do policies seek to prevent?",
-                    options: [
-                        "Office parties",
-                        "Team building exercises",
-                        "Inappropriate employee behavior",
-                        "Company picnics"
-                    ],
-                    correct: 2
-                }
-            ],
-            "session5-1": [
-                {
-                    question: "Why do organizations need ethics according to the slides?",
-                    options: [
-                        "To increase profits",
-                        "As a basis for values and visions",
-                        "To reduce employee count",
-                        "To simplify operations"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What is one reason ethics can motivate employees?",
-                    options: [
-                        "Higher salaries",
-                        "Sense of purpose and values",
-                        "More vacation time",
-                        "Better office space"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What concept did Robert Locke criticize?",
-                    options: [
-                        "Social responsibility",
-                        "Managerialism",
-                        "Environmental sustainability",
-                        "Technological innovation"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "According to the Robert Pagliarini blog excerpt, what was the foundation for the country?",
-                    options: [
-                        "Altruism",
-                        "Greed",
-                        "Religion",
-                        "Education"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "How is self-interest viewed in Japan according to the slides?",
-                    options: [
-                        "As a positive personality trait",
-                        "As a negative personality trait",
-                        "As irrelevant to business",
-                        "As essential for success"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What did Aristotle contribute to ICT ethics?",
-                    options: [
-                        "Stakeholder orientation",
-                        "Environmental care",
-                        "Do good work and consider end use",
-                        "Knowledge contribution"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What is ethics defined as?",
-                    options: [
-                        "Company rules and regulations",
-                        "Legal requirements",
-                        "Moral philosophy",
-                        "Religious teachings"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "How are morals defined?",
-                    options: [
-                        "Personal preferences",
-                        "Legal requirements",
-                        "Beliefs and behavior of a group",
-                        "Universal truths"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "Which form of ethics asks 'what is good?'",
-                    options: [
-                        "Normative ethics",
-                        "Applied ethics",
-                        "Metaethics",
-                        "Moral psychology"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What does descriptive ethics study?",
-                    options: [
-                        "What people should do",
-                        "How to apply ethics to work",
-                        "What morals people actually follow",
-                        "The biological bases of morality"
-                    ],
-                    correct: 2
-                }
-            ],
-            "session5-2": [
-                {
-                    question: "What are codes of ethics applied to?",
-                    options: [
-                        "Personal life only",
-                        "Professions or disciplines",
-                        "Government regulations only",
-                        "International treaties"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "Which disaster is mentioned as an example of engineering ethics failure?",
-                    options: [
-                        "Chernobyl",
-                        "The Challenger",
-                        "Three Mile Island",
-                        "Deepwater Horizon"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What is the Golden Rule of symmetrical ethics?",
-                    options: [
-                        "Do whatever brings maximum gold",
-                        "Do to others what you want them to do to you",
-                        "The one with the gold makes the rules",
-                        "Demand more from others than yourself"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What is the 'Gold-in' Rule?",
-                    options: [
-                        "A serious ethical principle",
-                        "A satirical take on greed-driven behavior",
-                        "A financial regulation",
-                        "A religious teaching"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "When does asymmetrical ethics apply?",
-                    options: [
-                        "When all parties have equal power",
-                        "When one party has more resources, knowledge, or power",
-                        "In personal relationships only",
-                        "In financial transactions only"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What is instrumental ethics?",
-                    options: [
-                        "Ethics based on musical principles",
-                        "Ethics as a tool to achieve something else",
-                        "Ethics for machine learning",
-                        "Ethics in manufacturing"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What is 'greenwashing'?",
-                    options: [
-                        "Environmental cleaning",
-                        "Fake environmentalism",
-                        "Sustainable agriculture",
-                        "Eco-friendly products"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What does principle-based ethics require?",
-                    options: [
-                        "Legal compliance only",
-                        "Action following principles",
-                        "Financial success",
-                        "Government approval"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What does compliance ethics ensure?",
-                    options: [
-                        "Maximum profits",
-                        "Organization 'does no wrongs'",
-                        "Employee happiness",
-                        "Market dominance"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "How does positive ethics differ from compliance ethics?",
-                    options: [
-                        "It focuses only on profits",
-                        "It goes beyond compliance to contribute positively",
-                        "It ignores legal requirements",
-                        "It applies only to large organizations"
-                    ],
-                    correct: 1
-                }
-            ],
-            "session5-3": [
-                {
-                    question: "What is the tension between openness and privacy?",
-                    options: [
-                        "They are the same concept",
-                        "They are completely unrelated",
-                        "They represent competing values",
-                        "Openness always trumps privacy"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What does openness involve according to the table?",
-                    options: [
-                        "Keeping information secret",
-                        "Publishing and analyzing information",
-                        "Protecting personal data only",
-                        "Following government regulations"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What privacy concern is mentioned regarding information?",
-                    options: [
-                        "It may be too expensive",
-                        "It may cause harm or embarrassment",
-                        "It may be difficult to store",
-                        "It may increase profits"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What organization is mentioned in the discussion of openness vs privacy?",
-                    options: [
-                        "Google",
-                        "Facebook",
-                        "Wikileaks",
-                        "The New York Times"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What are the characteristics of quality information?",
-                    options: [
-                        "Expensive, complex, proprietary",
-                        "Correct, timely, relevant, interesting, useful",
-                        "Lengthy, detailed, technical",
-                        "Simple, brief, entertaining"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "Which of these is NOT listed as an organizational virtue?",
-                    options: [
-                        "Legitimacy",
-                        "Credibility",
-                        "Profitability",
-                        "Accountability"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What does stewardship refer to in organizational virtues?",
-                    options: [
-                        "Financial management",
-                        "Responsible management of resources",
-                        "Employee supervision",
-                        "Marketing strategy"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "What does traceability mean in the context of organizational virtues?",
-                    options: [
-                        "Ability to track shipments",
-                        "Ability to follow the path of decisions or data",
-                        "Employee location tracking",
-                        "Financial auditing"
-                    ],
-                    correct: 1
-                },
-                {
-                    question: "According to the slides, what does ethics apply to?",
-                    options: [
-                        "Only professional duties",
-                        "Only customer care",
-                        "Multiple areas including professional duties and environment care",
-                        "Only financial matters"
-                    ],
-                    correct: 2
-                },
-                {
-                    question: "What is indicated by the asterisk next to the list of what ethics applies to?",
-                    options: [
-                        "These items are optional",
-                        "The list is being extended",
-                        "These are the most important items",
-                        "These items are required by law"
-                    ],
-                    correct: 1
-                }
-            ]
-        };
-        
-        // Flashcard data for each session
-        const flashcardData = {
-            "session4-1": [
-                { front: "What is the essential foundation of an effective information security program?", back: "Policy" },
-                { front: "What are the three main objectives of information security policy?", back: "Reduced risk, compliance with laws and regulations, assurance of operational continuity" },
-                { front: "Why are policies considered the least expensive means of control?", back: "They prevent issues before they occur with minimal cost" },
-                { front: "According to the Bulls-eye model, what are the three layers of defense?", back: "Networks, Systems, Applications" },
-                { front: "What does EISP stand for and what is its purpose?", back: "Enterprise Information Security Program Policy - sets strategic direction and assigns responsibilities" },
-                { front: "What does ISSP stand for and what does it provide?", back: "Issue-Specific Security Policy - provides detailed, targeted guidance for specific technologies" },
-                { front: "What are some common ISSP topics?", back: "Email and internet use, prohibitions against hacking, home use of company equipment" },
-                { front: "What are the two types of System-Specific Security Policies (SysSPs)?", back: "Managerial guidance and technical specifications" },
-                { front: "What do Access Control Lists (ACLs) regulate?", back: "Who can use the system, what they can access, when, where, and how" },
-                { front: "What is the purpose of configuration rules in SysSPs?", back: "To guide the execution of security systems when information is passing through them" }
-            ],
-            "session4-2": [
-                { front: "What are the six guidelines for effective policy?", back: "Properly developed, distributed, reviewed, understood, agreed to, and uniformly enforced" },
-                { front: "What are the five steps in policy development?", back: "Investigation, Analysis, Design, Implementation, Maintenance" },
-                { front: "What does the Investigation step involve?", back: "Goals, support, and participation" },
-                { front: "Why is policy readability important?", back: "To ensure employees can understand the policies" },
-                { front: "What automated tool is mentioned for policy management?", back: "The VigilEnt Policy Center" },
-                { front: "What is the first step in the Information Security Policy Made Easy approach?", back: "Gathering key reference materials" },
-                { front: "What is a coverage matrix used for?", back: "Mapping policies to regulations and risks" },
-                { front: "According to the final note, what is the primary purpose of policies?", back: "To inform employees of acceptable behavior" },
-                { front: "What do policies seek to improve?", back: "Employee productivity" },
-                { front: "What potentially embarrassing situations do policies seek to prevent?", back: "Inappropriate employee behavior" }
-            ],
-            "session5-1": [
-                { front: "Why do organizations need ethics?", back: "As a basis for values and visions, to motivate employees, for good stakeholder relationships" },
-                { front: "What concept did Robert Locke criticize?", back: "Managerialism - management focused only on money, not growth or society" },
-                { front: "According to the Robert Pagliarini blog, what was the foundation for the country?", back: "Greed/self-interest" },
-                { front: "How is self-interest viewed in Japan?", back: "As a negative personality trait" },
-                { front: "What are some personal goals that can be more important than self-interest?", back: "Family and friends, personal development, contribution to society" },
-                { front: "What is the definition of ethics?", back: "Moral philosophy - determining right and wrong, selecting actions to achieve good results" },
-                { front: "What is the definition of morals?", back: "Beliefs and behavior of a group" },
-                { front: "What are the five forms of ethics?", back: "Metaethics, Normative ethics, Applied ethics, Moral psychology, Descriptive ethics" },
-                { front: "What does metaethics study?", back: "What is good? Fundamental questions about ethics" },
-                { front: "What does descriptive ethics study?", back: "What morals people actually follow" }
-            ],
-            "session5-2": [
-                { front: "What are codes of ethics applied to?", back: "Professions or disciplines like ICT, engineering, medicine, law" },
-                { front: "What disaster is mentioned as an example of engineering ethics failure?", back: "The Challenger disaster" },
-                { front: "What is the Golden Rule of symmetrical ethics?", back: "Do to others what you want them to do to you" },
-                { front: "What is the 'Gold-in' Rule?", back: "A satirical rule: Do whatever brings maximum gold without getting caught" },
-                { front: "When does asymmetrical ethics apply?", back: "When one party has more resources, knowledge, or power" },
-                { front: "What is instrumental ethics?", back: "Using ethics as a tool to achieve something else, not based on principles" },
-                { front: "What is 'greenwashing'?", back: "Fake environmentalism - pretending to be environmentally responsible" },
-                { front: "What is principle-based ethics?", back: "Ethics based on clear principles like contributing to society, followed by action" },
-                { front: "What is compliance ethics?", back: "Acting within existing laws, standards, guidelines, and morals" },
-                { front: "What is positive ethics?", back: "Going beyond compliance to positively contribute to organization, profession, society, environment" }
-            ],
-            "session5-3": [
-                { front: "What is the tension between openness and privacy?", back: "They represent competing values that need to be balanced" },
-                { front: "What does openness involve?", back: "Publishing, registering, comparing, analyzing, and finding missing information" },
-                { front: "What does privacy involve?", back: "Protecting personal information that may cause harm, embarrassment, or be misused" },
-                { front: "What organization is mentioned in the discussion of openness vs privacy?", back: "Wikileaks" },
-                { front: "What are the characteristics of quality information?", back: "Correct, timely, relevant, interesting, useful" },
-                { front: "What are some organizational virtues/principles?", back: "Legitimacy, credibility, traceability, accountability, stewardship, objectivity, fairness" },
-                { front: "What does stewardship mean in organizational virtues?", back: "Responsible management of resources entrusted to the organization" },
-                { front: "What does traceability mean?", back: "Ability to follow the path of decisions, actions, or data" },
-                { front: "What does ethics apply to according to the slides?", back: "Professional duties, employee care, customer care, environment care, ownership, financing, exploration" },
-                { front: "What does the asterisk next to the list of what ethics applies to indicate?", back: "The list is being extended" }
-            ]
-        };
-        
-        // Initialize quizzes and flashcards for each session
-        Object.keys(quizData).forEach(sessionId => {
-            initializeQuiz(sessionId);
-            initializeFlashcards(sessionId);
-        });
-        
-        function initializeQuiz(sessionId) {
-            const quizContainer = document.getElementById(`quiz-${sessionId}`);
-            const checkButton = document.getElementById(`check-answers-${sessionId}`);
-            const resetButton = document.getElementById(`reset-quiz-${sessionId}`);
-            const progressBar = document.getElementById(`quiz-progress-${sessionId}`);
-            const statsElement = document.getElementById(`quiz-stats-${sessionId}`);
-            const scoreElement = document.getElementById(`quiz-score-${sessionId}`);
-            
-            const questions = quizData[sessionId];
-            let userAnswers = new Array(questions.length).fill(null);
-            let quizSubmitted = false;
-            
-            // Create quiz questions
-            questions.forEach((q, index) => {
-                const questionElement = document.createElement('div');
-                questionElement.className = 'question';
-                questionElement.innerHTML = `
-                    <h4>${index + 1}. ${q.question}</h4>
-                    <div class="options">
-                        ${q.options.map((option, optIndex) => `
-                            <div class="option" data-question="${index}" data-option="${optIndex}">
-                                ${option}
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-                quizContainer.appendChild(questionElement);
-            });
-            
-            // Add event listeners to options
-            quizContainer.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', function() {
-                    if (quizSubmitted) return;
-                    
-                    const questionIndex = parseInt(this.dataset.question);
-                    const optionIndex = parseInt(this.dataset.option);
-                    
-                    // Remove selected class from all options in this question
-                    const allOptions = this.parentElement.querySelectorAll('.option');
-                    allOptions.forEach(opt => opt.classList.remove('selected'));
-                    
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
-                    
-                    // Store user's answer
-                    userAnswers[questionIndex] = optionIndex;
-                    
-                    updateProgress();
-                });
-            });
-            
-            // Check answers button
-            checkButton.addEventListener('click', function() {
-                if (quizSubmitted) return;
-                
-                let correctCount = 0;
-                
-                questions.forEach((q, index) => {
-                    const userAnswer = userAnswers[index];
-                    const correctAnswer = q.correct;
-                    const options = quizContainer.querySelectorAll(`.option[data-question="${index}"]`);
-                    
-                    if (userAnswer === correctAnswer) {
-                        correctCount++;
-                        options[userAnswer].classList.add('correct');
-                    } else {
-                        if (userAnswer !== null) {
-                            options[userAnswer].classList.add('incorrect');
-                        }
-                        options[correctAnswer].classList.add('correct');
-                    }
-                });
-                
-                const score = Math.round((correctCount / questions.length) * 100);
-                scoreElement.textContent = `Score: ${score}%`;
-                quizSubmitted = true;
-                checkButton.style.display = 'none';
-                resetButton.style.display = 'inline-block';
-            });
-            
-            // Reset quiz button
-            resetButton.addEventListener('click', function() {
-                userAnswers = new Array(questions.length).fill(null);
-                quizSubmitted = false;
-                
-                quizContainer.querySelectorAll('.option').forEach(option => {
-                    option.classList.remove('selected', 'correct', 'incorrect');
-                });
-                
-                scoreElement.textContent = 'Score: 0%';
-                checkButton.style.display = 'inline-block';
-                resetButton.style.display = 'none';
-                
-                updateProgress();
-            });
-            
-            function updateProgress() {
-                const answeredCount = userAnswers.filter(answer => answer !== null).length;
-                const progress = (answeredCount / questions.length) * 100;
-                progressBar.style.width = `${progress}%`;
-                statsElement.textContent = `${answeredCount}/${questions.length} questions answered`;
-            }
-            
-            // Initialize progress
-            updateProgress();
-        }
-        
-        function initializeFlashcards(sessionId) {
-            const flashcards = flashcardData[sessionId];
-            const flashcardElement = document.getElementById(`flashcard-${sessionId}`);
-            const prevButton = document.getElementById(`prev-flashcard-${sessionId}`);
-            const flipButton = document.getElementById(`flip-flashcard-${sessionId}`);
-            const nextButton = document.getElementById(`next-flashcard-${sessionId}`);
-            const progressBar = document.getElementById(`flashcard-progress-${sessionId}`);
-            const statsElement = document.getElementById(`flashcard-stats-${sessionId}`);
-            
-            let currentIndex = 0;
-            let reviewedCards = new Set();
-            
-            function showCard(index) {
-                const card = flashcards[index];
-                const front = flashcardElement.querySelector('.flashcard-front');
-                const back = flashcardElement.querySelector('.flashcard-back');
-                
-                front.innerHTML = `<h3>Flashcard ${index + 1}</h3><p>${card.front}</p>`;
-                back.innerHTML = `<h3>Answer</h3><p>${card.back}</p>`;
-                
-                // Reset flip state
-                flashcardElement.classList.remove('flipped');
-                
-                updateProgress();
-            }
-            
-            function updateProgress() {
-                const progress = ((currentIndex + 1) / flashcards.length) * 100;
-                progressBar.style.width = `${progress}%`;
-                statsElement.textContent = `${currentIndex + 1}/${flashcards.length} flashcards reviewed`;
-                
-                // Mark card as reviewed
-                reviewedCards.add(currentIndex);
-            }
-            
-            // Event listeners
-            flashcardElement.addEventListener('click', function() {
-                this.classList.toggle('flipped');
-            });
-            
-            flipButton.addEventListener('click', function() {
-                flashcardElement.classList.toggle('flipped');
-            });
-            
-            prevButton.addEventListener('click', function() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    showCard(currentIndex);
-                }
-            });
-            
-            nextButton.addEventListener('click', function() {
-                if (currentIndex < flashcards.length - 1) {
-                    currentIndex++;
-                    showCard(currentIndex);
-                }
-            });
-            
-            // Initialize first card
-            showCard(currentIndex);
-        }
-    </script>
+<header>
+<div class="logo">
+<div class="logo-icon">🔒</div>
+<div><h1>Cyber Law Policy & Professional Ethics</h1><div class="subtitle">VICTORIA UNIVERSITY - RTO Code 3113, CRICOS Provider Code 00124K (Melbourne), 02475D (Sydney)</div></div>
+</div>
+</header>
+<div class="container">
+<div class="tabs">
+<div class="tab active" data-tab="session4-1">Session 4-1</div>
+<div class="tab" data-tab="session4-2">Session 4-2</div>
+<div class="tab" data-tab="session5-1">Session 5-1</div>
+<div class="tab" data-tab="session5-2">Session 5-2</div>
+<div class="tab" data-tab="session5-3">Session 5-3</div>
+<div class="tab" data-tab="session6-1">Session 6-1</div>
+<div class="tab" data-tab="session6-2-3">Session 6-2-3</div>
+<div class="tab" data-tab="session7-1">Session 7-1</div>
+<div class="tab" data-tab="session7-2">Session 7-2</div>
+<div class="tab" data-tab="session7-3">Session 7-3</div>
+<div class="tab" data-tab="session8">Session 8</div>
+<div class="tab" data-tab="session8-1">Session 8-1</div>
+</div>
+<div id="session4-1" class="content-section active">
+<h2>Session 4-1: Information Security Policy</h2>
+<div class="slide-content">
+<h3>Introduction</h3><ul><li>Policy is the essential foundation of an effective information security program</li><li>Policy maker sets the tone and emphasis on the importance of information security</li></ul>
+<h3>Objectives</h3><ul><li>Reduced risk</li><li>Compliance with laws and regulations</li><li>Assurance of operational continuity, information integrity, and confidentiality</li></ul>
+<h3>Why Policy?</h3><ul><li>Policies are the least expensive means of control and often the most difficult to implement</li><li>Basic rules for shaping a policy:<ul><li>Policy should never conflict with law</li><li>Policy must be able to stand up in court if challenged</li><li>Policy must be properly supported and administered</li></ul></li></ul>
+<h3>Bulls-eye Model</h3><ul><li>Networks: threats first meet the organization's network</li><li>Systems: computers and manufacturing systems</li><li>Applications: all applications systems</li></ul>
+<h3>Why Policy? (cont'd.)</h3><ul><li>Policies are important reference documents</li><li>For internal audits</li><li>For the resolution of legal disputes about management's due diligence</li><li>Policy documents can act as a clear statement of management's intent</li></ul>
+<h3>Types of Information Security Policy</h3><ul><li>Enterprise information security program policy</li><li>Issue-specific information security policies</li><li>Systems-specific policies</li></ul>
+<h3>Policy, Standards, and Practices</h3><ul><li>Policy: A plan or course of action that influences decisions<ul><li>must be properly disseminated, read, understood, agreed-to, and uniformly enforced</li><li>require constant modification and maintenance</li></ul></li><li>Standards: A more detailed statement of what must be done to comply with policy</li><li>Practices: Procedures and guidelines explain how employees will comply with policy</li></ul>
+<h3>Enterprise Information Security Policy (EISP)</h3><ul><li>Sets strategic direction, scope, and tone for organization's security efforts</li><li>Assigns responsibilities for various areas of information security</li><li>Guides development, implementation, and management requirements of information security program</li></ul>
+<h3>EISP Elements</h3><ul><li>Corporate philosophy on security</li><li>Information security organization and information security roles</li></ul>
+<h3>Example ESIP Components</h3><ul><li>Statement of purpose</li><li>Information technology security elements</li><li>Need for information technology security</li><li>Information technology security responsibilities and roles</li><li>Reference to other information technology standards and guidelines</li></ul>
+<h3>Issue-Specific Security Policy (ISSP)</h3><ul><li>Provides detailed, targeted guidance</li><li>Instruction for secure use of a technology systems</li><li>Begins with introduction to fundamental technological philosophy of the organization</li><li>Protects organization from inefficiency and ambiguity</li><li>Documents how the technology-based system is controlled</li><li>Identifies the processes and authorities that provide this control</li><li>Indemnifies the organization against liability for an employee's inappropriate or illegal system use</li></ul>
+<h3>Issue-Specific Security Policy - contd</h3><ul><li>ISSP topics<ul><li>Email and internet use</li><li>Minimum system configurations</li><li>Prohibitions against hacking</li><li>Home use of company-owned computer equipment</li><li>Use of personal equipment on company networks</li><li>Use of telecommunications technologies</li><li>Use of photocopy equipment</li></ul></li></ul>
+<h3>Components of the ISSP</h3><ul><li>Statement of Purpose</li><li>Scope and applicability</li><li>Definition of technology addressed</li><li>Responsibilities</li><li>Authorized Access and Usage of Equipment<ul><li>User access</li><li>Fair and responsible use</li><li>Protection of privacy</li></ul></li></ul>
+<h3>Components of the ISSP - contd</h3><ul><li>Prohibited Usage of Equipment<ul><li>Disruptive use or misuse</li><li>Criminal use</li><li>Offensive or harassing materials</li><li>Copyrighted, licensed or other intellectual property</li><li>Other restrictions</li></ul></li><li>Systems management<ul><li>Management of stored materials</li><li>Employer monitoring</li><li>Virus protection</li><li>Physical security</li><li>Encryption</li></ul></li></ul>
+<h3>Components of the ISSP - contd</h3><ul><li>Violations of policy<ul><li>Procedures for reporting violations</li><li>Penalties for violations</li></ul></li><li>Policy review and modification<ul><li>Scheduled review of policy and procedures for modification</li></ul></li><li>Limitations of liability<ul><li>Statements of liability or disclaimers</li></ul></li></ul>
+<h3>System-Specific Security Policy</h3><ul><li>System-specific security policies (SysSPs) frequently do not look like other types of policy</li><li>may function as standards or procedures to be used when configuring or maintaining systems</li><li>SysSPs can be separated into<ul><li>Management guidance</li><li>Technical specifications</li></ul></li><li>Or combined in a single policy document</li></ul>
+<h3>Managerial Guidance SysSPs</h3><ul><li>Created by management to guide the implementation and configuration of technology</li><li>Applies to any technology that affects the confidentiality, integrity or availability of information, e.g. firewall configuration</li><li>Informs technologists of management intent</li></ul>
+<h3>Technical Specifications SysSPs</h3><ul><li>System administrators' directions on implementing managerial policy</li><li>Each type of equipment has its own type of policies</li><li>General methods of implementing technical controls<ul><li>Access control lists</li><li>Configuration rules</li></ul></li></ul>
+<h3>Access Control Lists</h3><ul><li>Include the user access lists, matrices, and capability tables that govern the rights and privileges</li><li>A similar method that specifies which subjects and objects users or groups can access is called a capability table</li><li>These specifications are frequently complex matrices, rather than simple lists or tables</li><li>Enable administrations to restrict access according to user, computer, time, duration, or even a particular file</li></ul>
+<h3>Technical Specifications SysSPs - contd</h3><ul><li>Access control lists regulate<ul><li>Who can use the system</li><li>What authorized users can access</li><li>When authorized users can access the system</li><li>Where authorized users can access the system from</li><li>How authorized users can access the system</li></ul></li><li>Restricting what users can access, e.g. printers, files, communications, and applications</li><li>Administrators set user privileges<ul><li>Read, write, create, modify, delete, compare, copy</li></ul></li></ul>
+<h3>Technical Specifications SysSPs - contd</h3><ul><li>Configuration rules</li><li>Specific configuration codes entered into security systems</li><li>Guide the execution of the system when information is passing through it</li><li>Many security systems require specific configuration scripts telling the systems what actions to perform on each set of information they process</li></ul>
+</div>
+<div class="quiz-container">
+<h3>Session 4-1 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-4-1"></div></div>
+<div class="stats"><span id="quiz-stats-4-1">0/0 questions answered</span><span id="quiz-score-4-1">Score: 0%</span></div>
+<div id="quiz-4-1"></div>
+<button id="check-answers-4-1">Check Answers</button>
+<button id="reset-quiz-4-1" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 4-1 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-4-1"></div></div>
+<div class="stats"><span id="flashcard-stats-4-1">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-4-1">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-4-1">Previous</button>
+<button id="flip-flashcard-4-1">Flip Card</button>
+<button id="next-flashcard-4-1">Next</button>
+</div>
+</div>
+</div>
+<div id="session4-2" class="content-section">
+<h2>Session 4-2: Information Security Policy</h2>
+<div class="slide-content">
+<h3>Guidelines for Effective Policy</h3><p>Policies must be properly:</p><ul><li>Developed using industry-accepted practices</li><li>Distributed or disseminated using all appropriate methods</li><li>Reviewed or read by all employees</li><li>Understood by all employees</li><li>Formally agreed to by act or assertion</li><li>Uniformly applied and enforced</li></ul>
+<h3>Development Steps</h3><ul><li>Investigation (goals, support, participation)</li><li>Analysis (risk assessment)</li><li>Design (components, dissemination)</li><li>Implement (detailed specification)</li><li>Maintenance</li></ul>
+<h3>Distribution</h3>
+<h3>Policy Comprehension</h3><ul><li>Figure 4-9 Readability statistics</li><li>Source: Course Technology/Cengage Learning</li></ul>
+<h3>Automated Tools</h3><ul><li>Figure 4-10 The VigilEnt policy center</li><li>Source: Course Technology/Cengage Learning</li></ul>
+<h3>The Information Securities Policy Made Easy Approach</h3><ul><li>Gathering key reference materials</li><li>Defining a framework for policies</li><li>Preparing a coverage matrix</li><li>Making critical systems design decisions</li><li>Structuring review, approval, and enforcement processes</li></ul>
+<h3>The Information Securities Policy Made Easy Approach (cont'd.)</h3><ul><li>Figure 4-11 A sample coverage matrix</li><li>Source: Course Technology/Cengage Learning</li></ul>
+<h3>A Final Note on Policy</h3><ul><li>Lest you believe that the only reason to have policies is to avoid litigation, it is important to emphasize the preventative nature of policy</li><li>Policies exist, first and foremost, to inform employees of what is and is not acceptable behavior in the organization</li><li>Policy seeks to improve employee productivity, and prevent potentially embarrassing situations</li></ul>
+</div>
+<div class="quiz-container">
+<h3>Session 4-2 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-4-2"></div></div>
+<div class="stats"><span id="quiz-stats-4-2">0/0 questions answered</span><span id="quiz-score-4-2">Score: 0%</span></div>
+<div id="quiz-4-2"></div>
+<button id="check-answers-4-2">Check Answers</button>
+<button id="reset-quiz-4-2" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 4-2 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-4-2"></div></div>
+<div class="stats"><span id="flashcard-stats-4-2">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-4-2">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-4-2">Previous</button>
+<button id="flip-flashcard-4-2">Flip Card</button>
+<button id="next-flashcard-4-2">Next</button>
+</div>
+</div>
+</div>
+<div id="session5-1" class="content-section">
+<h2>Session 5-1: Ethics, Ethical Principles and Computer Ethics-I</h2>
+<div class="slide-content">
+<h3>Why ethics for organisations?</h3><ul><li>A basis for values and visions</li><li>To motivate employees</li><li>Perhaps demanded by customers</li><li>For good relationships to stakeholders</li><li>An overall check on plans</li><li>To avoid various exposures and risks</li><li>Part of governance</li><li>Sustainability</li></ul>
+<h3>Why ethics II</h3><ul><li>The finance crisis</li><li>A number of crimes, near-crimes and transgressions</li><li>Managerialism (Robert Locke)</li><li>Management not contributing to organisation growth/health</li><li>Not contributing to society</li><li>Money only management</li><li>«Greed is good»</li><li>Short term and limited plans</li></ul>
+<div class="quote"><p>Greed is good. Embrace it. Love it. Live it. In fact, greed may be the one thing that can save us. Don't believe me? Greed was the foundation for this country. The brave souls who risked their life to settle in a new country did so out of self interest. Our forefathers recognized the importance of self-interest in the Declaration of Independence where they emphasized our unalienable right to pursue happiness.</p><p>- Robert Pagliarini blog, Moneywatch 2010</p></div>
+<h3>Why ethics III</h3><ul><li>Self-interest is pervasive economic idea</li><li>Not supported by research, as overriding paradigm</li><li>Country differences, in Japan a negative personality trait</li><li>Other personal goals, sometimes more important:<ul><li>Family and friends</li><li>Personal development (e.g. Maslow)</li><li>Aestetics, a nice place to live</li><li>Contribution to society</li></ul></li></ul>
+<h3>Relevance of ethics to ICT</h3><ul><li>Do good work (Aristotle)</li><li>Plan holistically (systems theory)</li><li>Consider end use (Aristotle)</li><li>Evaluate both ends and means (Kant)</li><li>Be stakeholder oriented (ISO 26000)</li><li>Take care of the environment (ISO 26000)</li><li>Contribute to knowledge</li></ul>
+<h3>Definition Ethics</h3><ul><li>Moral philosophy.</li><li>Determining rights and wrongs, selecting actions to achieve good results, evaluating motives.</li><li>(attempting to summarise several definitions)</li><li>The achievement of wisdom, choosing actions that are benefical and acceptable long term; or sustainable. This implies a society focus.</li></ul>
+<h3>Definition Morals</h3><ul><li>Beliefs and behaviour of group. The group can be:<ul><li>Nation, or geographical area</li><li>Group of nations</li><li>Religious or life view groups, and subgroups</li><li>Profession or similar</li><li>Other organisation, e.g. sports, clan, NGO...</li></ul></li><li>In an international organisation there can be many morals.</li></ul>
+<h3>Forms of ethics</h3><ol><li>Metaethics (what is good? etc)</li><li>Normative ethics (what should we do?)</li><li>Applied ethics (how do we apply ethics to work and lives?)</li><li>Moral psychology (the biological and psychological bases)</li><li>Descriptive ethics (what morals people follow)</li></ol>
+</div>
+<div class="quiz-container">
+<h3>Session 5-1 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-5-1"></div></div>
+<div class="stats"><span id="quiz-stats-5-1">0/0 questions answered</span><span id="quiz-score-5-1">Score: 0%</span></div>
+<div id="quiz-5-1"></div>
+<button id="check-answers-5-1">Check Answers</button>
+<button id="reset-quiz-5-1" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 5-1 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-5-1"></div></div>
+<div class="stats"><span id="flashcard-stats-5-1">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-5-1">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-5-1">Previous</button>
+<button id="flip-flashcard-5-1">Flip Card</button>
+<button id="next-flashcard-5-1">Next</button>
+</div>
+</div>
+</div>
+<div id="session5-2" class="content-section">
+<h2>Session 5-2: Ethics, Ethical Principles and Computer Ethics-I</h2>
+<div class="slide-content">
+<h3>Codes of ethics</h3><p>Applying ethics to a profession or discipline, examples:</p><ul><li>ICT</li><li>Engineering</li><li>Medicine</li><li>Law</li><li>Journalism</li><li>Psychology</li></ul>
+<h3>The Challenger disaster</h3>
+<h3>Symmetrical ethics – the golden rule</h3><ul><li>Do to others what you want them to do to you.</li><li>If you demand from others, demand the same from yourself (perhaps more if you are a leader)</li><li>See yourself as the other (good even for design!)</li><li>Empathy</li></ul>
+<h3>the Gold-in Rule:</h3><p>Do whatever is necessary to bring in the maximum gold, without getting caught</p><p>http://www.kevinmd.com/bloghttp://www.kevinmd.com/blog</p>
+<h3>Assymetrical ethics</h3><ul><li>When one party has more resources, knowledge, power</li><li>Often in professions (engineering, nursing, law...)</li><li>Need to be careful (professional!)</li><li>Need to be considerate</li></ul>
+<h3>Instrumental ethics</h3><ul><li>Ethics an instrument for achieving something else.</li><li>Not based on principles or conviction.</li><li>«Greenwashing»</li><li>Philantrophy used as an «excuse»</li></ul>
+<h3>Principle based ethics</h3><ul><li>Based on principles like (from websites):<ul><li>We want to deliver first class design</li><li>We want to be best in our discipline</li><li>We will contribute to society</li><li>We consider ecological impact</li><li>We contribute to environmentalism</li></ul></li><li>Preferably followed by action</li></ul><p>Picture from www.bouvet.no, design for Sjømannskirken.</p>
+<h3>Compliance ethics</h3><ul><li>Within existing laws, standards, guidelines, morals</li><li>May need a «compliance officer» in large organisations</li><li>- e.g. what does it mean to «follow standard»?</li><li>Ensures that organisation «does no wrongs», but difficult</li></ul><p>The Ethics & Compliance Officer Association (ECOA) is a member-driven association exclusively for individuals responsible for their organization's ethics, compliance, and business conduct programs. The only organization of its kind, its members represent the largest group of ethics and compliance practitioners in the world. The ECOA is credited with formally "founding" the ethics and compliance field in 1991.</p><p>www.theecoa.org December 2010</p>
+<h3>Positive ethics</h3><ul><li>Contributing positively to:<ul><li>Organisation</li><li>Profession</li><li>Society</li><li>Environment</li><li>and other stakeholders</li></ul></li><li>Normally cannot balance lack of compliance</li></ul><p>Positive ethics 2011:</p><p>We invite you to submit a a manuscript for the Special Issue of the Journal of Business Ethics on Positive Organizational (POE). This issue targets the Journal of Business Ethics view that ethics encompasses "all human action aimed at securing a good life." Towards this end, more research must be directed toward the best of human functioning, especially within the context of today's ethically challenged business environment and protracted economic downturn.</p><p>www.strategie-aims.com</p>
+<h3>The moralist</h3><ul><li>My life view is superior</li><li>Other views are inferior</li><li>I have the answers</li><li>I need no other authority</li></ul>
+<h3>The ethicist</h3><ul><li>My life view is based on reflection</li><li>I evaluate life views</li><li>I have questions</li><li>I respect other views</li></ul>
+<h3>Aristotle (384-322) ?</h3>
+</div>
+<div class="quiz-container">
+<h3>Session 5-2 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-5-2"></div></div>
+<div class="stats"><span id="quiz-stats-5-2">0/0 questions answered</span><span id="quiz-score-5-2">Score: 0%</span></div>
+<div id="quiz-5-2"></div>
+<button id="check-answers-5-2">Check Answers</button>
+<button id="reset-quiz-5-2" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 5-2 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-5-2"></div></div>
+<div class="stats"><span id="flashcard-stats-5-2">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-5-2">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-5-2">Previous</button>
+<button id="flip-flashcard-5-2">Flip Card</button>
+<button id="next-flashcard-5-2">Next</button>
+</div>
+</div>
+</div>
+<div id="session5-3" class="content-section">
+<h2>Session 5-3: Ethics, Ethical Principles and Computer Ethics-I</h2>
+<div class="slide-content">
+<h3>Openness and privacy</h3>
+<table style="width:100%;border-collapse:collapse;">
+<tr><th style="padding:10px;border:1px solid #ddd;text-align:center;background:#f8f9fa;">Openness</th><th style="padding:10px;border:1px solid #ddd;text-align:center;background:#f8f9fa;">Privacy</th></tr>
+<tr><td style="padding:10px;border:1px solid #ddd;">Publish information</td><td style="padding:10px;border:1px solid #ddd;">«Personal room», integrity</td></tr>
+<tr><td style="padding:10px;border:1px solid #ddd;">Register information</td><td style="padding:10px;border:1px solid #ddd;">Information may cause harm</td></tr>
+<tr><td style="padding:10px;border:1px solid #ddd;">Compare information</td><td style="padding:10px;border:1px solid #ddd;">Info may cause embarrasment</td></tr>
+<tr><td style="padding:10px;border:1px solid #ddd;">Analyse information</td><td style="padding:10px;border:1px solid #ddd;">Wrong information</td></tr>
+<tr><td style="padding:10px;border:1px solid #ddd;">Find missing information</td><td style="padding:10px;border:1px solid #ddd;">Wrong use of information</td></tr>
+</table>
+<h3>Issues:</h3><ul><li>Data Protection</li><li>Data Inspectorate</li><li>Open Government</li></ul>
+<h3>Discussion</h3><p>Wikileaks Villains or heroes?</p>
+<h3>Quality information (as applied to website)</h3><ul><li>Correct</li><li>Timely</li><li>Relevant</li><li>Interesting</li><li>Useful</li></ul>
+<h3>Principles («organisation virtues»):</h3><p>Already:</p><ul><li>Openness – privacy</li><li>Symmetrical – asymmetrical ethics</li><li>Quality</li></ul><p>Also:</p><ul><li>Legitimacy</li><li>Credibility</li><li>Traceability</li><li>Accountability</li><li>Stewardship</li><li>Objectivity</li><li>Fairness</li><li>Flexibility</li><li>Creativity</li><li>Sustainability</li></ul>
+<h3>Ethics applies to:</h3><ul><li>Professional duties</li><li>Employee care</li><li>Customer care, and supplier responsibilities</li><li>Environment care</li><li>Ownership (price, value, opportunities..)</li><li>Financing</li><li>Exploration</li><li>* - the list is being extended</li></ul>
+</div>
+<div class="quiz-container">
+<h3>Session 5-3 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-5-3"></div></div>
+<div class="stats"><span id="quiz-stats-5-3">0/0 questions answered</span><span id="quiz-score-5-3">Score: 0%</span></div>
+<div id="quiz-5-3"></div>
+<button id="check-answers-5-3">Check Answers</button>
+<button id="reset-quiz-5-3" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 5-3 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-5-3"></div></div>
+<div class="stats"><span id="flashcard-stats-5-3">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-5-3">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-5-3">Previous</button>
+<button id="flip-flashcard-5-3">Flip Card</button>
+<button id="next-flashcard-5-3">Next</button>
+</div>
+</div>
+</div>
+<div id="session6-1" class="content-section">
+<h2>Session 6-1: Ethics, Ethical Principles and Computer Ethics-II</h2>
+<div class="slide-content">
+<h3>Computer Ethics</h3><p>A branch of philosophy that deals with computing-related moral dilemmas defines ethical principles for computer professionals professionals must try to avoid unethical behavior whether it is illegal or legal</p>
+<h3>Computer Ethics</h3><p>Today there are numerous illegal and unethical actions that can arise through computer usage Plagiarism and copyright infringement Software Piracy Computer crimes, unauthorized computer access</p>
+<h3>Computer Ethics</h3><p>As a professional you should Safeguarding secure information Use Email and the Internet responsibly</p>
+<h3>Applied Computer Ethics</h3><h3>How Does This Apply to Me?</h3><p>(Scott Adams, http://www.dilbert.com, 1/19/06)</p>
+<h3>Information Ethics</h3><p>Applying this to: Direct interaction Personal correspondence Telephone Print media Radio and television</p>
+<h3>Information Ethics</h3><p>How it might differ when using a computer: Scope Speed "It seems different with a computer"</p>
+<h3>Areas of Ethical Problems</h3><p>Personal intrusion Privacy Morality Deception Security Resources Intellectual property Inappropriate use Technology and social responsibility</p>
+</div>
+<div class="quiz-container">
+<h3>Session 6-1 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-6-1"></div></div>
+<div class="stats"><span id="quiz-stats-6-1">0/0 questions answered</span><span id="quiz-score-6-1">Score: 0%</span></div>
+<div id="quiz-6-1"></div>
+<button id="check-answers-6-1">Check Answers</button>
+<button id="reset-quiz-6-1" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 6-1 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-6-1"></div></div>
+<div class="stats"><span id="flashcard-stats-6-1">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-6-1">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-6-1">Previous</button>
+<button id="flip-flashcard-6-1">Flip Card</button>
+<button id="next-flashcard-6-1">Next</button>
+</div>
+</div>
+</div>
+<div id="session6-2-3" class="content-section">
+<h2>Session 6-2-3: Ethics, Ethical Principles and Computer Ethics-II</h2>
+<div class="slide-content">
+<h3>Computer Ethics Issues: Examples</h3><p>Computers in the Workplace Computer Crime Privacy and Anonymity Intellectual Property Professional Responsibility Globalization</p>
+<h3>General Comments on Ethics</h3><p>The world of ethics is gray Ethical conflict is characterized by Intense feelings Rapid development</p>
+<h3>Computer Ethics: Standards of Conduct</h3><p>The Top Ten Rules of Computer Ethics Thou shalt not use a computer to harm other people. Thou shalt not interfere with other people's computer work. Thou shalt not snoop around in other people's computer files. Thou shalt not use a computer to steal. Thou shalt not use a computer to bear false witness. Thou shalt not copy or use proprietary software for which you have not paid. Thou shalt not use other people's computer resources without authorization or proper compensation. Thou shalt not appropriate other people's intellectual output. Thou shalt think about the social consequences of the program you are writing or the system you are designing. Thou shalt always use a computer in ways that insure consideration and respect for your fellow humans.</p>
+<h3>Netiquette - Network etiquette</h3><p>The conventions of politeness recognized on Usenet, in mailing lists and email. The most important rule of netiquette is "Think before you post". Re-read and edit your email carefully before you send. Check the spelling and grammar. When responding to a newsgroup posting, quote the minimum necessary to give some context to your reply and be careful to attribute the quote to the right person. Only send email to the necessary recipients. Email is permanent and can be saved forever!</p>
+<h3>Computer Ethics: Academic Discipline</h3><h3>History of Computer Ethics as a Field of Study</h3><p>1940s-1950s – Norbert Wiener (MIT) Notes the social/ethical implications of computer technology "...we were here in the presence of another social potentiality of unheard-of importance for good and for evil." (Cybernetics: or control and communication in the animal and the machine, pp. 27-28, 1948)</p>
+<h3>History of Computer Ethics as a Field of Study</h3><p>1960s – Donn Parker (SRI International) Unethical and illegal uses of computers 1968: Led Code of Professional Conduct for the Association for Computing Machinery (ACM). Adopted by ACM in 1973. 1970s – Walter Maner (ODU) Coined "computer ethics"</p>
+<h3>History of Computer Ethics as a Field of Study</h3><p>1980s – Computer ethics becomes an academic discipline Public issues: Computer-enabled crime Disasters caused by computer failure Privacy invasion via databases Law suits over software ownership</p>
+<h3>History of Computer Ethics as a Field of Study</h3><p>1990s – Lots of research … Health – HIPAA Wealth Opportunity Freedom Democracy Knowledge Privacy Security Notion of (computer) professional ethics Computer professional == "anyone involved in the design and development of computer artifacts" (Gotterbarn, 1991)</p>
+<h3>Sources and Other Information</h3><p>Bynum, Terrell, "Computer Ethics: Basic Concepts and Historical Overview", The Stanford Encyclopedia of Philosophy (Winter 2001 Edition), Edward N. Zalta (ed.), URL = http://plato.stanford.edu/archives/win2001/entries/ethics-computer Ethics in Computing: http://ethics.csc.ncsu.edu/ Computer Ethics Institute http://www.brook.edu/its/cei/cei_hp.htm Kaizen 2006 - 2007</p>
+<h3>Sources and Other Information (cont'd)</h3><p>Netiquette: The Net: User Guidelines and Netiquette – Index http://www.fau.edu/netiquette/net/ Netiquette Home Page http://www.albion.com/netiquette/ Online Netiquette Home Page http://www.onlinenetiquette.com/</p>
+<h3>Summary</h3><p>Computer Ethics Field of study Set of rules or standards of behavior for dealing with computer technology Examples of Issues in Computer Ethics How does computer ethics relate to your every day decisions? 10 Rules of Computer Ethics Netiquette</p>
+</div>
+<div class="quiz-container">
+<h3>Session 6-2-3 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-6-2-3"></div></div>
+<div class="stats"><span id="quiz-stats-6-2-3">0/0 questions answered</span><span id="quiz-score-6-2-3">Score: 0%</span></div>
+<div id="quiz-6-2-3"></div>
+<button id="check-answers-6-2-3">Check Answers</button>
+<button id="reset-quiz-6-2-3" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 6-2-3 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-6-2-3"></div></div>
+<div class="stats"><span id="flashcard-stats-6-2-3">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-6-2-3">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-6-2-3">Previous</button>
+<button id="flip-flashcard-6-2-3">Flip Card</button>
+<button id="next-flashcard-6-2-3">Next</button>
+</div>
+</div>
+</div>
+<div id="session7-1" class="content-section">
+<h2>Session 7-1: Personal, legal ethical, and organizational issues of information technologies</h2>
+<div class="slide-content">
+<h3>Privacy Issues</h3><p>Employers search social networking sites for background information on applicants Monitoring systems are adopted by employers to check employee performance Information technology has aided in the easy availability of personal information Information in databases can be used for direct marketing and for credit checks on potential borrowers or renters</p>
+<h3>Concepts of the Web and Network Privacy</h3>
+<h3>Guidelines to Minimize the Invasion of Privacy</h3><ul><li>Conduct business only with websites having privacy policies</li><li>Limit access to personal information to those with authorization</li><li>Ensure data's reliability and take precautions to prevent misuse of the data</li><li>Data collection must have a stated purpose</li><li>Identify ways to prevent personal information gathered being disclosed without consent</li></ul>
+<h3>Guidelines to Minimize the Invasion of Privacy</h3><ul><li>Organizations should use verification procedures to ensure data accuracy</li><li>Organizations must correct or delete incorrect data</li><li>Prevent unauthorized access to data and misuse of data</li><li>Users should review their records and correct any inaccuracies</li><li>Transparency in record-keeping systems storing personal data</li></ul>
+<h3>Privacy Issues Presented by E-mail</h3><p>Spam: Unsolicited e-mail sent for advertising purposes Sent in bulk using automated mailing software Ease of access Individuals should assume that others have access to their messages Any e-mails sent on company-owned computers are the property of the organization</p>
+</div>
+<div class="quiz-container">
+<h3>Session 7-1 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-7-1"></div></div>
+<div class="stats"><span id="quiz-stats-7-1">0/0 questions answered</span><span id="quiz-score-7-1">Score: 0%</span></div>
+<div id="quiz-7-1"></div>
+<button id="check-answers-7-1">Check Answers</button>
+<button id="reset-quiz-7-1" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 7-1 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-7-1"></div></div>
+<div class="stats"><span id="flashcard-stats-7-1">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-7-1">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-7-1">Previous</button>
+<button id="flip-flashcard-7-1">Flip Card</button>
+<button id="next-flashcard-7-1">Next</button>
+</div>
+</div>
+</div>
+<div id="session7-2" class="content-section">
+<h2>Session 7-2: Personal, legal ethical, and organizational issues of information technologies</h2>
+<div class="slide-content">
+<h3>Data Collection on the Web</h3><p>Due to the increase in online shopping, personal details of individuals are prone to misuse Issue of personal information being sold to telemarketing firms resulting in spam Information provided on the Web can be combined with other information and technologies to produce new information</p>
+<h3>Technologies Used for Data Collection</h3><p>Cookies: Small text files with unique ID tags that are embedded in a Web browser and saved on the user's hard drive Help websites customize pages for users Considered an invasion of privacy when users' information is used without prior consent Installing a cookie manager helps users disable cookies Log files: Generated by Web server software, record a user's actions on a website</p>
+<h3>Ethical Issues of Information Technologies</h3><p>Information technology offers opportunities for unethical behavior due to ease of collecting and disseminating information Increase of cybercrime, cyberfraud, identity theft, and intellectual property theft Organizations can reduce unethical behavior of employees by developing and enforcing codes of ethics</p>
+<h3>Censorship of Types of Information on the Web</h3><p>Public information Posted by an organization or public agency Censored for public policy reasons Censored if the content is deemed offensive to a political, religious, or cultural group Private information Posted by a person Uncensored because of constitutional freedom of expression</p>
+</div>
+<div class="quiz-container">
+<h3>Session 7-2 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-7-2"></div></div>
+<div class="stats"><span id="quiz-stats-7-2">0/0 questions answered</span><span id="quiz-score-7-2">Score: 0%</span></div>
+<div id="quiz-7-2"></div>
+<button id="check-answers-7-2">Check Answers</button>
+<button id="reset-quiz-7-2" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 7-2 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-7-2"></div></div>
+<div class="stats"><span id="flashcard-stats-7-2">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-7-2">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-7-2">Previous</button>
+<button id="flip-flashcard-7-2">Flip Card</button>
+<button id="next-flashcard-7-2">Next</button>
+</div>
+</div>
+</div>
+<div id="session7-3" class="content-section">
+<h2>Session 7-3: Personal, legal ethical, and organizational issues of information technologies</h2>
+<div class="slide-content">
+<h3>Censorship</h3><p>Restricting access to the Web Countries like Burma, China, and Singapore, restrict or forbid their citizens' access to the Web Internet neutrality: Internet service providers (ISPs) and government agencies should treat all data on the Internet equally Parents use programs like CyberPatrol, CyberSitter, Net Nanny, and SafeSurf to prevent children's access to certain websites</p>
+<h3>Intellectual Property</h3><p>Legal umbrella covering protections that involve copyrights, trademarks, trade secrets, and patents developed by people or businesses</p>
+<h3>Categories in Intellectual Property</h3><p>Industrial property Inventions, trademarks, logos, and industrial designs Copyrighted material Literary and artistic works Covers online materials like Web pages, HTML code, and computer graphics Fair Use Doctrine: Exception to the Copyright law which allows the use of copyrighted material for certain purposes</p>
+<h3>Intellectual Property Protections</h3><p>Trademark: Protects product names and identifying marks Patent: Protects new processes Advantages to organizations Generates revenue by licensing the patent Attracts funding for research and development Keeps competitors from entering certain market segments</p>
+<h3>Laws Covering Software Piracy</h3><p>1980 revisions to the Copyright Act of 1976 include computer programs Laws covering legal issues related to information technologies in the United States Telecommunications Act of 1996 Communications Decency Act (CDA) Laws against spamming</p>
+<h3>Cybersquatting</h3><p>Registering, selling, or using a domain name to profit from someone else's trademark Typosquatting: Relies on typographical errors made by Web users when typing a website address into a Web browser Variation of cybersquatting Called URL hijacking</p>
+<h3>Digital Divide</h3><p>Information technology and the Internet that is not accessible for all Increasing funding for computers at schools, public places, helps offset the divide</p>
+<h3>Impact of Information Technology in the Workplace</h3><p>Creation of technical jobs, requiring extensive training Increased consumers' purchasing power Results in a stronger economy by reducing production costs Direct effect on the nature of jobs Telecommuting enables work from home option Organizations can use the best and most cost-effective human resources in a large geographical region</p>
+<h3>Impact of Information Technology in the Workplace</h3><p>Job deskilling: Occurs when skilled labor is eliminated due to high technology Virtual organizations: Companies, suppliers, customers, and manufacturers connected via information technologies To share skills and cost To have access to each other's markets</p>
+<h3>4.1 Potential Benefits and Drawbacks of Telecommuting</h3>
+<h3>Information Technology and Health Issues</h3><p>Increasing popularity of touchscreens result in stress related injuries of the users' hands, arms, back, and eyes Related health problems associated with computer equipment Vision issues Musculoskeletal issues Skin issues Reproductive system issues Stress issues</p>
+<h3>Green Computing</h3><p>Promotes a sustainable environment and consumes the least amount of energy Involves the design, manufacture, use, and disposal of computers, servers, and computing devices with minimal impact on the environment Requires cooperation of both private and public sectors</p>
+<h3>Ways to Achieve Green Computing</h3><ul><li>Design products that last longer and are modular in design</li><li>Parts can be upgraded without replacing the entire system</li><li>Design search engines and computing routines that are faster and consume less energy</li><li>Replace underutilized smaller servers with one large server using a virtualization technique</li></ul>
+<h3>Ways to Achieve Green Computing</h3><ul><li>Use computing devices that consume less energy and are biodegradable</li><li>Allow certain employees to work from their homes to reduce carbon footprints</li><li>Conduct meetings over computer networks to reduce business travel</li><li>Encourage carpool and nonmotorized transportation for employees</li><li>Turn off idle PCs and recycle computer-related materials</li></ul>
+</div>
+<div class="quiz-container">
+<h3>Session 7-3 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-7-3"></div></div>
+<div class="stats"><span id="quiz-stats-7-3">0/0 questions answered</span><span id="quiz-score-7-3">Score: 0%</span></div>
+<div id="quiz-7-3"></div>
+<button id="check-answers-7-3">Check Answers</button>
+<button id="reset-quiz-7-3" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 7-3 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-7-3"></div></div>
+<div class="stats"><span id="flashcard-stats-7-3">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-7-3">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-7-3">Previous</button>
+<button id="flip-flashcard-7-3">Flip Card</button>
+<button id="next-flashcard-7-3">Next</button>
+</div>
+</div>
+</div>
+<div id="session8" class="content-section">
+<h2>Session 8: Cyberethics</h2>
+<div class="slide-content">
+<h3>Scenario I</h3><p>Consider the following question: If you could use a computer to steal enough money so that you and no other member of your family would every have to work again, and there was no chance that you would get caught, would you do it? If you answered yes, then why? If you answered no, then why not? If there were a chance of being caught, does that change your answer? If there were a good chance of being caught, does that change your answer?</p>
+<h3>Cyberethics Defined</h3><p>Scenario 1 is just an example of a much larger field of study called Cyberethics Wikipedia defines Cyberthics as "the philosophic study of ethics pertaining to computers, encompassing user behavior and what computers are programmed to do, and how this affects individuals and society."</p>
+<h3>Cyberethics Examples</h3><p>There are many examples that would fall under the heading of cyberethics but here are a few such questions: If it is on the internet, is it ok to copy it? If you find an open port into a machine, it it ok to explore that machine? Is it ok to post false information about another individual or group? What is the definition of pornography and should access to it be limited on the internet? Where is the line between satire and blasphemy and who gets to decide? Is it ok to create a program the purpose of which is to provide illicit access to other people's data? Is it acceptable to write a program that provides guidance to a nuclear device? Is it ok to hack if you are hacking for the "good guys?"</p>
+<h3>ACM Code of Ethics</h3><p>These are not new questions. Many of these questions have been around since the beginning of mankind, they are simply now applied to the internet. For folks new to this discussion, a reasonable place to start is the ACM Code of Ethics. ACM stands for Association for Computing Machinery This is the parent professional organization for all of Information Technology (IT) For those that wish to be IT professionals, it is a good idea to know and follow the ACM Code of Ethics but it is not just for IT professionals</p>
+<h3>ACM Code of Ethics</h3><p>The ACM Code of Ethics is divided into multiple sections including: General Moral Imperatives More Specific Professional Responsibilities Organizational Leadership Imperatives Compliance with the Code</p>
+<h3>General Moral Imperatives</h3><p>As an ACM member I will … Contribute to society and human well-being Avoid harm to others Be honest and trustworthy Be fair and take action not to discriminate Honor property rights including copyrights and patents Give proper credit for intellectual property Respect the privacy of others Honor confidentiality</p>
+<h3>More Specific Professional Responsibilities</h3><p>As an ACM computing professional I will … Strive to achieve the highest quality, effectiveness and dignity in both the process and products of professional work Acquire and maintain professional competence Know and respect existing laws pertaining to professional work Accept and provide appropriate professional review Give comprehensive and thorough evaluations of computer systems and their impacts, including analysis of possible risks Honor contracts, agreements, and assigned responsibilities Improve public understanding of computing and its consequences Access computing and communication resources only when authorized to do so</p>
+<h3>Organizational Leadership Imperatives</h3><p>As an ACM member and an organizational leader, I will … Articulate social responsibilities of members of an organizational unit and encourage full acceptance of those responsibilities Manage personnel and resources to design and build information systems that enhance the quality of working life Acknowledge and support proper and authorized uses of an organization's computing and communication resources Ensure that users and those who will be affected by a system have their needs clearly articulated during the assessment and design of requirements; later the system must be validated to meet requirements Articulate and support policies that protect the dignity of users and others affected by a computing system Create opportunities for members of the organization to learn the principles and limitations of computer systems</p>
+<h3>Compliance with the Code</h3><p>As an ACM member I will … Uphold and promote the principles of this Code Treat violations of this code as inconsistent with membership in the ACM</p>
+<h3>Scenario I</h3><p>Lets reconsider our first question: If you could use a computer to steal enough money so that you and no other member of your family would have to work ever again, and there was no chance that you would ever get caught, would you do it? If you answered yes, then why would you assume that no one would do this to you? If you answered yes, then why would you ever place your money in a bank, credit union, or other financial institution? • If you answered yes, then perhaps you should not be an IT Professional!!</p>
+<h3>Responsibility</h3><p>In our discussion, we have returned often to the word Responsibility. Lets consider what this word means. Wiktionary defines responsibility as "the state of being responsible, accountable, or answerable" OR as "a duty, obligation, or liability for which someone is held accountable." For our purposes, lets consider four types of responsibility: Role Responsibility Causal Responsibility Blameworthy Liable</p>
+<h3>Role Responsibility</h3><p>Role Responsibility describes a situation where a person is responsible simply because of the position or role that they occupy. Examples might include: A parent's responsibility for their child and the actions of that child A teacher's responsibility for their class room and the students in it A firefighter's responsibility to save lives and protect property A software developer's responsibility for the systems they develop/maintain</p>
+<h3>Causal Responsibility</h3><p>Causal Responsibility describes a situation where a person has done something or failed to do something that has caused an event to occur. Keep in mind that there is no fault necessarily associated with causal responsibility. Examples might include: A batter hitting a baseball over the outfield fence into a car windshield The wind of a passing car blowing a piece of trash up into the air that gets stuck to the radiator of another car A store owner forgetting to turn out the lights when the store is closed causing people to think that store is open A web developer creating a back door into a system for maintenance that is eventually exploited in a hack</p>
+<h3>Blameworthy</h3><p>Blameworthy describes a situation where a person has done something wrong or failed to do something right that has caused an event to occur. Unlike causal responsibility, there is fault associated with being blameworthy. Examples might include: A person intentionally throwing a baseball into a car windshield Failing to secure a load on a truck or trailer that comes loose and hits another car A restaurant employee forgetting to turn off the oven causing a fire A software developer intentionally creating a back door without the consent of the client for future malicious purposes</p>
+<h3>Liable</h3><p>Liability describes a situation where a person is financially or criminally responsible for something. Keep in mind that it is possible to be liable without being blameworthy! Examples might include: A parent's financial responsibility for the window their child broke A drunk driver's responsibility for the injuries or deaths of others A company's responsibility for the failure of a project A software developer's for their code allowing the theft of millions of dollars</p>
+<h3>Scenario II</h3><p>Consider the following question: Eventually, as you learn about computers, operating systems, the internet and cyber security, you may have the skills to attempt to penetrate other people's systems. Lets say that you successfully penetrate someone else's computer without permission but that you do not do anything malicious. Is this ethical or not? If you answered yes, then why? If you answered no, then why not? If there were a chance of being caught, does that change your answer? If the law makes this clearly illegal, does that change your answer?</p>
+<h3>Scenario II (continued)</h3><p>Non-malicious hacking Some hackers attempt to make the case that as long as they do not do anything malicious, then they have not done anything wrong Some even argue that they are helping to discover flaws in security or operating systems However, doing so without permission is at best un-ethical and at most illegal</p>
+<h3>Scenario III</h3><p>Consider the following question: Taken from the movies Ferris Bueller's Day Off and War Games, let's suppose that your school's computer system is not secure, that you have the ability to penetrate that system and change grades, attendance records, etc. Let's also suppose that you are .001 points away from graduating with a GPA that would qualify you for thousands of dollars in scholarships. It would only take changing one grade from a B to a B+ to qualify. Would you do it? If you answered yes, then why? If you answered no, then why not? If there were a chance of being caught, does that change your answer? If the law makes this clearly illegal, does that change your answer?</p>
+<h3>Scenario III (continued)</h3><p>Hacking for "good" cause Some hackers attempt to make the case that as long as they are not hurting anyone and their motives are "good", then they have not done anything wrong However, they may be missing the fact that by cheating their way to scholarship eligibility, they may be taking money away from students that actually earned it This kind of hacking is absolutely illegal</p>
+<h3>Scenario IV</h3><p>Consider the following question: You are working on a paper for a class and you find a very similar paper on the internet. You want to use significant parts of the paper in your paper but you are unsure how much is too much. What do you do? It is on the internet so it is fair game, copy it! Since you don't know how much is too much, don't use any of it? Use appropriate excerpts and quotes but with proper citation. They are only saying what you would have said anyway, so what is the harm in using it.</p>
+<h3>Scenario IV (continued)</h3><p>Copyright and Fair Use Lets get some basics out of the way: All creative works are covered by Copyright law from the moment they are created Copyrights can be registered with the federal government but do not have to be registered to be enforced as long as the authorship can be determined Plagiarism – claiming someone else's work as your own – is simply wrong – period! There are exceptions to copyright and most of these are in the Doctrine of Fair Use</p>
+<h3>Scenario IV (continued)</h3><p>Fair Use The Doctrine of Fair Use provides limited exceptions to copyright: The purpose and character of the use, including whether such use is of commercial nature or is for nonprofit educational purposes The nature of the copyrighted work The amount and substantiality of the portion used in relation to the copyrighted work as a whole The effect of the use upon the potential market for, or value of, the copyrighted work</p>
+<h3>Scenario IV (continued)</h3><p>The purpose and character of the use, including whether such use is of commercial nature or is for nonprofit educational purposes This means two things: You can use work covered by copyright for nonprofit educational purposes, but You cannot deprive the copyright holder from the right to profit from the copyright This means, for example, that a professor may be able to share an excerpt from work but they cannot simply copy an entire textbook and given it to their students.</p>
+<h3>Scenario IV (continued)</h3><p>The nature of the copyrighted work While some may interpret this as referring to the subjective quality of a creative work, it actually refers primarily to the distinction between facts and expression. For example, the fact that the Normandy D-Day invasion took place on June 6, 1944 is a fact and is not covered by copyright. However, an expression of that fact such as the book, and the movie, "The Longest Day', is covered by copyright.</p>
+<h3>Scenario IV (continued)</h3><p>The amount and substantiality of the portion used in relation to the copyrighted work as a whole An example of this would be copying a particular chart, graph, or algorithm out of a book as opposed to copy the entire book. While there is no set limit on the number of characters, words, or pages that is safe to copy, the legal threshold falls back upon whether you may be depriving the copyright holder from the right to profit. Thus if you copy an entire magazine article and distribute it to your friends, you are most likely in violation. However, quoting a line or two with proper citation is likely acceptable.</p>
+<h3>Scenario IV (continued)</h3><p>The effect of the use upon the potential market for, or value of, the copyrighted work This is the standard of do not deprive the copyright holder of the right to profit from their copyright. However, there are some exceptions even to this. For example, a movie critic may blast a movie causing a lot of people to not pay to see it. While this deprives the copyright holder, parody and critique are expressly allowed under copyright law.</p>
+<h3>Scenario IV (continued)</h3><p>Fair Use Examples As reported in the 1961 Report of the Register of Copyrights on the General Revision of the U.S. Copyright Law here are some typical examples of "fair use" exceptions to copyright: "quotation of excerpts in a review or criticism for purposes of illustration or comment; quotation of short passages in a scholarly or technical work, for illustration or clarification of the author's observations; use in a parody of some of the content of the work parodied; summary of an address or article, with brief quotations, in a news report; reproduction by a library of a portion of a work to replace part of a damaged copy; reproduction by a teacher or student of a small part of a work to illustrate a lesson; reproduction of a work in legislative or judicial proceedings or reports; incidental and fortuitous reproduction, in a newsreel or broadcast, of a work located in the scene of an event being reported."</p>
+<h3>More Information</h3><p>For more information: Copyright and Fair Use http://www.copyright.gov/fls/fl102.html http://en.wikipedia.org/wiki/Fair_use Terms and Definitions related to cyber-security and cyberethics http://niccs.us-cert.gov/glossary http://www.sans.org/security-resources/glossary-of-terms/ Cyberethics http://en.wikipedia.org/wiki/Cyberethics Recommendations on best practices http://www.microsoft.com/security/online-privacy/cyberethics-practice.aspx</p>
+</div>
+<div class="quiz-container">
+<h3>Session 8 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-8"></div></div>
+<div class="stats"><span id="quiz-stats-8">0/0 questions answered</span><span id="quiz-score-8">Score: 0%</span></div>
+<div id="quiz-8"></div>
+<button id="check-answers-8">Check Answers</button>
+<button id="reset-quiz-8" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 8 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-8"></div></div>
+<div class="stats"><span id="flashcard-stats-8">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-8">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-8">Previous</button>
+<button id="flip-flashcard-8">Flip Card</button>
+<button id="next-flashcard-8">Next</button>
+</div>
+</div>
+</div>
+<div id="session8-1" class="content-section">
+<h2>Session 8-1: Cyberethics</h2>
+<div class="slide-content">
+<h3>Cyberethics Defined</h3><p>Scenario 1 is just an example of a much larger field of study called Cyberethics Wikipedia defines Cyberthics as "the philosophic study of ethics pertaining to computers, encompassing user behavior and what computers are programmed to do, and how this affects individuals and society."</p>
+<h3>Cyberethics Examples</h3><p>There are many examples that would fall under the heading of cyberethics but here are a few such questions: If it is on the internet, is it ok to copy it? If you find an open port into a machine, it it ok to explore that machine? Is it ok to post false information about another individual or group? What is the definition of pornography and should access to it be limited on the internet? Where is the line between satire and blasphemy and who gets to decide? Is it ok to create a program the purpose of which is to provide illicit access to other people's data? Is it acceptable to write a program that provides guidance to a nuclear device? Is it ok to hack if you are hacking for the "good guys?"</p>
+<h3>ACM Code of Ethics</h3><p>These are not new questions. Many of these questions have been around since the beginning of mankind, they are simply now applied to the internet. For folks new to this discussion, a reasonable place to start is the ACM Code of Ethics. ACM stands for Association for Computing Machinery This is the parent professional organization for all of Information Technology (IT) For those that wish to be IT professionals, it is a good idea to know and follow the ACM Code of Ethics but it is not just for IT professionals</p>
+<h3>ACM Code of Ethics</h3><p>The ACM Code of Ethics is divided into multiple sections including: General Moral Imperatives More Specific Professional Responsibilities Organizational Leadership Imperatives Compliance with the Code</p>
+<h3>General Moral Imperatives</h3><p>As an ACM member I will … Contribute to society and human well-being Avoid harm to others Be honest and trustworthy Be fair and take action not to discriminate Honor property rights including copyrights and patents Give proper credit for intellectual property Respect the privacy of others Honor confidentiality</p>
+<h3>More Specific Professional Responsibilities</h3><p>As an ACM computing professional I will … Strive to achieve the highest quality, effectiveness and dignity in both the process and products of professional work Acquire and maintain professional competence Know and respect existing laws pertaining to professional work Accept and provide appropriate professional review Give comprehensive and thorough evaluations of computer systems and their impacts, including analysis of possible risks Honor contracts, agreements, and assigned responsibilities Improve public understanding of computing and its consequences Access computing and communication resources only when authorized to do so</p>
+<h3>Organizational Leadership Imperatives</h3><p>As an ACM member and an organizational leader, I will … Articulate social responsibilities of members of an organizational unit and encourage full acceptance of those responsibilities Manage personnel and resources to design and build information systems that enhance the quality of working life Acknowledge and support proper and authorized uses of an organization's computing and communication resources Ensure that users and those who will be affected by a system have their needs clearly articulated during the assessment and design of requirements; later the system must be validated to meet requirements Articulate and support policies that protect the dignity of users and others affected by a computing system Create opportunities for members of the organization to learn the principles and limitations of computer systems</p>
+<h3>Compliance with the Code</h3><p>As an ACM member I will … Uphold and promote the principles of this Code Treat violations of this code as inconsistent with membership in the ACM</p>
+<h3>Responsibility</h3><p>In our discussion, we have returned often to the word Responsibility. Lets consider what this word means. Wiktionary defines responsibility as "the state of being responsible, accountable, or answerable" OR as "a duty, obligation, or liability for which someone is held accountable." For our purposes, lets consider four types of responsibility: Role Responsibility Causal Responsibility Blameworthy Liable</p>
+<h3>Role Responsibility</h3><p>Role Responsibility describes a situation where a person is responsible simply because of the position or role that they occupy. Examples might include: A parent's responsibility for their child and the actions of that child A teacher's responsibility for their class room and the students in it A firefighter's responsibility to save lives and protect property A software developer's responsibility for the systems they develop/maintain</p>
+<h3>Causal Responsibility</h3><p>Causal Responsibility describes a situation where a person has done something or failed to do something that has caused an event to occur. Keep in mind that there is no fault necessarily associated with causal responsibility. Examples might include: A batter hitting a baseball over the outfield fence into a car windshield The wind of a passing car blowing a piece of trash up into the air that gets stuck to the radiator of another car A store owner forgetting to turn out the lights when the store is closed causing people to think that store is open A web developer creating a back door into a system for maintenance that is eventually exploited in a hack</p>
+<h3>Blameworthy</h3><p>Blameworthy describes a situation where a person has done something wrong or failed to do something right that has caused an event to occur. Unlike causal responsibility, there is fault associated with being blameworthy. Examples might include: A person intentionally throwing a baseball into a car windshield Failing to secure a load on a truck or trailer that comes loose and hits another car A restaurant employee forgetting to turn off the oven causing a fire A software developer intentionally creating a back door without the consent of the client for future malicious purposes</p>
+<h3>Liable</h3><p>Liability describes a situation where a person is financially or criminally responsible for something. Keep in mind that it is possible to be liable without being blameworthy! Examples might include: A parent's financial responsibility for the window their child broke A drunk driver's responsibility for the injuries or deaths of others A company's responsibility for the failure of a project A software developer's for their code allowing the theft of millions of dollars</p>
+<h3>More Information</h3><p>For more information: Copyright and Fair Use http://www.copyright.gov/fls/fl102.html http://en.wikipedia.org/wiki/Fair_use Terms and Definitions related to cyber-security and cyberethics http://niccs.us-cert.gov/glossary http://www.sans.org/security-resources/glossary-of-terms/ Cyberethics http://en.wikipedia.org/wiki/Cyberethics Recommendations on best practices http://www.microsoft.com/security/online-privacy/cyberethics-practice.aspx</p>
+</div>
+<div class="quiz-container">
+<h3>Session 8-1 Quiz</h3>
+<div class="progress-bar"><div class="progress" id="quiz-progress-8-1"></div></div>
+<div class="stats"><span id="quiz-stats-8-1">0/0 questions answered</span><span id="quiz-score-8-1">Score: 0%</span></div>
+<div id="quiz-8-1"></div>
+<button id="check-answers-8-1">Check Answers</button>
+<button id="reset-quiz-8-1" style="display:none;">Reset Quiz</button>
+</div>
+<div class="flashcards-container">
+<h3>Session 8-1 Flashcards</h3>
+<div class="progress-bar"><div class="progress" id="flashcard-progress-8-1"></div></div>
+<div class="stats"><span id="flashcard-stats-8-1">0/0 flashcards reviewed</span></div>
+<div class="flashcard" id="flashcard-8-1">
+<div class="flashcard-inner">
+<div class="flashcard-front"><h3>Flashcard Front</h3><p>Click to flip</p></div>
+<div class="flashcard-back"><h3>Flashcard Back</h3><p>Content will appear here</p></div>
+</div>
+</div>
+<div class="flashcard-controls">
+<button id="prev-flashcard-8-1">Previous</button>
+<button id="flip-flashcard-8-1">Flip Card</button>
+<button id="next-flashcard-8-1">Next</button>
+</div>
+</div>
+</div>
+</div>
+<footer><p>VICTORIA UNIVERSITY - RTO Code 3113, CRICOS Provider Code 00124K (Melbourne), 02475D (Sydney)</p><p>NIT2241 Cyber Law Policy and Professional Ethics</p><p>These slides are based on those from Suprakash Datta, Computer Security Management: Assessment and Forensics</p></footer>
+<script>
+document.querySelectorAll('.tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.content-section').forEach(s=>s.classList.remove('active'));tab.classList.add('active');document.getElementById(tab.dataset.tab).classList.add('active');});});
+const quizData={"session4-1":[{question:"What is the essential foundation of an effective information security program?",options:["Technology","Policy","Training","Monitoring"],correct:1},{question:"What are the objectives of information security policy?",options:["Increased profits, market share, customer satisfaction","Reduced risk, compliance with laws, assurance of operational continuity","Employee satisfaction, brand recognition, innovation","Cost reduction, efficiency, scalability"],correct:1},{question:"Why are policies considered the least expensive means of control?",options:["They don't require any resources to implement","They are often the most difficult to implement","They prevent issues before they occur with minimal cost","They can be copied from other organizations"],correct:2},{question:"According to the Bulls-eye model, where do threats first meet the organization?",options:["Systems","Applications","Networks","Users"],correct:2},{question:"What is the purpose of an Enterprise Information Security Policy (EISP)?",options:["To provide detailed technical specifications","To set strategic direction and assign responsibilities","To document specific system configurations","To outline employee disciplinary procedures"],correct:1},{question:"What does ISSP stand for?",options:["International Security Standards Protocol","Information Systems Security Policy","Issue-Specific Security Policy","Integrated System Security Plan"],correct:2},{question:"Which of these is NOT typically an ISSP topic?",options:["Email and internet use","Prohibitions against hacking","Financial investment strategies","Home use of company-owned equipment"],correct:2},{question:"What do System-Specific Security Policies (SysSPs) frequently look like?",options:["Legal documents","Marketing materials","Standards or procedures","Financial reports"],correct:2},{question:"What is the purpose of Access Control Lists (ACLs)?",options:["To track employee attendance","To manage financial transactions","To govern rights and privileges for system access","To document meeting minutes"],correct:2},{question:"What do configuration rules in SysSPs do?",options:["Define employee work schedules","Guide the execution of security systems","Set company financial targets","Determine marketing strategies"],correct:1}],"session4-2":[{question:"What is the first guideline for effective policy development?",options:["Policies must be developed using industry-accepted practices","Policies must be uniformly enforced","Policies must be understood by all employees","Policies must be formally agreed to"],correct:0},{question:"What is the first step in policy development?",options:["Analysis","Design","Investigation","Implementation"],correct:2},{question:"What does the Investigation step involve?",options:["Risk assessment","Components and dissemination","Goals, support, and participation","Detailed specification"],correct:2},{question:"What is the purpose of policy readability statistics?",options:["To make policies look more professional","To ensure employees can understand the policies","To reduce printing costs","To meet legal requirements"],correct:1},{question:"What automated tool is mentioned for policy management?",options:["PolicyPro","SecurePolicy","The VigilEnt Policy Center","ComplianceManager"],correct:2},{question:"What is the first step in the Information Security Policy Made Easy approach?",options:["Defining a framework for policies","Gathering key reference materials","Preparing a coverage matrix","Making critical systems design decisions"],correct:1},{question:"What does a coverage matrix do?",options:["Tracks employee attendance at policy training","Maps policies to regulations and risks","Calculates the cost of policy implementation","Measures policy effectiveness"],correct:1},{question:"According to the final note on policy, what is the primary purpose of policies?",options:["To avoid litigation","To inform employees of acceptable behavior","To impress customers","To meet regulatory requirements"],correct:1},{question:"What do policies seek to improve according to the final note?",options:["Profit margins","Employee productivity","Market share","Brand recognition"],correct:1},{question:"What potentially embarrassing situations do policies seek to prevent?",options:["Office parties","Team building exercises","Inappropriate employee behavior","Company picnics"],correct:2}],"session5-1":[{question:"Why do organizations need ethics according to the slides?",options:["To increase profits","As a basis for values and visions","To reduce employee count","To simplify operations"],correct:1},{question:"What is one reason ethics can motivate employees?",options:["Higher salaries","Sense of purpose and values","More vacation time","Better office space"],correct:1},{question:"What concept did Robert Locke criticize?",options:["Social responsibility","Managerialism","Environmental sustainability","Technological innovation"],correct:1},{question:"According to the Robert Pagliarini blog excerpt, what was the foundation for the country?",options:["Altruism","Greed","Religion","Education"],correct:1},{question:"How is self-interest viewed in Japan according to the slides?",options:["As a positive personality trait","As a negative personality trait","As irrelevant to business","As essential for success"],correct:1},{question:"What did Aristotle contribute to ICT ethics?",options:["Stakeholder orientation","Environmental care","Do good work and consider end use","Knowledge contribution"],correct:2},{question:"What is ethics defined as?",options:["Company rules and regulations","Legal requirements","Moral philosophy","Religious teachings"],correct:2},{question:"How are morals defined?",options:["Personal preferences","Legal requirements","Beliefs and behavior of a group","Universal truths"],correct:2},{question:"Which form of ethics asks 'what is good?'",options:["Normative ethics","Applied ethics","Metaethics","Moral psychology"],correct:2},{question:"What does descriptive ethics study?",options:["What people should do","How to apply ethics to work","What morals people actually follow","The biological bases of morality"],correct:2}],"session5-2":[{question:"What are codes of ethics applied to?",options:["Personal life only","Professions or disciplines","Government regulations only","International treaties"],correct:1},{question:"Which disaster is mentioned as an example of engineering ethics failure?",options:["Chernobyl","The Challenger","Three Mile Island","Deepwater Horizon"],correct:1},{question:"What is the Golden Rule of symmetrical ethics?",options:["Do whatever brings maximum gold","Do to others what you want them to do to you","The one with the gold makes the rules","Demand more from others than yourself"],correct:1},{question:"What is the 'Gold-in' Rule?",options:["A serious ethical principle","A satirical take on greed-driven behavior","A financial regulation","A religious teaching"],correct:1},{question:"When does asymmetrical ethics apply?",options:["When all parties have equal power","When one party has more resources, knowledge, or power","In personal relationships only","In financial transactions only"],correct:1},{question:"What is instrumental ethics?",options:["Ethics based on musical principles","Ethics as a tool to achieve something else","Ethics for machine learning","Ethics in manufacturing"],correct:1},{question:"What is 'greenwashing'?",options:["Environmental cleaning","Fake environmentalism","Sustainable agriculture","Eco-friendly products"],correct:1},{question:"What does principle-based ethics require?",options:["Legal compliance only","Action following principles","Financial success","Government approval"],correct:1},{question:"What does compliance ethics ensure?",options:["Maximum profits","Organization 'does no wrongs'","Employee happiness","Market dominance"],correct:1},{question:"How does positive ethics differ from compliance ethics?",options:["It focuses only on profits","It goes beyond compliance to contribute positively","It ignores legal requirements","It applies only to large organizations"],correct:1}],"session5-3":[{question:"What is the tension between openness and privacy?",options:["They are the same concept","They are completely unrelated","They represent competing values","Openness always trumps privacy"],correct:2},{question:"What does openness involve according to the table?",options:["Keeping information secret","Publishing and analyzing information","Protecting personal data only","Following government regulations"],correct:1},{question:"What privacy concern is mentioned regarding information?",options:["It may be too expensive","It may cause harm or embarrassment","It may be difficult to store","It may increase profits"],correct:1},{question:"What organization is mentioned in the discussion of openness vs privacy?",options:["Google","Facebook","Wikileaks","The New York Times"],correct:2},{question:"What are the characteristics of quality information?",options:["Expensive, complex, proprietary","Correct, timely, relevant, interesting, useful","Lengthy, detailed, technical","Simple, brief, entertaining"],correct:1},{question:"Which of these is NOT listed as an organizational virtue?",options:["Legitimacy","Credibility","Profitability","Accountability"],correct:2},{question:"What does stewardship refer to in organizational virtues?",options:["Financial management","Responsible management of resources","Employee supervision","Marketing strategy"],correct:1},{question:"What does traceability mean in the context of organizational virtues?",options:["Ability to track shipments","Ability to follow the path of decisions or data","Employee location tracking","Financial auditing"],correct:1},{question:"According to the slides, what does ethics apply to?",options:["Only professional duties","Only customer care","Multiple areas including professional duties and environment care","Only financial matters"],correct:2},{question:"What is indicated by the asterisk next to the list of what ethics applies to?",options:["These items are optional","The list is being extended","These are the most important items","These items are required by law"],correct:1}],"session6-1":[{question:"What is computer ethics defined as?",options:["A branch of philosophy dealing with computing-related moral dilemmas","A set of technical standards for computer systems","A type of computer programming methodology","A legal framework for internet regulation"],correct:0},{question:"What illegal and unethical actions can arise through computer usage?",options:["Plagiarism and copyright infringement","Software piracy","Computer crimes and unauthorized access","All of the above"],correct:3},{question:"As a professional, what should you do regarding secure information?",options:["Share it freely with colleagues","Safeguard it","Ignore security protocols","Use it for personal gain"],correct:1},{question:"How does information ethics differ when using a computer?",options:["Scope and speed","Cost and complexity","Security and privacy","All of the above"],correct:0},{question:"What are areas of ethical problems in computing?",options:["Personal intrusion and privacy","Morality and deception","Security and intellectual property","All of the above"],correct:3}],"session6-2-3":[{question:"What are examples of computer ethics issues?",options:["Computers in the Workplace","Computer Crime","Privacy and Anonymity","All of the above"],correct:3},{question:"How is the world of ethics characterized?",options:["Black and white","Gray","Red and blue","Green and yellow"],correct:1},{question:"What is the first rule of computer ethics?",options:["Thou shalt not use a computer to harm other people","Thou shalt not interfere with other people's computer work","Thou shalt not snoop around in other people's computer files","Thou shalt not use a computer to steal"],correct:0},{question:"What is the most important rule of netiquette?",options:["Think before you post","Use proper grammar","Quote extensively","Send to as many people as possible"],correct:0},{question:"Who coined the term 'computer ethics'?",options:["Norbert Wiener","Donn Parker","Walter Maner","Gotterbarn"],correct:2}],"session7-1":[{question:"What do employers search on social networking sites?",options:["Background information on applicants","Product ideas","Market trends","Competitor information"],correct:0},{question:"What do monitoring systems adopted by employers check?",options:["Employee performance","Weather patterns","Stock market trends","Traffic conditions"],correct:0},{question:"What has information technology aided in?",options:["Easy availability of personal information","Reducing computer costs","Increasing internet speed","Improving battery life"],correct:0},{question:"What can information in databases be used for?",options:["Direct marketing and credit checks","Weather forecasting","Stock market predictions","Traffic management"],correct:0},{question:"What should you do to minimize invasion of privacy?",options:["Conduct business only with websites having privacy policies","Share all personal information freely","Ignore privacy settings","Use public Wi-Fi for all transactions"],correct:0}],"session7-2":[{question:"Why are personal details prone to misuse with online shopping?",options:["Due to increase in online shopping","Due to decrease in security","Due to lack of regulations","Due to technology limitations"],correct:0},{question:"What can happen to personal information provided on the Web?",options:["It can be sold to telemarketing firms","It can be combined with other information","It can produce new information","All of the above"],correct:3},{question:"What are cookies?",options:["Small text files with unique ID tags","Large video files","Audio recordings","Database files"],correct:0},{question:"What do cookies help websites do?",options:["Customize pages for users","Increase security","Reduce costs","Improve speed"],correct:0},{question:"What can organizations do to reduce unethical behavior?",options:["Develop and enforce codes of ethics","Ignore unethical behavior","Promote unethical behavior","Eliminate all monitoring"],correct:0}],"session7-3":[{question:"What is censorship?",options:["Restricting access to the Web","Increasing access to the Web","Improving Web content","Removing Web content"],correct:0},{question:"What is intellectual property?",options:["Legal umbrella covering copyrights, trademarks, trade secrets, and patents","A type of physical property","A form of currency","A computer program"],correct:0},{question:"What does the Fair Use Doctrine allow?",options:["Use of copyrighted material for certain purposes","Unlimited use of copyrighted material","Sale of copyrighted material","Modification of copyrighted material"],correct:0},{question:"What is cybersquatting?",options:["Registering, selling, or using a domain name to profit from someone else's trademark","Creating new websites","Improving website security","Developing new software"],correct:0},{question:"What is the digital divide?",options:["Information technology and the Internet that is not accessible for all","A type of computer virus","A security protocol","A programming language"],correct:0}],"session8":[{question:"What is cyberethics?",options:["The philosophic study of ethics pertaining to computers","The study of computer hardware","The programming of ethical software","The analysis of computer networks"],correct:0},{question:"What does ACM stand for?",options:["Association for Computing Machinery","American Computer Manufacturers","Advanced Computing Methods","Association of Computer Managers"],correct:0},{question:"What is the first general moral imperative in the ACM Code?",options:["Contribute to society and human well-being","Avoid harm to others","Be honest and trustworthy","Be fair and take action not to discriminate"],correct:0},{question:"What is role responsibility?",options:["Responsibility due to position or role","Responsibility due to actions","Responsibility due to blame","Responsibility due to liability"],correct:0},{question:"What is causal responsibility?",options:["When a person has done something that caused an event","When a person is responsible due to their role","When a person is blameworthy","When a person is liable"],correct:0}],"session8-1":[{question:"What is cyberethics defined as?",options:["The philosophic study of ethics pertaining to computers","The study of computer networks","The programming of ethical systems","The analysis of cyber attacks"],correct:0},{question:"What organization created the Code of Ethics discussed?",options:["Association for Computing Machinery (ACM)","Institute of Electrical and Electronics Engineers (IEEE)","International Organization for Standardization (ISO)","World Wide Web Consortium (W3C)"],correct:0},{question:"What are the four types of responsibility discussed?",options:["Role, Causal, Blameworthy, Liable","Personal, Professional, Organizational, Social","Legal, Ethical, Moral, Social","Individual, Group, Organizational, Societal"],correct:0},{question:"What is an example of role responsibility?",options:["A parent's responsibility for their child","A person hitting a baseball into a car","A person intentionally damaging property","A company's financial responsibility"],correct:0},{question:"What is an example of causal responsibility?",options:["A batter hitting a baseball into a car windshield","A parent's responsibility for their child","A person intentionally damaging property","A company's financial responsibility"],correct:0}]};
+const flashcardData={"session4-1":[{front:"What is the essential foundation of an effective information security program?",back:"Policy"},{front:"What are the three main objectives of information security policy?",back:"Reduced risk, compliance with laws and regulations, assurance of operational continuity"},{front:"Why are policies considered the least expensive means of control?",back:"They prevent issues before they occur with minimal cost"},{front:"According to the Bulls-eye model, what are the three layers of defense?",back:"Networks, Systems, Applications"},{front:"What does EISP stand for and what is its purpose?",back:"Enterprise Information Security Program Policy - sets strategic direction and assigns responsibilities"},{front:"What does ISSP stand for and what does it provide?",back:"Issue-Specific Security Policy - provides detailed, targeted guidance for specific technologies"},{front:"What are some common ISSP topics?",back:"Email and internet use, prohibitions against hacking, home use of company equipment"},{front:"What are the two types of System-Specific Security Policies (SysSPs)?",back:"Managerial guidance and technical specifications"},{front:"What do Access Control Lists (ACLs) regulate?",back:"Who can use the system, what they can access, when, where, and how"},{front:"What is the purpose of configuration rules in SysSPs?",back:"To guide the execution of security systems when information is passing through them"}],"session4-2":[{front:"What are the six guidelines for effective policy?",back:"Properly developed, distributed, reviewed, understood, agreed to, and uniformly enforced"},{front:"What are the five steps in policy development?",back:"Investigation, Analysis, Design, Implementation, Maintenance"},{front:"What does the Investigation step involve?",back:"Goals, support, and participation"},{front:"Why is policy readability important?",back:"To ensure employees can understand the policies"},{front:"What automated tool is mentioned for policy management?",back:"The VigilEnt Policy Center"},{front:"What is the first step in the Information Security Policy Made Easy approach?",back:"Gathering key reference materials"},{front:"What is a coverage matrix used for?",back:"Mapping policies to regulations and risks"},{front:"According to the final note, what is the primary purpose of policies?",back:"To inform employees of acceptable behavior"},{front:"What do policies seek to improve?",back:"Employee productivity"},{front:"What potentially embarrassing situations do policies seek to prevent?",back:"Inappropriate employee behavior"}],"session5-1":[{front:"Why do organizations need ethics?",back:"As a basis for values and visions, to motivate employees, for good stakeholder relationships"},{front:"What concept did Robert Locke criticize?",back:"Managerialism - management focused only on money, not growth or society"},{front:"According to the Robert Pagliarini blog, what was the foundation for the country?",back:"Greed/self-interest"},{front:"How is self-interest viewed in Japan?",back:"As a negative personality trait"},{front:"What are some personal goals that can be more important than self-interest?",back:"Family and friends, personal development, contribution to society"},{front:"What is the definition of ethics?",back:"Moral philosophy - determining right and wrong, selecting actions to achieve good results"},{front:"What is the definition of morals?",back:"Beliefs and behavior of a group"},{front:"What are the five forms of ethics?",back:"Metaethics, Normative ethics, Applied ethics, Moral psychology, Descriptive ethics"},{front:"What does metaethics study?",back:"What is good? Fundamental questions about ethics"},{front:"What does descriptive ethics study?",back:"What morals people actually follow"}],"session5-2":[{front:"What are codes of ethics applied to?",back:"Professions or disciplines like ICT, engineering, medicine, law"},{front:"What disaster is mentioned as an example of engineering ethics failure?",back:"The Challenger disaster"},{front:"What is the Golden Rule of symmetrical ethics?",back:"Do to others what you want them to do to you"},{front:"What is the 'Gold-in' Rule?",back:"A satirical rule: Do whatever brings maximum gold without getting caught"},{front:"When does asymmetrical ethics apply?",back:"When one party has more resources, knowledge, or power"},{front:"What is instrumental ethics?",back:"Using ethics as a tool to achieve something else, not based on principles"},{front:"What is 'greenwashing'?",back:"Fake environmentalism - pretending to be environmentally responsible"},{front:"What is principle-based ethics?",back:"Ethics based on clear principles like contributing to society, followed by action"},{front:"What is compliance ethics?",back:"Acting within existing laws, standards, guidelines, and morals"},{front:"What is positive ethics?",back:"Going beyond compliance to positively contribute to organization, profession, society, environment"}],"session5-3":[{front:"What is the tension between openness and privacy?",back:"They represent competing values that need to be balanced"},{front:"What does openness involve?",back:"Publishing, registering, comparing, analyzing, and finding missing information"},{front:"What does privacy involve?",back:"Protecting personal information that may cause harm, embarrassment, or be misused"},{front:"What organization is mentioned in the discussion of openness vs privacy?",back:"Wikileaks"},{front:"What are the characteristics of quality information?",back:"Correct, timely, relevant, interesting, useful"},{front:"What are some organizational virtues/principles?",back:"Legitimacy, credibility, traceability, accountability, stewardship, objectivity, fairness"},{front:"What does stewardship mean in organizational virtues?",back:"Responsible management of resources entrusted to the organization"},{front:"What does traceability mean?",back:"Ability to follow the path of decisions, actions, or data"},{front:"What does ethics apply to according to the slides?",back:"Professional duties, employee care, customer care, environment care, ownership, financing, exploration"},{front:"What does the asterisk next to the list of what ethics applies to indicate?",back:"The list is being extended"}],"session6-1":[{front:"What is computer ethics?",back:"A branch of philosophy that deals with computing-related moral dilemmas"},{front:"What illegal/unethical actions can arise through computer usage?",back:"Plagiarism, copyright infringement, software piracy, computer crimes, unauthorized access"},{front:"What should a professional do regarding secure information?",back:"Safeguard secure information"},{front:"How does information ethics differ when using a computer?",back:"Scope and speed - 'It seems different with a computer'"},{front:"What are areas of ethical problems in computing?",back:"Personal intrusion, privacy, morality, deception, security, resources, intellectual property, inappropriate use, technology and social responsibility"}],"session6-2-3":[{front:"What are examples of computer ethics issues?",back:"Computers in the Workplace, Computer Crime, Privacy and Anonymity, Intellectual Property, Professional Responsibility, Globalization"},{front:"How is the world of ethics characterized?",back:"Gray - not black and white"},{front:"What is the first rule of computer ethics?",back:"Thou shalt not use a computer to harm other people"},{front:"What is the most important rule of netiquette?",back:"Think before you post"},{front:"Who coined the term 'computer ethics'?",back:"Walter Maner in the 1970s"}],"session7-1":[{front:"What do employers search on social networking sites?",back:"Background information on applicants"},{front:"What do monitoring systems check?",back:"Employee performance"},{front:"What has IT aided in?",back:"Easy availability of personal information"},{front:"What can database information be used for?",back:"Direct marketing and credit checks"},{front:"What is the first guideline to minimize invasion of privacy?",back:"Conduct business only with websites having privacy policies"}],"session7-2":[{front:"Why are personal details prone to misuse with online shopping?",back:"Due to increase in online shopping"},{front:"What can happen to personal information on the Web?",back:"It can be sold to telemarketing firms, combined with other information, produce new information"},{front:"What are cookies?",back:"Small text files with unique ID tags embedded in a Web browser"},{front:"What do cookies help websites do?",back:"Customize pages for users"},{front:"What can organizations do to reduce unethical behavior?",back:"Develop and enforce codes of ethics"}],"session7-3":[{front:"What is censorship?",back:"Restricting access to the Web"},{front:"What is intellectual property?",back:"Legal umbrella covering copyrights, trademarks, trade secrets, and patents"},{front:"What does the Fair Use Doctrine allow?",back:"Use of copyrighted material for certain purposes"},{front:"What is cybersquatting?",back:"Registering, selling, or using a domain name to profit from someone else's trademark"},{front:"What is the digital divide?",back:"Information technology and the Internet that is not accessible for all"}],"session8":[{front:"What is cyberethics?",back:"The philosophic study of ethics pertaining to computers"},{front:"What does ACM stand for?",back:"Association for Computing Machinery"},{front:"What is the first general moral imperative?",back:"Contribute to society and human well-being"},{front:"What is role responsibility?",back:"Responsibility due to position or role occupied"},{front:"What is causal responsibility?",back:"When a person has done something that caused an event"}],"session8-1":[{front:"What is cyberethics?",back:"The philosophic study of ethics pertaining to computers"},{front:"What organization created the Code of Ethics?",back:"Association for Computing Machinery (ACM)"},{front:"What are the four types of responsibility?",back:"Role, Causal, Blameworthy, Liable"},{front:"What is an example of role responsibility?",back:"A parent's responsibility for their child"},{front:"What is an example of causal responsibility?",back:"A batter hitting a baseball into a car windshield"}]};
+Object.keys(quizData).forEach(sessionId=>{initializeQuiz(sessionId);initializeFlashcards(sessionId);});
+function initializeQuiz(sessionId){const quizContainer=document.getElementById(`quiz-${sessionId}`);const checkButton=document.getElementById(`check-answers-${sessionId}`);const resetButton=document.getElementById(`reset-quiz-${sessionId}`);const progressBar=document.getElementById(`quiz-progress-${sessionId}`);const statsElement=document.getElementById(`quiz-stats-${sessionId}`);const scoreElement=document.getElementById(`quiz-score-${sessionId}`);const questions=quizData[sessionId];let userAnswers=new Array(questions.length).fill(null);let quizSubmitted=false;questions.forEach((q,index)=>{const questionElement=document.createElement('div');questionElement.className='question';questionElement.innerHTML=`<h4>${index+1}. ${q.question}</h4><div class="options">${q.options.map((option,optIndex)=>`<div class="option" data-question="${index}" data-option="${optIndex}">${option}</div>`).join('')}</div>`;quizContainer.appendChild(questionElement);});quizContainer.querySelectorAll('.option').forEach(option=>{option.addEventListener('click',function(){if(quizSubmitted)return;const questionIndex=parseInt(this.dataset.question);const optionIndex=parseInt(this.dataset.option);const allOptions=this.parentElement.querySelectorAll('.option');allOptions.forEach(opt=>opt.classList.remove('selected'));this.classList.add('selected');userAnswers[questionIndex]=optionIndex;updateProgress();});});checkButton.addEventListener('click',function(){if(quizSubmitted)return;let correctCount=0;questions.forEach((q,index)=>{const userAnswer=userAnswers[index];const correctAnswer=q.correct;const options=quizContainer.querySelectorAll(`.option[data-question="${index}"]`);if(userAnswer===correctAnswer){correctCount++;options[userAnswer].classList.add('correct');}else{if(userAnswer!==null){options[userAnswer].classList.add('incorrect');}options[correctAnswer].classList.add('correct');}});const score=Math.round((correctCount/questions.length)*100);scoreElement.textContent=`Score: ${score}%`;quizSubmitted=true;checkButton.style.display='none';resetButton.style.display='inline-block';});resetButton.addEventListener('click',function(){userAnswers=new Array(questions.length).fill(null);quizSubmitted=false;quizContainer.querySelectorAll('.option').forEach(option=>{option.classList.remove('selected','correct','incorrect');});scoreElement.textContent='Score: 0%';checkButton.style.display='inline-block';resetButton.style.display='none';updateProgress();});function updateProgress(){const answeredCount=userAnswers.filter(answer=>answer!==null).length;const progress=(answeredCount/questions.length)*100;progressBar.style.width=`${progress}%`;statsElement.textContent=`${answeredCount}/${questions.length} questions answered`;}updateProgress();}
+function initializeFlashcards(sessionId){const flashcards=flashcardData[sessionId];const flashcardElement=document.getElementById(`flashcard-${sessionId}`);const prevButton=document.getElementById(`prev-flashcard-${sessionId}`);const flipButton=document.getElementById(`flip-flashcard-${sessionId}`);const nextButton=document.getElementById(`next-flashcard-${sessionId}`);const progressBar=document.getElementById(`flashcard-progress-${sessionId}`);const statsElement=document.getElementById(`flashcard-stats-${sessionId}`);let currentIndex=0;let reviewedCards=new Set();function showCard(index){const card=flashcards[index];const front=flashcardElement.querySelector('.flashcard-front');const back=flashcardElement.querySelector('.flashcard-back');front.innerHTML=`<h3>Flashcard ${index+1}</h3><p>${card.front}</p>`;back.innerHTML=`<h3>Answer</h3><p>${card.back}</p>`;flashcardElement.classList.remove('flipped');updateProgress();}function updateProgress(){const progress=((currentIndex+1)/flashcards.length)*100;progressBar.style.width=`${progress}%`;statsElement.textContent=`${currentIndex+1}/${flashcards.length} flashcards reviewed`;reviewedCards.add(currentIndex);}flashcardElement.addEventListener('click',function(){this.classList.toggle('flipped');});flipButton.addEventListener('click',function(){flashcardElement.classList.toggle('flipped');});prevButton.addEventListener('click',function(){if(currentIndex>0){currentIndex--;showCard(currentIndex);}});nextButton.addEventListener('click',function(){if(currentIndex<flashcards.length-1){currentIndex++;showCard(currentIndex);}});showCard(currentIndex);}
+</script>
 </body>
 </html>
