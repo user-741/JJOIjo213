@@ -76,6 +76,16 @@ main{padding:24px 28px;max-width:1400px}
 .popup.show{opacity:1;pointer-events:all;transform:translate(-50%,-50%) scale(1)}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;opacity:0;pointer-events:none;transition:opacity .3s}
 .overlay.show{opacity:1;pointer-events:all}
+table{width:100%;border-collapse:collapse;font-size:14px}
+table th{background:var(--glass);padding:12px;text-align:left;border-bottom:2px solid var(--border);font-weight:600;color:var(--accent);white-space:nowrap;position:sticky;top:0}
+table td{padding:12px;border-bottom:1px solid var(--border);color:var(--text)}
+table tr{transition:background .2s}
+table tr:hover{background:rgba(110,231,255,.08);cursor:pointer}
+table code{background:var(--code);padding:4px 8px;border-radius:4px;color:var(--accent);font-size:13px;white-space:nowrap;display:inline-block}
+.practice-btn{padding:6px 12px;background:var(--accent);color:#0b1220;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;transition:all .2s}
+.practice-btn:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(110,231,255,.4)}
+.cmd-popup{max-width:700px}
+.cmd-practice-area{margin-top:16px;padding:16px;background:var(--glass);border-radius:12px;border:2px solid var(--border)}
 @media (max-width:1100px){.app{grid-template-columns:1fr}.sidebar{height:auto;position:static}}
 </style>
 </head>
@@ -92,6 +102,7 @@ main{padding:24px 28px;max-width:1400px}
 <a href="#scenarios">🎯 Real Scenarios</a>
 <a href="#exam-sim">📝 Exam Simulator</a>
 <a href="#quick-drill">⚡ Quick Drills</a>
+<a href="#commands">🧾 Command Ref</a>
 <a href="#progress">📊 Progress</a>
 </nav>
 <div style="margin-top:14px;font-size:12px" class="muted">💡 Learn by DOING, not reading!</div>
@@ -220,6 +231,44 @@ main{padding:24px 28px;max-width:1400px}
 </div>
 </div>
 </section>
+
+<section id="commands" class="hidden">
+<h2>🧾 Interactive Command Reference</h2>
+<div class="card">
+<div class="head">
+<h3>Test 2 Commands - Click to Practice!</h3>
+<div class="flex">
+<input type="text" id="cmd-search" class="command-input" placeholder="🔍 Search commands..." style="width:300px">
+<select id="cmd-filter" class="btn">
+<option value="all">All Topics</option>
+<option value="NAT">NAT</option>
+<option value="EIGRP">EIGRP</option>
+<option value="OSPF">OSPF</option>
+<option value="IPv6">IPv6</option>
+<option value="L3">L3 Switch</option>
+<option value="Frame Relay">Frame Relay</option>
+<option value="Verify">Verify</option>
+</select>
+</div>
+</div>
+<div class="body">
+<div style="overflow-x:auto">
+<table id="commands-table">
+<thead>
+<tr>
+<th style="width:30%">Command</th>
+<th style="width:20%">Purpose</th>
+<th style="width:25%">Example Usage</th>
+<th style="width:15%">Topic</th>
+<th style="width:10%">Action</th>
+</tr>
+</thead>
+<tbody id="commands-tbody"></tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
 </main>
 </div>
 
@@ -228,6 +277,17 @@ main{padding:24px 28px;max-width:1400px}
 <h3 id="popup-title">Success!</h3>
 <p id="popup-msg"></p>
 <button class="btn primary" id="popup-close">Continue</button>
+</div>
+
+<div class="popup cmd-popup" id="cmd-popup">
+<h3 id="cmd-popup-title"></h3>
+<div id="cmd-popup-content"></div>
+<div class="cmd-practice-area" id="cmd-practice">
+<div class="muted" style="margin-bottom:8px">Try it yourself:</div>
+<input type="text" class="command-input" id="cmd-practice-input" placeholder="Type the command...">
+<div id="cmd-practice-feedback" style="margin-top:8px"></div>
+</div>
+<button class="btn primary" id="cmd-popup-close">Done</button>
 </div>
 
 <script>
@@ -959,6 +1019,141 @@ document.getElementById('popup-close').onclick=()=>{
 // Initialize
 goTo('dash');
 updateProgress();
+
+// Commands Reference Table
+const COMMANDS_DATA=[
+  {cmd:'ip nat inside source static <in> <out>',purpose:'One-to-one static NAT',example:'ip nat inside source static 10.10.10.50 198.51.100.50',topic:'NAT',template:'Map host <inside-ip> to public <global-ip>'},
+  {cmd:'ip nat pool <name> <start> <end> netmask <mask>',purpose:'Create dynamic NAT pool',example:'ip nat pool LANPOOL 198.51.100.20 198.51.100.60 netmask 255.255.255.0',topic:'NAT',template:'Create pool from <start> to <end>'},
+  {cmd:'access-list 10 permit <net> <wc>',purpose:'Match inside subnet for NAT',example:'access-list 10 permit 10.10.10.0 0.0.0.255',topic:'NAT',template:'Permit subnet <net> <wildcard>'},
+  {cmd:'ip nat inside source list 10 pool <name>',purpose:'Bind ACL to pool',example:'ip nat inside source list 10 pool LANPOOL',topic:'NAT',template:'Bind ACL to pool for translation'},
+  {cmd:'ip nat inside',purpose:'Mark LAN interface',example:'int g0/0 → ip nat inside',topic:'NAT',template:'Mark <interface> as inside'},
+  {cmd:'ip nat outside',purpose:'Mark WAN interface',example:'int g0/1 → ip nat outside',topic:'NAT',template:'Mark <interface> as outside'},
+  {cmd:'ip nat inside source list 1 interface g0/1 overload',purpose:'PAT via interface',example:'ip nat inside source list 1 interface g0/1 overload',topic:'NAT',template:'Configure PAT with overload'},
+  
+  {cmd:'router eigrp <asn>',purpose:'Start EIGRP',example:'router eigrp 20',topic:'EIGRP',template:'Start EIGRP AS <number>'},
+  {cmd:'network <ip>',purpose:'Advertise network',example:'network 10.1.1.0',topic:'EIGRP',template:'Advertise <network> in EIGRP'},
+  {cmd:'bandwidth <kbit>',purpose:'Set interface bandwidth',example:'int s0/0/0 → bandwidth 1024',topic:'EIGRP',template:'Set bandwidth to influence metric'},
+  
+  {cmd:'router ospf <pid>',purpose:'Start OSPFv2',example:'router ospf 101',topic:'OSPF',template:'Start OSPF process <pid>'},
+  {cmd:'network <ip> <wc> area <id>',purpose:'Place interface in area',example:'network 10.1.2.0 0.0.0.3 area 101',topic:'OSPF',template:'Put network in Area <id>'},
+  {cmd:'no network <ip> <wc> area <id>',purpose:'Remove from area',example:'no network 192.168.10.8 0.0.0.3 area 101',topic:'OSPF',template:'Move network between areas'},
+  
+  {cmd:'ipv6 unicast-routing',purpose:'Enable IPv6 routing',example:'ipv6 unicast-routing',topic:'IPv6',template:'Enable IPv6 forwarding'},
+  {cmd:'ipv6 router ospf <pid>',purpose:'Start OSPFv3',example:'ipv6 router ospf 10',topic:'IPv6',template:'Create OSPFv3 process'},
+  {cmd:'router-id <A.B.C.D>',purpose:'Set OSPFv3 router-id',example:'router-id 1.1.1.1',topic:'IPv6',template:'Assign router-id'},
+  {cmd:'ipv6 address <addr>/<prefix>',purpose:'Assign IPv6 address',example:'int f0/0 → ipv6 address 2001:db8:1::1/64',topic:'IPv6',template:'Set IPv6 on interface'},
+  {cmd:'ipv6 ospf <pid> area <id>',purpose:'Enable OSPFv3 on interface',example:'int f0/0 → ipv6 ospf 10 area 0',topic:'IPv6',template:'Enable OSPFv3 in Area'},
+  
+  {cmd:'no switchport',purpose:'Make routed port on L3 switch',example:'int f0/3 → no switchport',topic:'L3',template:'Convert to routed port'},
+  {cmd:'ip address <ip> <mask>',purpose:'Set IPv4 on interface',example:'int f0/3 → ip address 192.168.1.2 255.255.255.0',topic:'L3',template:'Assign IPv4 address'},
+  {cmd:'no shutdown',purpose:'Enable interface',example:'int f0/1 → no shut',topic:'L3',template:'Bring interface up'},
+  {cmd:'ip route 0.0.0.0 0.0.0.0 <next-hop>',purpose:'Default route',example:'ip route 0.0.0.0 0.0.0.0 192.168.1.1',topic:'L3',template:'Set default gateway'},
+  
+  {cmd:'encapsulation frame-relay',purpose:'Enable Frame Relay',example:'int s0/0/0 → encapsulation frame-relay',topic:'Frame Relay',template:'Enable FR on serial'},
+  {cmd:'interface s0/0/0.X point-to-point',purpose:'Create p2p subinterface',example:'int s0/0/0.1 point-to-point',topic:'Frame Relay',template:'Create subinterface'},
+  {cmd:'frame-relay interface-dlci <id>',purpose:'Bind DLCI on subif',example:'frame-relay interface-dlci 101',topic:'Frame Relay',template:'Bind DLCI to subif'},
+  {cmd:'ip route <net> <mask> <next-hop>',purpose:'Static to spokes',example:'ip route 10.10.1.0 255.255.255.0 172.16.1.2',topic:'Frame Relay',template:'Add static route'},
+  
+  {cmd:'show ip nat translations',purpose:'View NAT table',example:'show ip nat translations',topic:'Verify',template:'Show current NAT mappings'},
+  {cmd:'show ip nat statistics',purpose:'NAT counters',example:'show ip nat statistics',topic:'Verify',template:'Show NAT hit counts'},
+  {cmd:'show ip eigrp neighbors',purpose:'EIGRP adjacencies',example:'show ip eigrp neighbors',topic:'Verify',template:'List EIGRP neighbors'},
+  {cmd:'show ip eigrp topology',purpose:'EIGRP topology',example:'show ip eigrp topology',topic:'Verify',template:'Show successors/FS'},
+  {cmd:'show ip ospf neighbor',purpose:'OSPFv2 neighbors',example:'show ip ospf neighbor',topic:'Verify',template:'List OSPF neighbors'},
+  {cmd:'show ip ospf interface',purpose:'OSPFv2 interfaces',example:'show ip ospf interface',topic:'Verify',template:'Show OSPF cost/type'},
+  {cmd:'show ipv6 ospf neighbor',purpose:'OSPFv3 neighbors',example:'show ipv6 ospf neighbor',topic:'Verify',template:'Show OSPFv3 adjacencies'},
+  {cmd:'show ipv6 route',purpose:'IPv6 routing table',example:'show ipv6 route',topic:'Verify',template:'Display IPv6 RIB'}
+];
+
+let filteredCommands=[...COMMANDS_DATA];
+
+function renderCommandsTable(){
+  const tbody=document.getElementById('commands-tbody');
+  if(!tbody)return;
+  
+  tbody.innerHTML=filteredCommands.map((c,idx)=>`
+    <tr onclick="openCmdPractice(${idx})">
+      <td><code>${c.cmd}</code></td>
+      <td>${c.purpose}</td>
+      <td><code style="font-size:11px">${c.example}</code></td>
+      <td><span class="badge">${c.topic}</span></td>
+      <td><button class="practice-btn" onclick="event.stopPropagation();openCmdPractice(${idx})">Practice</button></td>
+    </tr>
+  `).join('');
+}
+
+function filterCommands(){
+  const search=document.getElementById('cmd-search')?.value.toLowerCase()||'';
+  const filter=document.getElementById('cmd-filter')?.value||'all';
+  
+  filteredCommands=COMMANDS_DATA.filter(c=>{
+    const matchSearch=!search||c.cmd.toLowerCase().includes(search)||c.purpose.toLowerCase().includes(search)||c.example.toLowerCase().includes(search);
+    const matchFilter=filter==='all'||c.topic===filter;
+    return matchSearch&&matchFilter;
+  });
+  
+  renderCommandsTable();
+}
+
+window.openCmdPractice=function(idx){
+  const cmd=filteredCommands[idx];
+  document.getElementById('cmd-popup-title').textContent=cmd.purpose;
+  document.getElementById('cmd-popup-content').innerHTML=`
+    <div style="background:var(--glass);padding:12px;border-radius:8px;margin:12px 0">
+      <div class="muted">Command:</div>
+      <code style="display:block;margin:8px 0;padding:8px;background:var(--code);border-radius:6px">${cmd.cmd}</code>
+      <div class="muted" style="margin-top:12px">Example:</div>
+      <code style="display:block;margin:8px 0;padding:8px;background:var(--code);border-radius:6px">${cmd.example}</code>
+      <div class="muted" style="margin-top:12px">What to do:</div>
+      <div>${cmd.template}</div>
+    </div>
+  `;
+  
+  document.getElementById('cmd-practice-input').value='';
+  document.getElementById('cmd-practice-input').dataset.answer=cmd.cmd.toLowerCase().replace(/<[^>]+>/g,'').trim();
+  document.getElementById('cmd-practice-feedback').innerHTML='';
+  
+  document.getElementById('cmd-popup').classList.add('show');
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('cmd-practice-input').focus();
+};
+
+document.getElementById('cmd-practice-input')?.addEventListener('keydown',function(e){
+  if(e.key==='Enter'){
+    const input=this.value.toLowerCase().trim();
+    const answer=this.dataset.answer;
+    
+    // Extract key parts of the command for validation
+    const keyParts=answer.split(' ').filter(p=>!['<','>'].some(c=>p.includes(c)));
+    const hasAllParts=keyParts.every(part=>input.includes(part));
+    
+    const feedback=document.getElementById('cmd-practice-feedback');
+    if(hasAllParts){
+      feedback.innerHTML='<span class="ok">✅ Correct! Command structure matches!</span>';
+      state.progress[filteredCommands.find(c=>c.cmd.toLowerCase().includes(answer.split(' ')[0]))?.topic.toLowerCase().replace(' relay','').replace('l3','nat')||'nat']=(state.progress[filteredCommands.find(c=>c.cmd.toLowerCase().includes(answer.split(' ')[0]))?.topic.toLowerCase().replace(' relay','').replace('l3','nat')||'nat']||0)+2;
+      if(state.progress[filteredCommands.find(c=>c.cmd.toLowerCase().includes(answer.split(' ')[0]))?.topic.toLowerCase().replace(' relay','').replace('l3','nat')||'nat']>100)state.progress[filteredCommands.find(c=>c.cmd.toLowerCase().includes(answer.split(' ')[0]))?.topic.toLowerCase().replace(' relay','').replace('l3','nat')||'nat']=100;
+      save();
+    }else{
+      const missing=keyParts.filter(p=>!input.includes(p));
+      feedback.innerHTML=`<span class="err">❌ Missing: ${missing.join(', ')}</span>`;
+    }
+  }
+});
+
+document.getElementById('cmd-popup-close')?.addEventListener('click',()=>{
+  document.getElementById('cmd-popup').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+});
+
+document.getElementById('cmd-search')?.addEventListener('input',filterCommands);
+document.getElementById('cmd-filter')?.addEventListener('change',filterCommands);
+
+// Render table on page load
+setTimeout(()=>{
+  if(document.getElementById('commands-tbody')){
+    renderCommandsTable();
+  }
+},100);
+
 })();
 </script>
 </body>
